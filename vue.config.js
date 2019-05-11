@@ -10,7 +10,7 @@ module.exports = {
     proxy: {
         //匹配所有以/api开头的请求路径
         '/api': {
-            target: "http://localhost:4000", //代理目标的基础路径
+            target: "http://huangchaoweb.cn/acef_sociable/visitor", //代理目标的基础路径
             ws:true,
             changOrigin:true, //开启跨域
             pathRewrite:{ //重写路径，去掉路径中开头的/api

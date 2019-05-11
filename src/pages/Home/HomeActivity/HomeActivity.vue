@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="homeactivity-container">
     HomeActivity
   </div>
 </template>
@@ -20,5 +20,8 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-
+.homeactivity-container{
+  height: 500px;
+  background-color: yellowgreen;
+}
 </style>

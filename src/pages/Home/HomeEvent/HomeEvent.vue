@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="homeEvent-container">
     HomeEvent
   </div>
 </template>
@@ -20,5 +20,8 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-
+.homeEvent-container{
+  flex: 1;
+  background-color: pink;
+}
 </style>
