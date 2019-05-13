@@ -1,10 +1,15 @@
 <template>
-  <div>Link</div>
+  <div>Link
+  <Footer></Footer>
+  </div>
 </template>
 
 <script>
+import Footer from '../../components/Footer/Footer'
 export default {
-  components:{},
+  components:{
+      Footer
+  },
   props:{},
   data(){
     return {
