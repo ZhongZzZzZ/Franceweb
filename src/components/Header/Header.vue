@@ -46,6 +46,7 @@
 </template>
 
 <script>
+
 export default {
   components:{},
   props:{},
@@ -62,7 +63,8 @@ export default {
       this.isShow = !this.isShow
     }
   },
-  created(){},
+  created(){
+  },
   mounted(){}
 }
 </script>
