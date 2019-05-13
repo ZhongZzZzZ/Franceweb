@@ -32,7 +32,7 @@ export default {
 }
 @media screen and (max-width: 768px) {
   .container{
-    padding: 0 0.4rem;
+    padding: 0 0.2rem;
   }
 }
 </style>

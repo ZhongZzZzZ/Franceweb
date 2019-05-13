@@ -21,7 +21,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .homeactivity-container{
-  height: 500px;
+  height: 1000px;
   background-color: yellowgreen;
 }
 </style>

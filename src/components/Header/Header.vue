@@ -93,7 +93,7 @@ export default {
 }
 .phone-container{
   &.toggle-enter-active,&.toggle-leave-active{
-    transition: all 0.5s ease;
+    transition: all 0.3s ease;
   }
   &.toggle-enter,&.toggle-leave-to{
     opacity: 0;
@@ -122,12 +122,12 @@ export default {
   }
 }
 
-.phone-menu-item-active{
+/* .phone-menu-item-active{
   border-bottom: 1px solid $red !important;
   a{
     color: $red !important;
   }
-}
+} */
 
 
 .menu{

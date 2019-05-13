@@ -1,25 +1,25 @@
 <template>
   <div class="login-container">
-    <el-form :model="form">
+    <el-form :model="form" size="small">
         <el-form-item label="账号" :label-width="formLabelWidth">
-          <el-input v-model="form.name" auto-complete="off" autofocus="true"></el-input>
+          <el-input v-model="form.emailAccount" auto-complete="off" autofocus="true" placeholder="请输入邮箱账号"></el-input>
         </el-form-item>
         <el-form-item label="密码" :label-width="formLabelWidth">
-          <el-input v-model="form.password" ></el-input>
+          <el-input type="password" v-model="form.password" placeholder="请输入密码"></el-input>
         </el-form-item>
         <el-form-item class="captcha" label="验证码" :label-width="formLabelWidth">
-          <el-input v-model="form.securityCode" auto-complete="off"></el-input>
+          <el-input v-model="form.securityCode" auto-complete="off" placeholder="请输入验证码"></el-input>
         </el-form-item>
          <div class="login-bottom">
-           <el-form-item label="记住密码">
-            <el-switch v-model="form.remenber"></el-switch>
+           <el-form-item label="7天免登录">
+            <el-switch v-model="form.remember"></el-switch>
           </el-form-item>
-          <img style="height:50px;width:100px;" onclick="this.src='http://huangchaoweb.cn/acef_sociable/visitor/getSecurityCode?d='+new Date()*1"  src="http://huangchaoweb.cn/acef_sociable/visitor/getSecurityCode" alt="">
+          <img style="height:40px;width:100px;" onclick="this.src='http://huangchaoweb.cn/acef_sociable/visitor/getSecurityCode?d='+new Date()*1"  src="http://huangchaoweb.cn/acef_sociable/visitor/getSecurityCode" alt="">
          </div>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="closeDialog">取 消</el-button>
-        <el-button type="primary" @click="closeDialog">登 陆</el-button>
+        <el-button type="danger"  @click="closeDialog">取 消</el-button>
+        <el-button type="primary" @click="login">登 陆</el-button>
       </div>
   </div>
 </template>
@@ -32,9 +32,9 @@ export default {
     return {
       formLabelWidth: '80px',
       form: {
-          name: '',
+          emailAccount: '',
           password:'',
-          remenber:false,
+          remember:false,
           securityCode:''
         },
     }
@@ -44,6 +44,15 @@ export default {
   methods:{
     closeDialog(){
       this.$emit('close',false)
+    },
+    login () {
+      const data = {
+        emailAccount:this.form.emailAccount,
+        password:this.form.password,
+        securityCode:this.form.securityCode,
+        remember:'on'
+      }
+      this.$store.dispatch('login',data)
     }
   },
   created(){},
@@ -60,4 +69,5 @@ export default {
     }
   }
 }
+
 </style>
