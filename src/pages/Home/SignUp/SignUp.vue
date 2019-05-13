@@ -1,7 +1,13 @@
 <template>
   <div class="signup-container">
-    <el-button type="text" @click="showLogin = true">登陆</el-button>
-    <el-button type="text" @click="showRegister = true">注册</el-button>
+    <div class="userInfo" v-if="(loginUser.userName || registerUser.userName)">
+      欢迎 {{userInfo}}
+      <el-button type="danger" @click="logOut">退出登陆</el-button>
+    </div>
+    <div class="btn" v-else>
+      <el-button type="primary"  @click="showLogin = true">登陆</el-button>
+      <el-button type="primary" @click="showRegister = true">注册</el-button>
+    </div>
     <el-dialog class="dialog" title="登陆" :visible.sync="showLogin"
     :close-on-click-modal="false"
     :close-on-press-escape="false"
@@ -22,6 +28,7 @@
 <script>
 import Login from '../../Login/Login.vue'
 import Register from '../../Register/Register.vue'
+import {mapState} from 'vuex'
 export default {
   components:{
     Login,
@@ -35,22 +42,38 @@ export default {
   }
   },
   watch:{},
-  computed:{},
+  computed:{
+    ...mapState(['loginUser','registerUser']),
+    userInfo () {
+      return this.loginUser.userName ? this.loginUser : this.registerUser
+    }
+  },
   methods:{
     close(isClose){
       this.showRegister = isClose
       this.showLogin = isClose
+    },
+    logOut() {
+      this.$confirm('此操作将退出登陆, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.$store.dispatch('logOut')
+          this.$message({
+            type: 'success',
+            message: '退出登陆!'
+          });
+        })
     }
   },
   created(){},
-  mounted(){
-  }
+  mounted(){}
 }
 </script>
 <style lang="scss">
 @import '../../../styles/color.scss';
 .signup-container{
-  height: 50px;
   background-color: lightblue;
   text-align: center;
   .dialog{

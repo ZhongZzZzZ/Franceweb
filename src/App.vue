@@ -19,7 +19,9 @@ export default {
   watch:{},
   computed:{},
   methods:{},
-  created(){},
+  created(){
+    /* this.$store.dispatch('isLogin') */
+  },
   mounted(){}
 }
 </script>

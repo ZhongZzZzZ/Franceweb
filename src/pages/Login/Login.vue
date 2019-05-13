@@ -14,12 +14,12 @@
            <el-form-item label="7天免登录">
             <el-switch v-model="form.remember"></el-switch>
           </el-form-item>
-          <img style="height:40px;width:100px;" onclick="this.src='http://huangchaoweb.cn/acef_sociable/visitor/getSecurityCode?d='+new Date()*1"  src="http://huangchaoweb.cn/acef_sociable/visitor/getSecurityCode" alt="">
+          <img style="height:40px;width:100px;" @click="getImg" ref="securityCodeImg" src="http://huangchaoweb.cn/acef_sociable/visitor/getSecurityCode" alt="">
          </div>
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button type="danger"  @click="closeDialog">取 消</el-button>
-        <el-button type="primary" @click="login">登 陆</el-button>
+        <el-button type="primary" @click.native="login">登 陆</el-button>
       </div>
   </div>
 </template>
@@ -44,6 +44,9 @@ export default {
   methods:{
     closeDialog(){
       this.$emit('close',false)
+    },
+    getImg() {
+      this.$refs.securityCodeImg.src = 'http://huangchaoweb.cn/acef_sociable/visitor/getSecurityCode?d='+Date.now()*1
     },
     login () {
       const data = {

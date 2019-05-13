@@ -37,3 +37,6 @@ export const reqRegister = (url,data) => ajax(url,data,'post')
 
 //请求登陆
 export const reqLogin = (url,data) => ajax(url,data,'post')
+
+//查询是否登陆状态
+export const reqIsLogin = (url) => ajax(url)

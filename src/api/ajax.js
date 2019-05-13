@@ -1,7 +1,7 @@
 import axios from 'axios'
 import qs from 'qs'
 
-export default async function ajax (url,data,type='get') {
+export default async function ajax (url,data={},type='get') {
   try {
     let res
     if(type === 'get') {
