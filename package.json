@@ -24,5 +24,17 @@
     "sass": "^1.18.0",
     "sass-loader": "^7.1.0",
     "vue-template-compiler": "^2.5.21"
-  }
+  },
+  "description": "在根目录下",
+  "main": ".eslintrc.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ZhongZzZzZ/acef-ele.git"
+  },
+  "author": "ZhongZzZzZ",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZhongZzZzZ/acef-ele/issues"
+  },
+  "homepage": "https://github.com/ZhongZzZzZ/acef-ele#readme"
 }
