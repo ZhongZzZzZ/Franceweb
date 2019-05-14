@@ -47,6 +47,7 @@ export default {
     },
     getImg() {
       this.$refs.securityCodeImg.src = 'http://huangchaoweb.cn/acef_sociable/visitor/getSecurityCode?d='+Date.now()*1
+      console.log(document.cookie);
     },
     login () {
       const data = {

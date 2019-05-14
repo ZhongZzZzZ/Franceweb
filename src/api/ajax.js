@@ -5,12 +5,12 @@ export default async function ajax (url,data={},type='get') {
   try {
     let res
     if(type === 'get') {
-      res = await axios.get('/api'+url,{
+      res = await axios.get('/acef_sociable'+url,{
         params : data
       })
     } else{
-      res = await axios.post('/api'+url,qs.stringify(data))
-
+      res = await axios.post('/acef_sociable'+url,qs.stringify(data))
+      
     }
     res = res.data //axios请求成功后得到的是一个promise，await返回的值就是后面promise执行的结果，因此返回了axios请求后的对象给res
     return new Promise((resolve)=>{
