@@ -1,6 +1,6 @@
 <template>
   <div class="register-container">
-    <el-form :model="form" :rules="rules" ref="registerRuleform" size="small">
+    <el-form :model="form" :rules="rules" ref="registerForm" size="small">
         <el-form-item label="邮箱账号" :label-width="formLabelWidth" prop="emailAccount">
           <el-input v-model="form.emailAccount" auto-complete="off" autofocus="true" placeholder="请输入邮箱"></el-input>
         </el-form-item>
@@ -24,13 +24,13 @@
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button type="danger" @click="closeDialog">取 消</el-button>
-        <el-button type="primary" @click="register">注 册</el-button>
+        <el-button type="primary" @click="submitRegisterForm('registerForm')">注 册</el-button>
       </div>
   </div>
 </template>
 
 <script>
-import {reqEmailCaptcha} from '../../api'
+import {reqEmailCaptcha, reqRegister} from '../../api'
 export default {
   components:{},
   props:{},
@@ -86,7 +86,7 @@ export default {
     //邮箱验证码验证
     var validateEmailCaptcha = (rule,value,callback) => {
       if(!/^[0-9]{4}$/.test(value)) {
-        return callback(new Error('邮箱验证码个数不正确'))
+        return callback(new Error('邮箱验证码格式不正确'))
       } else {
         callback()
       }
@@ -151,7 +151,7 @@ export default {
   methods:{
     closeDialog () {
       this.$emit('close',false) //给父组件传值，关闭弹框
-      this.$refs.registerRuleform.resetFields() //关闭前清空表单和验证提示
+      this.$refs.registerForm.resetFields() //关闭前清空表单和验证提示
     },
     async getEmailCaptcha(){ //点击之后发异步请求去获取验证码，进入倒计时30s，此时按钮变得不可用
       const {emailAccount} = this.form //获取当前表单里的邮箱
@@ -176,6 +176,7 @@ export default {
         if(!result) {
           //网络错误的时候接收不到值
           this.computeTime = 0
+          this.$message.error('网络错误')
           return
         }
         if(result.result == 0 ) { //根据文档 0为发送邮箱失败
@@ -184,27 +185,52 @@ export default {
         }
       }
     },
-    register () {
-      const {emailAccount,password,securityCode,userName,phone} = this.form
-      const data = {
-        emailAccount,
-        password,
-        securityCode,
-        userName,
-        phone,
-      }
-      if(!data.emailAccount || !data.password || !data.securityCode || !data.userName) {
-        this.$message.error('请填写完整')
-        return 
-      } else if (this.form.confirmPassword !== data.password) {
-        this.$message.error('两次密码不正确')
-        return
-      } else {
-        this.$store.dispatch('register',data)
-      }
-    }
+    submitRegisterForm(formName) { //ele组件的表单验证，验证通过就在回调函数里面传入true
+        this.$refs[formName].validate(async (valid) => {
+          if (valid) {
+            const {emailAccount,password,securityCode,userName,phone} = this.form
+            const data = {
+              emailAccount,
+              password,
+              securityCode,
+              userName,
+              phone,
+            }   
+            const result  = await reqRegister('/user/register',data)
+            if(!result) { //返回值为undefined代表请求出错
+              this.$message.error('网络错误')
+              return 
+            }
+            //注册返回结果验证
+            switch (result.result) {
+              case '7':
+                this.$message.error('未发送邮件')
+                break;
+              case '6':
+                this.$message.error('注册邮箱和发送验证码邮箱不一致')
+                break;
+              case '5':
+                this.$message.error('验证码超时（2分钟过期）')
+                break;
+              case '4':
+                this.$message.error('验证码错误')
+                break;
+              case '2':
+                this.$message.error('用户已经存在')
+                break;
+              case '1':
+                this.$message.success('注册成功')
+                this.closeDialog()
+                break;
+              default:
+                break;
+            }
+          } else {
+            return false;
+          }
+        });
 
-  },
+  }},
   created(){},
   mounted(){}
 }

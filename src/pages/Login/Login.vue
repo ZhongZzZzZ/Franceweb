@@ -1,13 +1,13 @@
 <template>
   <div class="login-container">
-    <el-form :model="form" size="small" ref="loginRuleForm">
-        <el-form-item label="账号" :label-width="formLabelWidth">
+    <el-form :model="form" :rules="rules" size="small" ref="loginForm">
+        <el-form-item label="账号" :label-width="formLabelWidth" prop="emailAccount">
           <el-input v-model="form.emailAccount" auto-complete="off" autofocus="true" placeholder="请输入邮箱账号"></el-input>
         </el-form-item>
-        <el-form-item label="密码" :label-width="formLabelWidth">
+        <el-form-item label="密码" :label-width="formLabelWidth" prop="password">
           <el-input type="password" v-model="form.password" placeholder="请输入密码"></el-input>
         </el-form-item>
-        <el-form-item class="captcha" label="验证码" :label-width="formLabelWidth">
+        <el-form-item class="captcha" label="验证码" :label-width="formLabelWidth" prop="securityCode">
           <el-input v-model="form.securityCode" auto-complete="off" placeholder="不区分大小写"></el-input>
         </el-form-item>
          <div class="login-bottom">
@@ -19,7 +19,7 @@
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button type="danger"  @click="closeDialog">取 消</el-button>
-        <el-button type="primary" @click="login">登 陆</el-button>
+        <el-button type="primary" @click="submitRegisterForm('loginForm')">登 陆</el-button>
       </div>
   </div>
 </template>
@@ -31,6 +31,37 @@ export default {
   components:{},
   props:{},
   data(){
+    //邮箱验证
+    var validateEmailAccount = (rule,value,callback) => {
+      if(value === '') {
+        return callback(new Error('邮箱账号不能为空'))
+      } else if(!/^[a-zA-Z0-9][a-zA-Z0-9_-]+@[a-zA-Z0-9]+(\.[a-zA-Z]+)+$/.test(value)){
+        return callback(new Error('邮箱格式不正确'))
+      }else{
+        callback()
+      }
+    }
+    //密码验证
+    var validatePass = (rule,value,callback) => {
+      if(value === '') {
+        return callback(new Error('密码不能为空'))
+      } else if (!/^[a-zA-Z0-9_]{6,10}$/.test(value)){
+        return callback(new Error('密码需由6-10字母、数字、下划线组成'))
+      } else {
+        callback()
+      } 
+    }
+    //图片验证码验证
+    var validateSecurityCode = (rule,value,callback) => {
+      if(value === '') {
+        return callback(new Error('验证码不能为空'))
+      } else if(!/^[a-zA-Z0-9]{4}$/.test(value)) {
+        return callback(new Error('验证码格式不正确'))
+      } else {
+        callback()
+      }
+      
+    }
     return {
       formLabelWidth: '80px',
       pic:null, //存放登陆验证码的地址
@@ -40,10 +71,21 @@ export default {
           remember:false,
           securityCode:''
         },
+      rules: { //表单验证规则
+          emailAccount: [
+            { validator: validateEmailAccount, trigger: 'blur' }
+          ],
+          password: [
+            { validator: validatePass, trigger: 'blur' }
+          ],
+          securityCode: [
+            { validator: validateSecurityCode, trigger: 'blur' }
+          ]   
+        }
     }
   },
   watch:{
-    loginUser() {
+    loginUser() { //登陆成功的时候有变化，关闭登陆框
       this.closeDialog()
     }
   },
@@ -52,10 +94,10 @@ export default {
   },
   methods:{
     closeDialog(){
+      this.$refs.loginForm.resetFields()
       this.$emit('close',false) //给父组件传值，关闭弹框
-      this.$refs.loginRuleform.resetFields() //关闭前清空表单和验证提示
     },
-    getImg() {
+    getImg() { //请求验证码图片，得到blob格式进行转换成图片
       axios.get('/acef/user/getSecurityCode?d='+Date.now()*1,{responseType: 'blob'}).then(res => {
         const qrUrl = window.URL.createObjectURL(res.data)
         this.pic = qrUrl
@@ -66,30 +108,20 @@ export default {
         console.log(err);
       })
     },
-    login () {
-      const data = {
-        emailAccount:this.form.emailAccount,
-        password:this.form.password,
-        securityCode:this.form.securityCode,
-        remember:this.form.remember ? 'on' : ''
-      }
-      //进行登陆的表单验证
-      if(!data.emailAccount || !data.password || !data.securityCode) {
-        //如果有一个为空 都会弹出错误
-        this.$message.error('请填写完整')
-      } else if((!/^[a-zA-Z0-9][a-zA-Z0-9_-]+@[a-zA-Z0-9]+(\.[a-zA-Z]+)+$/.test(data.emailAccount))) {
-        this.$message.error('邮箱格式不正确')
-        return 
-      } else if (!/^[a-zA-Z0-9_]{6,10}$/.test(data.password)) {
-        this.$message.error('密码需由6-10字母、数字、下划线组成')
-        return
-      } else if (!/^[a-zA-Z0-9]{4}$/.test(data.securityCode)) {
-        this.$message.error('验证码格式不正确')
-        return
-      }
-      else {
-        this.$store.dispatch('login',data)
-      }
+    submitRegisterForm(formName) {
+      this.$refs[formName].validate((valid) => {
+          if (valid) {
+            const data = {
+              emailAccount:this.form.emailAccount,
+              password:this.form.password,
+              securityCode:this.form.securityCode,
+              remember:this.form.remember ? 'on' : ''
+            }  
+            this.$store.dispatch('login',data)
+          } else {
+            return false;
+          }
+        })
     }
   },
   created(){},

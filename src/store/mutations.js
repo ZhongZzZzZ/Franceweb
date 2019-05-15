@@ -1,9 +1,6 @@
-import {SUBMIT_REGISTER, SUBMIT_LOGIN, RECIEVE_LOGIN, QUIT_LOGIN} from './mutation-types'
+import {SUBMIT_LOGIN, RECIEVE_LOGIN, QUIT_LOGIN} from './mutation-types'
 
 export default {
-  [SUBMIT_REGISTER] (state,user) { 
-    state.registerUser = user
-  },
   [SUBMIT_LOGIN] (state,user) { 
     state.loginUser = user
   },
@@ -12,6 +9,5 @@ export default {
   },
   [QUIT_LOGIN] (state) { 
     state.loginUser = {}
-    state.registerUser = {}
   },
 }

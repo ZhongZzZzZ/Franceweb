@@ -20,7 +20,7 @@ export default {
   computed:{},
   methods:{},
   created(){
-    /* this.$store.dispatch('isLogin') */
+    this.$store.dispatch('isLogin')
   },
   mounted(){}
 }
