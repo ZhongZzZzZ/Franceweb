@@ -12,6 +12,7 @@
     :close-on-click-modal="false"
     :close-on-press-escape="false"
     :show-close="false"
+    :lock-scroll="false"
     >
       <login @close="close"></login>
     </el-dialog>
@@ -19,6 +20,7 @@
     :close-on-click-modal="false"
     :close-on-press-escape="false"
     :show-close="false"
+    :lock-scroll="false"
     >
       <register @close="close"></register>
     </el-dialog>
@@ -29,6 +31,7 @@
 import Login from '../../Login/Login.vue'
 import Register from '../../Register/Register.vue'
 import {mapState} from 'vuex'
+import {cancelStopScroll,stopScroll} from '../../../api/stopScroll'
 export default {
   components:{
     Login,
@@ -41,7 +44,22 @@ export default {
       showRegister:false //控制注册弹框
   }
   },
-  watch:{},
+  watch:{
+    showLogin(val) {
+       if(val) {
+        stopScroll()
+      } else{
+        cancelStopScroll()
+      }
+    },
+    showRegister(val) {
+       if(val) {
+        stopScroll()
+      } else{
+        cancelStopScroll()
+      }
+    },
+  },
   computed:{
     ...mapState(['loginUser']),
     
@@ -55,14 +73,16 @@ export default {
       this.$confirm('此操作将退出登陆, 是否继续?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
-          type: 'warning'
+          type: 'warning',
+          lockScroll:false,
+          center:true
         }).then(() => {
           this.$store.dispatch('logOut')
           this.$message({
             type: 'success',
             message: '退出登陆!'
           });
-        })
+        }).catch(()=>{})
     }
   },
   created(){},
