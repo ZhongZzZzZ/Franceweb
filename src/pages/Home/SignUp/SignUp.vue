@@ -1,7 +1,7 @@
 <template>
   <div class="signup-container">
     <div class="userInfo" v-if="(loginUser.userName || registerUser.userName)">
-      欢迎 {{userInfo}}
+      欢迎 {{userInfo.userName}}
       <el-button type="danger" @click="logOut">退出登陆</el-button>
     </div>
     <div class="btn" v-else>

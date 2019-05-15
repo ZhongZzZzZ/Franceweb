@@ -1,6 +1,6 @@
 <template>
   <div class="register-container">
-    <el-form :model="form" :rules="rules" ref="ruleform" size="small">
+    <el-form :model="form" :rules="rules" ref="registerRuleform" size="small">
         <el-form-item label="邮箱账号" :label-width="formLabelWidth" prop="emailAccount">
           <el-input v-model="form.emailAccount" auto-complete="off" autofocus="true" placeholder="请输入邮箱"></el-input>
         </el-form-item>
@@ -54,8 +54,7 @@ export default {
             return callback(new Error('密码需由6-10字母、数字、下划线组成'))
         } else {
           if(this.form.confirmPassword !== '') {
-            console.log(1);
-            this.$refs.ruleform.validateField('confirmPassword')
+            this.$refs.registerRuleform.validateField('confirmPassword')
           }
         }
         callback()
@@ -152,13 +151,17 @@ export default {
   methods:{
     closeDialog () {
       this.$emit('close',false) //给父组件传值，关闭弹框
-      this.$refs.ruleform.resetFields() //关闭前清空表单和验证提示
+      this.$refs.registerRuleform.resetFields() //关闭前清空表单和验证提示
     },
     async getEmailCaptcha(){ //点击之后发异步请求去获取验证码，进入倒计时30s，此时按钮变得不可用
       const {emailAccount} = this.form //获取当前表单里的邮箱
-      if(emailAccount === '' || (!/^[a-zA-Z0-9][a-zA-Z0-9_-]+@[a-zA-Z0-9]+(\.[a-zA-Z]+)+$/.test(emailAccount))) {
-        return false //如果邮箱没填或者格式不对就不调用
-      } else {
+      if(emailAccount === '') {
+        this.$message.error('请填写邮箱')
+        return  //如果邮箱没填或者格式不对就不调用
+      } else if((!/^[a-zA-Z0-9][a-zA-Z0-9_-]+@[a-zA-Z0-9]+(\.[a-zA-Z]+)+$/.test(emailAccount))) {
+        this.$message.error('邮箱格式不正确')
+      }
+      else {
         this.computeTime = 30 //30s倒计时
         this.intervalID = setInterval(() => {
           --this.computeTime
@@ -169,13 +172,15 @@ export default {
         const data = {
            emailAccount : this.form.emailAccount //准备好发送请求的对象
         }
-        const result = await reqEmailCaptcha('/email',data)
+        const result = await reqEmailCaptcha('/user/email',data)
+        if(!result) {
+          //网络错误的时候接收不到值
+          this.computeTime = 0
+          return
+        }
         if(result.result == 0 ) { //根据文档 0为发送邮箱失败
           this.computeTime = 0 //这时候归零按钮，不用等倒计时结束
-          this.$message({ 
-          message: '验证码接受失败',
-          type: 'warning'
-          })
+          this.$message.error('验证码接受失败')
         }
       }
     },
@@ -186,9 +191,17 @@ export default {
         password,
         securityCode,
         userName,
-        phone
+        phone,
       }
-      this.$store.dispatch('register',data)
+      if(!data.emailAccount || !data.password || !data.securityCode || !data.userName) {
+        this.$message.error('请填写完整')
+        return 
+      } else if (this.form.confirmPassword !== data.password) {
+        this.$message.error('两次密码不正确')
+        return
+      } else {
+        this.$store.dispatch('register',data)
+      }
     }
 
   },
