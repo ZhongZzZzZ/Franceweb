@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
+  <div class="service-container">
     <div class="content">
-      <h1>公益服务</h1>
+      <ContentHeader title="公益服务" color="#eb7a67"></ContentHeader>
         <el-row >
           <div class="service">
             <el-col :span="3">&nbsp;</el-col>
@@ -119,9 +119,11 @@
 
 import "../../styles/color.scss"
 import Footer from '../../components/Footer/Footer'
+import ContentHeader from '../../components/ContentHeader/ContentHeader.vue'
 export default {
   components:{
-      Footer
+      Footer,
+      ContentHeader
   },
   props:{},
   data(){
@@ -146,8 +148,9 @@ export default {
 p{
   font-size: 0.4rem;
 }
-.container{
+.service-container{
   position: relative;
+  overflow: hidden;
   .content
   {
     /*margin:0 4rem;*/

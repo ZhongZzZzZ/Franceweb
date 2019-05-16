@@ -12,7 +12,6 @@
     :close-on-click-modal="false"
     :close-on-press-escape="false"
     :show-close="false"
-    :lock-scroll="false"
     >
       <login @close="close"></login>
     </el-dialog>
@@ -20,7 +19,6 @@
     :close-on-click-modal="false"
     :close-on-press-escape="false"
     :show-close="false"
-    :lock-scroll="false"
     >
       <register @close="close"></register>
     </el-dialog>
@@ -31,7 +29,7 @@
 import Login from '../../Login/Login.vue'
 import Register from '../../Register/Register.vue'
 import {mapState} from 'vuex'
-import {cancelStopScroll,stopScroll} from '../../../api/stopScroll'
+/* import {cancelStopScroll,stopScroll} from '../../../api/stopScroll' */
 export default {
   components:{
     Login,
@@ -45,7 +43,7 @@ export default {
   }
   },
   watch:{
-    showLogin(val) {
+    /* showLogin(val) {
        if(val) {
         stopScroll()
       } else{
@@ -58,7 +56,7 @@ export default {
       } else{
         cancelStopScroll()
       }
-    },
+    }, */
   },
   computed:{
     ...mapState(['loginUser']),
@@ -74,8 +72,8 @@ export default {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning',
-          lockScroll:false,
-          center:true
+          center:true,
+          closeOnClickModal:false
         }).then(() => {
           this.$store.dispatch('logOut')
           this.$message({
@@ -95,6 +93,7 @@ export default {
   background-color: lightblue;
   text-align: center;
   .dialog{
+    overflow: hidden;
     .el-dialog{
       background-color: lightgray;
       width: 30%;

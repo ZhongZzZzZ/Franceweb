@@ -16,4 +16,4 @@ function cancelStopScroll() {
   window.onscroll = null
 } 
 
-export {stopScroll,cancelStopScroll}
+ export {stopScroll,cancelStopScroll}
