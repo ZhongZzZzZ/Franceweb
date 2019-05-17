@@ -22,7 +22,7 @@
     <div class="title">
       <a href="#"><img src="../../assets/logo.png" alt=""></a>
       <h1>ACEF联谊会</h1>
-      <el-button type="primary" icon="el-icon-caret-bottom" size="mini" @click="showToggle"></el-button>
+      <el-button type="primary" icon="el-icon-caret-bottom" size="mini"></el-button>
     </div>
   </div>
   <transition name="toggle">
@@ -39,7 +39,6 @@
         <router-link @click.native="showToggle" tag="li" class="phone-menu-item" to="/report">专题报道</router-link>
       </ul>
     </div>
-    <div class="black" @click="showToggle"></div>
   </div>
   </transition>
 </div>
@@ -59,9 +58,6 @@ export default {
   watch:{},
   computed:{},
   methods:{
-    showToggle(){
-      this.isShow = !this.isShow
-    }
   },
   created(){
   },
@@ -111,23 +107,7 @@ export default {
       }
     }
   }
-  .black{
-    position: absolute;
-    z-index: 50;
-    background-color: rgba(0, 0, 0, 0.5);
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
 }
-
-/* .phone-menu-item-active{
-  border-bottom: 1px solid $red !important;
-  a{
-    color: $red !important;
-  }
-} */
 
 
 .menu{

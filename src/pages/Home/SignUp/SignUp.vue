@@ -2,16 +2,17 @@
   <div class="signup-container">
     <div class="userInfo" v-if="(loginUser.userName)">
       欢迎 {{loginUser.userName}}
-      <el-button type="danger" @click="logOut">退出登陆</el-button>
+      <el-button  type="danger" @click="logOut">退出登陆</el-button>
     </div>
     <div class="btn" v-else>
-      <el-button type="primary"  @click="showLogin = true">登陆</el-button>
-      <el-button type="primary" @click="showRegister = true">注册</el-button>
+      <el-button  type="primary"  @click="showLogin = true">登陆</el-button>
+      <el-button  type="primary" @click="showRegister = true">注册</el-button>
     </div>
     <el-dialog class="dialog" title="登陆" :visible.sync="showLogin"
     :close-on-click-modal="false"
     :close-on-press-escape="false"
     :show-close="false"
+
     >
       <login @close="close"></login>
     </el-dialog>
@@ -19,6 +20,7 @@
     :close-on-click-modal="false"
     :close-on-press-escape="false"
     :show-close="false"
+   
     >
       <register @close="close"></register>
     </el-dialog>
@@ -29,7 +31,6 @@
 import Login from '../../Login/Login.vue'
 import Register from '../../Register/Register.vue'
 import {mapState} from 'vuex'
-/* import {cancelStopScroll,stopScroll} from '../../../api/stopScroll' */
 export default {
   components:{
     Login,
@@ -43,20 +44,6 @@ export default {
   }
   },
   watch:{
-    /* showLogin(val) {
-       if(val) {
-        stopScroll()
-      } else{
-        cancelStopScroll()
-      }
-    },
-    showRegister(val) {
-       if(val) {
-        stopScroll()
-      } else{
-        cancelStopScroll()
-      }
-    }, */
   },
   computed:{
     ...mapState(['loginUser']),
@@ -90,8 +77,9 @@ export default {
 <style lang="scss">
 @import '../../../styles/color.scss';
 .signup-container{
-  background-color: lightblue;
   text-align: center;
+  height: 6rem;
+  margin-bottom: 3rem;
   .dialog{
     overflow: hidden;
     .el-dialog{
@@ -101,14 +89,6 @@ export default {
         background-color: $blue;
         .el-dialog__title{
           color: #fff;
-        }
-      }
-      .dialog-footer{
-        button{
-          &:nth-child(2){
-            background-color: $blue;
-            border-color: $blue; 
-          }
         }
       }
     }
