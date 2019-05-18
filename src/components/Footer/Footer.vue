@@ -43,7 +43,9 @@ export default {
   },
   created(){},
   mounted(){
-    this.initFooter()
+    this.$nextTick(()=>{
+      this.initFooter()
+    })
   }
 }
 </script>

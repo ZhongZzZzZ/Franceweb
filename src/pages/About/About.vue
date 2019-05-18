@@ -14,7 +14,7 @@ export default {
   components:{
     Association,
     Members,
-    Footer
+    Footer,
   },
   props:{},
   data(){

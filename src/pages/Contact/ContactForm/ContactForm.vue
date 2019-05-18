@@ -102,7 +102,7 @@ export default {
 @import '../../../styles/color.scss';
  .contact-form{
     width: 100%;
-    margin: 1rem 0 2.4rem;
+    margin-top: 1rem;
     background-color: $lightYellow;
     height: 8.28rem;
     p{

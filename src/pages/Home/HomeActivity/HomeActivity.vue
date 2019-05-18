@@ -5,7 +5,7 @@
       <ul>
         <li class="card" v-for="(item, index) in activityList" :key="index">
            <div class="card-content"><p>{{item.p}}</p></div>
-           <img :src="item.img" alt="">
+           <img src="../../../assets/timg.jpg" alt="">
         </li>
       </ul>
     </div>
@@ -25,15 +25,15 @@ export default {
   methods:{},
   created(){
     const arr = [
-      {p:'可以是单行',img:'http://img4.imgtn.bdimg.com/it/u=2150992516,3202248268&fm=26&gp=0.jpg'},
-      {p:'可以是单行',img:'http://img4.imgtn.bdimg.com/it/u=2150992516,3202248268&fm=26&gp=0.jpg'},
-      {p:'昭和无惨绘｜丸尾末广×花轮和一 新英…',img:'http://img4.imgtn.bdimg.com/it/u=2150992516,3202248268&fm=26&gp=0.jpg'},
-      {p:'可以是单行',img:'http://img4.imgtn.bdimg.com/it/u=2150992516,3202248268&fm=26&gp=0.jpg'},
-      {p:'昭和无惨绘｜丸尾末广×花轮和一 新英…',img:'http://img4.imgtn.bdimg.com/it/u=2150992516,3202248268&fm=26&gp=0.jpg'},
-      {p:'可以是单行',img:'http://img4.imgtn.bdimg.com/it/u=2150992516,3202248268&fm=26&gp=0.jpg'},
-      {p:'昭和无惨绘｜丸尾末广×花轮和一 新英…',img:'http://img4.imgtn.bdimg.com/it/u=2150992516,3202248268&fm=26&gp=0.jpg'},
-      {p:'可以是单行',img:'http://img4.imgtn.bdimg.com/it/u=2150992516,3202248268&fm=26&gp=0.jpg'},
-      {p:'昭和无惨绘｜丸尾末广×花轮和一 新英…',img:'http://img4.imgtn.bdimg.com/it/u=2150992516,3202248268&fm=26&gp=0.jpg'},
+      {p:'可以是单行',img:'../../../assets/timg.jpg'},
+      {p:'可以是单行',img:'../../../assets/timg.jpg'},
+      {p:'昭和无惨绘｜丸尾末广×花轮和一 新英…',img:'../../../assets/timg.jpg'},
+      {p:'可以是单行',img:'../../../assets/timg.jpg'},
+      {p:'昭和无惨绘｜丸尾末广×花轮和一 新英…',img:'../../../assets/timg.jpg'},
+      {p:'可以是单行',img:'../../../assets/timg.jpg'},
+      {p:'昭和无惨绘｜丸尾末广×花轮和一 新英…',img:'../../../assets/timg.jpg'},
+      {p:'可以是单行',img:'../../../assets/timg.jpg'},
+      {p:'昭和无惨绘｜丸尾末广×花轮和一 新英…',img:'../../../assets/timg.jpg'},
     ]
     this.activityList = arr
   },
