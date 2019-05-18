@@ -62,7 +62,8 @@ export default {
     }
   }
   .logo{
-    margin: 5px;
+    margin-top: 5px;
+    padding-right: 20px;
     img{
       width: 100px;
       height: 100px;
