@@ -47,7 +47,6 @@ export default {
   .homeactivity{
     font-size: 40px;
     color: $red;
-    font-weight: bold;
     text-align: center;
     margin-bottom: 1.6rem;
   }

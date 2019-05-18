@@ -48,7 +48,7 @@ export default {
 </script>
 <style lang="scss">
 .carousel{
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
   .el-carousel__item{
     float: left;
     .img{

@@ -33,11 +33,10 @@ export default {
 @import '../../../styles/color.scss';
 
 .homeevent-container{
-  padding: 0 4rem;
+  padding: 0 2rem;
   .homeevent{
     font-size: 40px;
     color: $red;
-    font-weight: bold;
     text-align: center;
     margin-bottom: 1.6rem;
   }
@@ -50,8 +49,6 @@ export default {
     .homeevent-info{
       line-height: 26px;
       padding-bottom: 1rem;
-      height: 7.76rem;
-      text-overflow: ellipsis;
     }
     .homeevent-button{
       border-radius: 0;
