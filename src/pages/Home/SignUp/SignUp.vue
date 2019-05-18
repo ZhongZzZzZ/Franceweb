@@ -100,7 +100,7 @@ export default {
       font-size: 36px;
       margin-bottom: .4rem;
       color: $blue;
-      -moz-box-shadow:0px 0px 3px #333333; -webkit-box-shadow:0px 0px 1px #333333; box-shadow:0px 0px 3px #333333; //这里改阴影
+       //这里改阴影
     }
   .signup-title{
     p{

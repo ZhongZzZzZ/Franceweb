@@ -1,5 +1,5 @@
 <template>
-  <div class="footer">
+  <div class="footer" ref="footer">
     <div class="linkfooter">
       <ul class="socialList">
         <li><a href="javascript:;" ><i class="iconfont iconFacebook iconSize" ></i></a></li>
@@ -30,9 +30,21 @@ export default {
   },
   watch:{},
   computed:{},
-  methods:{},
+  methods:{
+    initFooter(){
+      const app = document.querySelector("body>div") //获取当前页面内容的最外层div元素
+      const bodyHeight = document.body.clientHeight || document.documentElement.clientHeight //获得body高度
+      const footer = this.$refs.footer //获得footer组件
+      if(app.clientHeight < bodyHeight) {  //页面内容高度小于body高度的时候
+        footer.style.position="absolute" 
+        footer.style.bottom = "0"
+      }
+    }
+  },
   created(){},
-  mounted(){}
+  mounted(){
+    this.initFooter()
+  }
 }
 </script>
 <style lang="scss">
@@ -43,7 +55,7 @@ export default {
   left:0;
   overflow: hidden;
   .linkfooter{
-    height: 100px;
+    height: 2rem;
     background-color: $blue;
     text-align: center;
   }
@@ -56,7 +68,7 @@ export default {
         margin-top: 15px;
       }
       img{
-        margin-top: 25px;
+        margin-top: 0.5rem;
       }
     }
   }
@@ -75,8 +87,5 @@ export default {
   .iconSize {
     font-size: 0.5rem!important;
   }
-  /*.socialList li{*/
-    /*margin-left:0.4rem!important;*/
-  /*}*/
 }
 </style>

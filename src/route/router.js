@@ -8,8 +8,6 @@ import Topic from '../pages/Topic/Topic.vue'
 import Report from '../pages/Report/Report.vue'
 import Contact from '../pages/Contact/Contact.vue'
 import Link from '../pages/Link/Link.vue'
-import Login from '../pages/Login/Login.vue'
-import Register from '../pages/Register/Register.vue'
 
 Vue.use(Router)
 
@@ -20,18 +18,6 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home,
-      children:[
-        {
-          path: 'login',
-          name: 'login',
-          component: Login,
-        },
-        {
-          path: 'register',
-          name: 'register',
-          component: Register
-        },
-      ]
     },
     {
       path: '/about',
@@ -68,5 +54,10 @@ export default new Router({
       name: 'link',
       component: Link
     },
+    /* {
+      path: '/article',
+      name: 'article',
+      component: Article
+    }, */
   ]
 })
