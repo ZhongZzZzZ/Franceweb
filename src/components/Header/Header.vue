@@ -1,7 +1,6 @@
 <template>
 <div>
   <el-menu
-    :default-active="activeIndex"
     class="el-menu-demo menu"
     mode="horizontal"
     :router="true"
@@ -10,14 +9,14 @@
     active-text-color="#fff"
     >
     <a href="javascript:;" class="menu-item logo"><img src="../../assets/logo.png" alt="" title="acef联谊会"></a>
-    <el-menu-item index="/" class="menu-item"><a href="#">首页</a></el-menu-item>
-    <el-menu-item index="/about" class="menu-item"><a href="#">关于我们</a></el-menu-item>
-    <el-menu-item index="/service" class="menu-item"><a href="#">公益服务</a></el-menu-item>
-    <el-menu-item index="/activity" class="menu-item"><a href="#">活动信息</a></el-menu-item>
-    <el-menu-item index="/topic" class="menu-item"><a href="#">专题回顾</a></el-menu-item>
-    <el-menu-item index="/contact" class="menu-item"><a href="#">联系我们</a></el-menu-item>
-    <el-menu-item index="/link" class="menu-item"><a href="#">友情链接</a></el-menu-item>
-    <el-menu-item index="/report" class="menu-item"><a href="#">专题报道</a></el-menu-item>
+    <el-menu-item index="/" class="menu-item menu-item-info"><a href="javascript:;">首页</a></el-menu-item>
+    <el-menu-item index="/about" class="menu-item menu-item-info"><a href="javascript:;">关于我们</a></el-menu-item>
+    <el-menu-item index="/service" class="menu-item menu-item-info"><a href="javascript:;">公益服务</a></el-menu-item>
+    <el-menu-item index="/activity" class="menu-item menu-item-info"><a href="javascript:;">活动信息</a></el-menu-item>
+    <el-menu-item index="/topic" class="menu-item menu-item-info"><a href="javascript:;">专题回顾</a></el-menu-item>
+    <el-menu-item index="/contact" class="menu-item menu-item-info"><a href="javascript:;">联系我们</a></el-menu-item>
+    <el-menu-item index="/link" class="menu-item menu-item-info"><a href="javascript:;">友情链接</a></el-menu-item>
+    <el-menu-item index="/report" class="menu-item menu-item-info"><a href="javascript:;">专题报道</a></el-menu-item>
   </el-menu>
 </div>
 </template>
@@ -38,14 +37,15 @@ export default {
   },
   created(){
   },
-  mounted(){}
+  mounted(){
+  }
 }
 </script>
 <style lang="scss">
 @import '../../styles/color.scss';
 .menu{
   height: 110px;
-  padding: 0 3.5rem !important;
+  padding: 0 3rem !important;
   display: flex;
   justify-content: space-between;
   .menu-item{
@@ -59,6 +59,7 @@ export default {
     a{
       line-height: 110px;
       font-size: 18px;
+      text-decoration: none;
     }
   }
   .logo{

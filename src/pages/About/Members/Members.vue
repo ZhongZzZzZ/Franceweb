@@ -36,15 +36,15 @@ export default {
   }
   .members-content{
     text-align: center;
-    padding: 0 7rem;
+    padding: 0 6rem;
     display: grid;
     grid-template-columns: repeat(3, 5rem);
     grid-template-rows: repeat(3, 5rem);
     grid-gap: 1rem 1rem;
     .members{
       img{
-        width: 200px;
-        height: 200px;
+        width: 4rem;
+        height: 4rem;
       }
     }
   }

@@ -28,8 +28,7 @@ import {reqEmailCaptcha,xxxxx,xxxx,xxxx} from
 */
 
 
-
-//请求邮箱验证码
+ //请求邮箱验证码
 export const reqEmailCaptcha = (url,data) => ajax(url,data)
 
 //请求注册
@@ -40,3 +39,9 @@ export const reqLogin = (url,data) => ajax(url,data,'post')
 
 //查询是否登陆状态
 export const reqIsLogin = (url) => ajax(url)
+
+//联系我们的表单提交
+export const reqContactForm = (url,data) => ajax(url,data,'post')
+
+//请求文章
+export const reqArticle = (url,data) => ajax(url,data)

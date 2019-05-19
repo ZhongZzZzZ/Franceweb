@@ -1,12 +1,11 @@
 <template>
   <div class="home-container">
     <div class="home-content">
+      <Carousel></Carousel>
       <div class="home-left">
-        <Carousel></Carousel>
         <home-event class="home-event"></home-event>
       </div>
       <div class="home-right">
-        <sign-up></sign-up>
         <home-activity></home-activity>
       </div>
     </div>
@@ -19,13 +18,11 @@ import Carousel from './Carousel/Carousel'
 import HomeActivity from './HomeActivity/HomeActivity.vue'
 import HomeEvent from './HomeEvent/HomeEvent.vue'
 import Footer from '../../components/Footer/Footer'
-import SignUp from './SignUp/SignUp.vue'
 export default {
   components:{
     HomeEvent,
     HomeActivity,
     Footer,
-    SignUp,
     Carousel
   },
   props:{},

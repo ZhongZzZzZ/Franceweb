@@ -1,14 +1,14 @@
 <template>
-  <el-carousel ref="carousel" :height="carouselHeight" class="carousel" indicator-position="none" :interval="5000">
-    <el-carousel-item v-for="(item) in imgList" :key="item[0]">
-      <div class="img">
-        <el-image :src="item[0]" alt=""></el-image>
-        <el-image :src="item[1]" alt=""></el-image>
-      </div>
-    </el-carousel-item>
-  </el-carousel>
+  <div class="carousel">
+    <ul class="box1">
+      <li><img src="../../../assets/carousel/1.jpg" alt=""  style="width: 300px"></li>
+      <li><img src="../../../assets/carousel/2.jpg" alt=""  style="width: 300px"></li>
+      <li><img src="../../../assets/carousel/3.jpg" alt=""  style="width: 300px"></li>
+      <li><img src="../../../assets/carousel/4.jpg" alt=""  style="width: 300px"></li>
+      <li><img src="../../../assets/carousel/5.jpg" alt=""  style="width: 300px"></li>
+    </ul>
+  </div>
 </template>
-
 <script>
 export default {
   components:{},
@@ -40,31 +40,57 @@ export default {
   watch:{},
   computed:{},
   methods:{},
-  created(){},
+  created(){
+
+  },
   mounted(){
+      var interVal;
+      const box1 = document.getElementsByClassName('box1')[0]
+      box1.style.marginLeft = 0;
+      window.onload=function(){
+          auto();
+      }
+      function auto(){
+          const li = document.getElementsByTagName('li')
+          interVal = setInterval(function () {
+              const ml = parseInt(box1.style.marginLeft)
+              if(ml % 400 === 0 && ml !==0) {
+                  box1.style.marginLeft = 0
+                  box1.appendChild(li[0])
+              }
+              box1.style.marginLeft = parseInt(box1.style.marginLeft) -1 +'px'
+          }, 10);
+      }
+      const li = document.getElementsByTagName("li");
+      for (let i = 0 ; i <li.length ;i++){
+          li[i].addEventListener("mouseenter",function () {
+              clearInterval(interVal);
+          })
+      }
+      for (let i = 0 ; i <li.length ;i++){
+          li[i].addEventListener("mouseleave",function () {
+              auto()
+          })
+      }
   }
 }
 
 </script>
 <style lang="scss">
 .carousel{
-  margin-bottom: 1.5rem;
-  .el-carousel__item{
-    float: left;
-    .img{
-      width: 100%;
-      height: 100%;
-      .el-image{
-      width: 48%;
-      height: 100%;
-      margin-right: 2%;
-      img{
-        width: 100%;
-        height: 100%;
-      }
-    }
-  }
-  }
-  
+  width: 1100px;
+  height: 200px;
+  border: 5px solid;
+  overflow: hidden;
 }
+.carousel>ul{
+  background: #000;
+  list-style: none;
+  display: flex;
+  >li{   
+    width: 400px;
+    height: 100%;
+  }
+}
+
 </style>

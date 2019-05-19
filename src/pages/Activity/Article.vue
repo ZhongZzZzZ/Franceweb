@@ -5,7 +5,7 @@
                 <el-collapse v-model="activeNames" >
                     <div v-for="(item,index) in data" :key="index" >
                         <el-collapse-item  :title="item.title" :name="index + 1">
-                            <div>{{item.content}}</div>
+                            <div>{{item.description}}</div>
                             <el-col :span="8" style="margin: 8px">
                                 <el-image :src="src2" class="serviceImg">
                                     <div slot="placeholder" class="image-slot">
@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import { reqArticle } from '../../api';
 
 export default {
    components:{
@@ -76,9 +77,15 @@ export default {
            })
        },
  */
+        async getArticle () {
+          const result = await reqArticle('/data/get')
+          this.getnews = result
+          this.src2 = result[0].imePath
+        }
    },
    created(){
       /*  this.getItem();   */       //初始化页面时候请求数据
+  this.getArticle()
    },
    mounted(){}
     }
