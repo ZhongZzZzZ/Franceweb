@@ -63,7 +63,7 @@ export default {
    },
    computed:{},
    methods:{
-       getItem(){      //请求数据方法
+      /*  getItem(){      //请求数据方法
            this.$axios.get('https://api.apiopen.top/getSongPoetry',{
                params:{
                    // page:this.page,
@@ -75,10 +75,10 @@ export default {
                console.log(this.getnews)
            })
        },
-
+ */
    },
    created(){
-       this.getItem();         //初始化页面时候请求数据
+      /*  this.getItem();   */       //初始化页面时候请求数据
    },
    mounted(){}
     }

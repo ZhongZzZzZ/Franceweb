@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1>活动信息</h1>
+    <ContentHeader title="活动信息" color="#000"></ContentHeader>
     <Article @totalPages="listen" :pageSize="pageSize" :currentPage="currentPage"></Article>
     <el-pagination
             background
@@ -19,12 +19,14 @@
 </template>
 
 <script>
+    import ContentHeader from '../../components/ContentHeader/ContentHeader'
     import Footer from '../../components/Footer/Footer'
     import Article from "../../pages/Activity/Article"
     export default {
         components:{
             Footer,
-            Article
+            Article,
+            ContentHeader
         },
         props:{},
         data(){
