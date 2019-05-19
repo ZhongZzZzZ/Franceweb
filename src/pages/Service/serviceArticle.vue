@@ -69,7 +69,7 @@ export default {
     },
     computed: {},
     methods: {
-        getItem() {      //请求数据方法
+        /* getItem() {      //请求数据方法
             this.$axios.get('https://api.apiopen.top/getSongPoetry', {
                 params: {
                     // page:this.page,
@@ -81,10 +81,10 @@ export default {
                 this.getnews = res
                 console.log(this.getnews)
             })
-        },
+        }, */
     },
     created() {
-        this.getItem();
+        /* this.getItem(); */
     },
     mounted() {
     }

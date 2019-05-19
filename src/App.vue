@@ -2,7 +2,7 @@
  <div >
   <Header></Header>
 
-    <router-view class="container"></router-view>
+    <router-view class="app-container"></router-view>
   
  </div>
 </template>
@@ -22,7 +22,7 @@ export default {
   computed:{},
   methods:{},
   created(){
-   this.$store.dispatch('isLogin')
+   /* this.$store.dispatch('isLogin') */
   },
   mounted(){}
 }

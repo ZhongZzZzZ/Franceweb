@@ -4,16 +4,15 @@ import qs from 'qs'
 import Vue from 'vue'
 const v = new Vue() //为了能在当前js文件中使用elementui的组件，在这新建一个vue实例
 
-const api = '/acef'
 export default async function ajax (url,data={},type='get') {
   try {
     let res
     if(type === 'get') {
-      res = await axios.get(api+url,{
+      res = await axios.get(url,{
         params : data
       })
     } else{
-      res = await axios.post(api+url,qs.stringify(data))
+      res = await axios.post(url,qs.stringify(data))
     }
     res = res.data //axios请求成功后得到的是一个promise，await返回的值就是后面promise执行的结果，因此返回了axios请求后的对象给res
     return new Promise((resolve)=>{

@@ -98,7 +98,7 @@ export default {
       this.$emit('close',false) //给父组件传值，关闭弹框
     },
     getImg() { //请求验证码图片，得到blob格式进行转换成图片
-      axios.get('/acef/user/getSecurityCode?d='+Date.now()*1,{responseType: 'blob'}).then(res => {
+      axios.get('/user/getSecurityCode?d='+Date.now()*1,{responseType: 'blob'}).then(res => {
         const qrUrl = window.URL.createObjectURL(res.data)
         this.pic = qrUrl
         this.$refs.securityCodeImg.onload = function () {
