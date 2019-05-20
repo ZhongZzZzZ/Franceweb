@@ -43,8 +43,8 @@ export default {
     grid-gap: 1rem 1rem;
     .members{
       img{
-        width: 200px;
-        height: 200px;
+        width: 4rem;
+        height: 4rem;
       }
     }
   }

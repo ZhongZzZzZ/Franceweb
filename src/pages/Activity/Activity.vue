@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <ContentHeader title="活动信息" color="#000"></ContentHeader>
+  <div class="activitiy-container">
+    <ContentHeader title="活动信息" color="#eb7a67"></ContentHeader>
     <Article @totalPages="listen" :pageSize="pageSize" :currentPage="currentPage"></Article>
     <el-pagination
             background
@@ -56,7 +56,7 @@
 </script>
 <style lang="scss">
   @import '../../styles/color.scss';
-  .container{
+  .activitiy-container{
     position: relative;
     h1 {
       font-size: 0.8rem;

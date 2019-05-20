@@ -1,33 +1,23 @@
 <template>
   <div class="contact-form">
-    <el-row>
-      <el-col :xs="3" :span="5" style="height: 300px;">&nbsp;</el-col>
-      <el-col :xs="18" :span="14" style="height: 300px;">
-        <p>You can also email us at: flowers@mockingbot.com or fill in our contact form:</p>
-        <el-form :model="contactForm" :rules="rules"  ref="contactForm"  class="contactForm" size="small">
-        <el-row>
-          <el-col :span="11">
-            <el-form-item prop="name"><el-input class="contact-input" v-model="contactForm.name" placeholder="Name"></el-input></el-form-item>
-            <el-form-item prop="email"><el-input class="contact-input" v-model="contactForm.email" placeholder="Email"></el-input></el-form-item>
-            <el-form-item prop="subject"><el-input class="contact-input" v-model="contactForm.subject" placeholder="Subject"></el-input></el-form-item>
-          </el-col>
-          <el-col :span="2">&nbsp;</el-col>
-          <el-col :span="11">
-            <el-form-item prop="message"><el-input class="contact-input" :rows="6" type="textarea" v-model="contactForm.message" placeholder="Message"></el-input></el-form-item>
-          </el-col>
-        </el-row>
-        <el-row>
-          <el-col :xs="18" :span="20">&nbsp;</el-col>
-          <el-col :xs="6" :span="4"><el-button class="contact-button" type="danger" @click="submitForm('contactForm')">Send</el-button></el-col>
-        </el-row>
-      </el-form>
-      </el-col>
-      <el-col :xs="3" :span="5" style="height: 300px;">&nbsp;</el-col>
-    </el-row>
+      <p>You can also email us at: flowers@mockingbot.com or fill in our contact form:</p>
+      <el-form :model="contactForm" :rules="rules"  ref="contactForm"  class="contactForm" size="small">
+        <div class="contactForm-left">
+          <el-form-item prop="name"><el-input class="contact-input" v-model="contactForm.name" placeholder="Name"></el-input></el-form-item>
+          <el-form-item prop="email"><el-input class="contact-input" v-model="contactForm.email" placeholder="Email"></el-input></el-form-item>
+          <el-form-item prop="subject"><el-input class="contact-input" v-model="contactForm.subject" placeholder="Subject"></el-input></el-form-item>
+          <el-form-item prop="phone"><el-input class="contact-input" v-model="contactForm.phone" placeholder="Phone"></el-input></el-form-item>
+        </div>
+        <div class="contactForm-right">
+          <el-form-item prop="message"><el-input class="contact-input" :rows="10" type="textarea" v-model="contactForm.message" placeholder="Message"></el-input></el-form-item>
+          <el-button class="contact-button" type="danger" @click="submitForm('contactForm')">Send</el-button>
+        </div>
+    </el-form>
   </div>
 </template>
 
 <script>
+import { reqContactForm } from '../../../api';
 export default {
   components:{},
   props:{},
@@ -49,11 +39,26 @@ export default {
       }
     }
     var validateSubject = (rule, value, callback) => {
-        callback()
+        if(value === '') {
+          callback(new Error('标题不能为空'))
+        } else {
+          callback()
+        }
     }
     var validateMessage = (rule, value, callback) => {
       if(value == '') {
         callback(new Error('内容不能为空'))
+      } else {
+        callback()
+      }
+    }
+    var validatePhone = (rule,value,callback) => {
+      if (value === '') {
+        callback(new Error('手机号不能为空'))
+      } else if(/[^0-9]/g.test(value)) {
+        return callback(new Error('手机号应填写纯数字'))
+      } else if(!/^[0-9]{10,11}$/.test(value)){
+        return callback(new Error('手机号个数不正确'))
       } else {
         callback()
       }
@@ -63,7 +68,8 @@ export default {
         name:'',
         email:'',
         subject:'',
-        message:''
+        message:'',
+        phone:''
       },
       rules:{
         name: [
@@ -78,6 +84,9 @@ export default {
         message: [
           { validator: validateMessage, trigger: 'blur' }
         ],
+        phone: [
+          { validator: validatePhone, trigger: 'blur' }
+        ],
       }
     }
   },
@@ -85,9 +94,23 @@ export default {
   computed:{},
   methods:{
     submitForm(refName) {
-      this.$refs[refName].validate((valid) =>{
+      this.$refs[refName].validate(async (valid) =>{
         if(valid) {
-          this.$message.success('提交成功')
+          const data = {
+            userName:this.contactForm.name,
+            emailAccount:this.contactForm.email,
+            title:this.contactForm.subject,
+            description:this.contactForm.message,
+            phone:this.contactForm.phone
+          }
+          const result = await reqContactForm('/data/fb',data)
+          if(!result) {
+            this.$message.error('网络错误')
+          } else if(result.result == 1) {
+            this.$message.success('提交成功')
+          } else {
+            this.$message.error('提交失败，请稍后重试')
+          }
         } else {
           return 
         }
@@ -105,41 +128,54 @@ export default {
     margin-top: 1rem;
     background-color: $lightYellow;
     height: 8.28rem;
+    box-sizing: border-box;
+    text-align: center;
+    overflow: hidden;
+    padding: 0 3.5rem;
     p{
-      margin: 2rem 0 .3rem;
+      margin: 1rem 0 .3rem;
       color: #fff;
       font-size: 16px;
     }
-    .contact-input{
-      input,textarea{
-        background-color: transparent;
-        border-radius: 0;
-        border: 1px solid #fff;
-        resize: none;
-        //placeholder样式修改
-        &::-webkit-input-placeholder{ //谷歌
-          color: #fff;
+    .contactForm{
+      display: flex;
+      justify-content: space-between;
+      padding: 0 3.5rem;
+      .contact-input{
+        input,textarea{
+          background-color: transparent;
+          border-radius: 0;
+          border: 1px solid #fff;
+          resize: none;
+          //placeholder样式修改
+          &::-webkit-input-placeholder{ //谷歌
+            color: #fff;
+          }
+          &::-moz-placeholder{ //火狐19+
+            color: #fff;
+            font-weight: bold;
+          }
+          &:-ms-input-placeholder{ //ie10+
+            color: #fff;
+          }
+          &:-moz-placeholder{ //火狐4-18
+            color: #fff;
+          }
         }
-        &::-moz-placeholder{ //火狐19+
-          color: #fff;
-          font-weight: bold;
-        }
-        &:-ms-input-placeholder{ //ie10+
-          color: #fff;
-        }
-        &:-moz-placeholder{ //火狐4-18
-          color: #fff;
+        textarea{
+          height: 2.74rem;
         }
       }
-      textarea{
-        height: 2.74rem;
+      .contact-button{
+          width: 100px;
+          border-radius: 0;
+          line-height: .32rem;
+      }
+      .contactForm-left{
+        width: 8rem;
+      }.contactForm-right{
+        width: 8rem;
       }
     }
-    .contact-button{
-        width: 100%;
-        height: 100%;
-        border-radius: 0;
-        line-height: .32rem;
-      }
   }
 </style>

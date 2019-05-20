@@ -24,6 +24,7 @@ export default {
 </script>
 <style lang="scss">
 .content-header{
+  width: 100%;
   font-size: 0.8rem;
   text-align: center;
   margin: 1rem 0 2rem 0;

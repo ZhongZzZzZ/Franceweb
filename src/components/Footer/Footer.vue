@@ -43,9 +43,6 @@ export default {
   },
   created(){},
   mounted(){
-    this.$nextTick(()=>{
-      this.initFooter()
-    })
   }
 }
 </script>
@@ -67,7 +64,7 @@ export default {
       text-align: center;
       color: #fff;
       p{
-        margin-top: 15px;
+        margin-top: .3rem;
       }
       img{
         margin-top: 0.5rem;

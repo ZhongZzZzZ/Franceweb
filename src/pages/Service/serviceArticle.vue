@@ -9,7 +9,7 @@
 
                 <div >
                     <h2 >{{item.title}}</h2>
-                    <p>{{item.year}}</p>
+                    <p>{{item.time}}</p>
                     <el-image :src="src2" class="serviceImg">
                         <!--<el-image :src="item.poster" class="serviceImg">-->
                         <div slot="placeholder" class="image-slot">
@@ -23,7 +23,7 @@
             <el-col :xs="18" :sm="10" :md="9" :lg="8" :xl="8">
                 <div class="article">
                     <p class="passage" >
-                        {{item.plot_simple}}
+                        {{item.description}}
                     </p>
                     <a href="javascript:;">Read More></a>
                 </div>
@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import { reqArticle } from '../../api';
 export default {
     props: {
         pageSize: {          //父组件传过来的参数，pageSize是一页显示数据条数
@@ -82,9 +83,15 @@ export default {
                 console.log(this.getnews)
             })
         }, */
+        async getArticle () {
+          const result = await reqArticle('/data/get')
+          this.getnews = result
+          this.src2 = result[0].imePath
+        }
     },
     created() {
         /* this.getItem(); */
+        this.getArticle()
     },
     mounted() {
     }
@@ -95,12 +102,13 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../styles/color.scss';
-p{
-    font-size: 0.4rem;
-}
+
 .service{
     margin-top: 0.8rem;
     border-bottom: $orange solid 1px;
+    p{
+      font-size: 0.4rem;
+    } 
     .floatRight{
         float: right;
     }

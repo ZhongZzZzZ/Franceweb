@@ -2,10 +2,8 @@
   <div class="contact-container">
     <div class="contact-content">
       <ContentHeader title="联系我们" color="#eb7a67"></ContentHeader>
-      <el-row class="contact-info">
-        <el-col :span="3">&nbsp;</el-col>
-        <el-col :span="18">
-          <el-col class="contact contact-store" :xs="24" :span="12">
+      <div class="contact-info">
+          <div class="contact contact-store">
             <div class="grid-content bg-purple">
               <div><i class="iconfont iconlocation"></i></div>
               <h2>OUR STORE</h2>
@@ -14,10 +12,9 @@
               <p>flowers@mockingbot.com | Tel. 123-456-7890</p>
               <a href="">View Map ></a>
             </div>
-          </el-col>
-          <div class="lineY hidden-xs-only"></div>
-          <hr class="lineX hidden-sm-and-up">
-          <el-col class="contact contact-time" :xs="24" :span="12">
+          </div>
+          <div class="lineY"></div>
+          <div class="contact contact-time">
             <div class="grid-content bg-purple">
                <div><i class="iconfont icontime"></i></div>
                 <h2>OPENING HOURS</h2>
@@ -25,10 +22,8 @@
                 <p>Saturday: 11.00 - 17.00</p>
                 <p>Sunday: 12.30 - 16.30</p>
             </div>
-          </el-col>
-        </el-col>
-        <el-col :span="3">&nbsp;</el-col>
-      </el-row>
+          </div>
+      </div>
     </div>
     <contact-form></contact-form>
     <Footer></Footer>
@@ -65,6 +60,9 @@ export default {
     .contact-info{
       text-align: center;
       position: relative;
+      display: flex;
+      width: 100%;
+      justify-content: space-around;
       .contact{
         >div{
           overflow: hidden;
@@ -99,12 +97,6 @@ export default {
         left: 50%;
         top: 50%;
         transform: translate(-50%,-50%)
-      }
-      .lineX{
-        width: 100%;
-        height: .02rem;
-        background-color: $orange;
-        margin-bottom: 0.6rem;
       }
     }
   }

@@ -1,9 +1,9 @@
 <template>
  <div >
   <Header></Header>
-
-    <router-view class="app-container"></router-view>
-  
+    <keep-alive>
+      <router-view class="app-container"></router-view>
+    </keep-alive>
  </div>
 </template>
 

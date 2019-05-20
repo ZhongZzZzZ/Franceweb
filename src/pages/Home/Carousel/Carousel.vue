@@ -9,15 +9,14 @@
     </ul>
   </div>
 </template>
-
 <script>
-
 export default {
 
   components:{},
   props:{},
   data(){
     return {
+      interVal:null,
       imgList:[
         [
           require('../../../assets/carousel/1.jpg'),
@@ -45,18 +44,14 @@ export default {
 
   methods:{},
   created(){
-
   },
   mounted(){
-      var interVal ;
       const box1 = document.getElementsByClassName('box1')[0];
       const carouseItem = document.getElementsByClassName("carouselItem");
+      const that = this
       box1.style.marginLeft = 0;
-      window.onload=function(){
-          auto();
-      }
       function auto(){
-          interVal = setInterval(function () {
+          that.interVal = setInterval( ()=> {
               const ml = parseInt(box1.style.marginLeft)
               if(ml % 300 === 0 && ml !==0) {
                   box1.style.marginLeft = 0
@@ -67,17 +62,20 @@ export default {
       }
 
       for (let i = 0 ; i <carouseItem.length ;i++){
-          carouseItem[i].addEventListener("mouseenter",function () {
-              clearInterval(interVal);
+          carouseItem[i].addEventListener("mouseenter", ()=> {
+              clearInterval(this.interVal);
           })
       }
       for (let i = 0 ; i <carouseItem.length ;i++){
-          carouseItem[i].addEventListener("mouseleave",function () {
+          carouseItem[i].addEventListener("mouseleave", ()=> {
               auto()
           })
       }
+      auto();
   },
-
+  beforeDestroy(){
+    clearInterval(this.interVal)
+  }
 }
 
 </script>
@@ -92,12 +90,9 @@ export default {
     width: 1500px;
     list-style: none;
       li{
-
         float: left;
-        img{
-
-        }
       }
   }
 }
+
 </style>
