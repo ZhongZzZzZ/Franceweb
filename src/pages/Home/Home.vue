@@ -2,7 +2,9 @@
   <div class="home-container">
     <div class="home-content">
       <div class="home-left">
-        <Carousel></Carousel>
+        <keep-alive>
+          <Carousel></Carousel>
+        </keep-alive>
         <home-event class="home-event"></home-event>
       </div>
       <div class="home-right">
@@ -42,7 +44,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .home-container{
-  margin-top: 1rem;
+
   .home-content{
     display: flex;
     padding: 0 10vh;
