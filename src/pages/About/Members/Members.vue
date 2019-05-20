@@ -36,7 +36,7 @@ export default {
   }
   .members-content{
     text-align: center;
-    padding: 0 6rem;
+    padding: 0 7rem;
     display: grid;
     grid-template-columns: repeat(3, 5rem);
     grid-template-rows: repeat(3, 5rem);

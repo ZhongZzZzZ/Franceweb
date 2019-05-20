@@ -1,6 +1,6 @@
 <template>
   <div class="activitiy-container">
-    <ContentHeader title="活动信杯" color="#000"></ContentHeader>
+    <ContentHeader title="活动信息" color="#eb7a67"></ContentHeader>
     <Article @totalPages="listen" :pageSize="pageSize" :currentPage="currentPage"></Article>
     <el-pagination
             background
