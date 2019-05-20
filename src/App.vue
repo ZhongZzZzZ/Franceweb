@@ -1,9 +1,11 @@
 <template>
  <div >
   <Header></Header>
-    <keep-alive>
-      <router-view class="app-container"></router-view>
+    <keep-alive exclude="Home">
+     <router-view class="app-container"></router-view>
     </keep-alive>
+     
+    
  </div>
 </template>
 
@@ -22,7 +24,6 @@ export default {
   computed:{},
   methods:{},
   created(){
-   /* this.$store.dispatch('isLogin') */
   },
   mounted(){}
 }

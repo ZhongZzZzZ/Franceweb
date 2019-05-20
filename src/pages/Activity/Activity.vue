@@ -41,11 +41,9 @@
         methods:{
             getPages:function(currentPage){
                 this.currentPage = currentPage;
-                console.log(this.currentPage)
             },
             listen:function(data){
                 this.total = data
-                console.log(this.total)
             }
         },
         created(){

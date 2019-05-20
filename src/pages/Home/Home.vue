@@ -1,12 +1,14 @@
 <template>
   <div class="home-container">
-    <div class="home-content">
-      <div class="home-left">
-          <Carousel></Carousel>
-        <home-event class="home-event"></home-event>
-      </div>
-      <div class="home-right">
-        <home-activity></home-activity>
+    <div class="home-box">
+      <Carousel></Carousel>
+      <div class="home-content">
+        <div class="home-left">
+          <home-event class="home-event"></home-event>
+        </div>
+        <div class="home-right">
+          <home-activity></home-activity>
+        </div>
       </div>
     </div>
     <Footer></Footer>
@@ -19,6 +21,7 @@ import HomeActivity from './HomeActivity/HomeActivity.vue'
 import HomeEvent from './HomeEvent/HomeEvent.vue'
 import Footer from '../../components/Footer/Footer'
 export default {
+  name:'Home',
   components:{
     HomeEvent,
     HomeActivity,
@@ -37,18 +40,20 @@ export default {
   mounted(){}
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .home-container{
-
-  .home-content{
+  .home-box{
+    .home-content{
     display: flex;
-    padding: 0 10vh;
+    padding: 2rem 2rem;
     .home-left{
-      width: 75vw;
+      width: 18rem;
     }
     .home-right{
-      width: 25vw;
+      margin-left: 1rem;
+      width: 6rem;
     }
+  }
   }
 }
 </style>
