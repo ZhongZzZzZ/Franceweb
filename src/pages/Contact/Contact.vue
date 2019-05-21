@@ -68,22 +68,22 @@ export default {
           overflow: hidden;
           i{
           color: $orange;
-          font-size: 50px;
+          font-size: 1rem;
           font-weight: bold;
         }
         h2{
           margin: 1rem 0 .6rem;
-          font-size: 32px;
+          font-size: .64rem;
           color:#294057;
         }
         P{
           margin-top: .6rem;
           color:#101010;
-          font-size: 16px;
+          font-size: .32rem;
         }
         a{
           color: $orange;
-          font-size: 20px;
+          font-size: .4rem;
           margin: 0.6rem 0;
           display: block;
         }

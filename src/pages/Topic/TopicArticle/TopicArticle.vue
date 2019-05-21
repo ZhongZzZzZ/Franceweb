@@ -47,9 +47,9 @@ export default {
   margin-bottom: 1rem;
   .topicarticle-content{
     .topicarticle-topic{
-      height: 1.6rem;
+      height: 2rem;
       border-bottom: 2px solid $orange;
-      line-height: 0.8rem;
+      line-height: 1rem;
       padding: 0 .2rem;
       .title{
         color: #294057;

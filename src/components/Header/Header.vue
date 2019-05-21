@@ -7,23 +7,23 @@
     text-color="#FFF"
     >
     <a href="javascript:;" class="menu-item logo"><img src="../../assets/logo.png" alt="" title="acef联谊会"></a>
-    <el-menu-item  class="menu-item"><router-link to="/home">首页</router-link></el-menu-item>
-    <el-menu-item  class="menu-item"><router-link to="/about">关于我们</router-link></el-menu-item>
-    <el-menu-item  class="menu-item"><router-link to="/service">公益服务</router-link></el-menu-item>
-    <el-menu-item  class="menu-item"><router-link to="/activity">活动信息</router-link></el-menu-item>
-    <el-menu-item  class="menu-item"><router-link to="/topic">专题回顾</router-link></el-menu-item>
-    <el-menu-item  class="menu-item"><router-link to="/contact">联系我们</router-link></el-menu-item>
-    <el-menu-item  class="menu-item"><router-link to="/link">友情链接</router-link></el-menu-item>
-    <el-menu-item  class="menu-item"><router-link to="/report">专题报道</router-link></el-menu-item>
+    <el-menu-item  class="menu-item"><router-link to="/home">{{$t('m.menu.home_page')}}</router-link></el-menu-item>
+    <el-menu-item  class="menu-item"><router-link to="/about">{{$t('m.menu.about_us')}}</router-link></el-menu-item>
+    <el-menu-item  class="menu-item"><router-link to="/service">{{$t('m.menu.social_service')}}</router-link></el-menu-item>
+    <el-menu-item  class="menu-item"><router-link to="/activity">{{$t('m.menu.activity_info')}}</router-link></el-menu-item>
+    <el-menu-item  class="menu-item"><router-link to="/topic">{{$t('m.menu.report_review')}}</router-link></el-menu-item>
+    <el-menu-item  class="menu-item"><router-link to="/contact">{{$t('m.menu.contact_us')}}</router-link></el-menu-item>
+    <el-menu-item  class="menu-item"><router-link to="/link">{{$t('m.menu.friendship_link')}}</router-link></el-menu-item>
+    <el-menu-item  class="menu-item"><router-link to="/report">{{$t('m.menu.special_report')}}</router-link></el-menu-item>
     <el-menu-item  class="menu-item menu-item-drop">
-    <el-dropdown trigger="click" placement="top">
+    <el-dropdown @command="selectLanguage" trigger="click" placement="top">
       <span class="el-dropdown-link">
-        选择语言<i class="el-icon-arrow-down el-icon--right"></i>
+      {{language}}<i class="el-icon-arrow-down el-icon--right"></i>
       </span>
       <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item>中文</el-dropdown-item>
-        <el-dropdown-item>English</el-dropdown-item>
-        <el-dropdown-item>Français</el-dropdown-item>
+        <el-dropdown-item command="中文">中文</el-dropdown-item>
+        <el-dropdown-item command="English">English</el-dropdown-item>
+        <el-dropdown-item command="Français">Français</el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
     </el-menu-item>
@@ -38,14 +38,41 @@ export default {
   props:{},
   data(){
     return {
-      activeIndex:'/',
+      lang:'',
+      language:'中文'
     }
   },
   watch:{},
   computed:{},
   methods:{
+    selectLanguage(command){
+      this.language = command
+      switch (command) {
+        case '中文':
+          this.lang = 'zh-CN'
+          break;
+        case 'English':
+          this.lang = 'en-US'
+          break;
+        case 'Français':
+          this.lang = 'fr-FR'
+          break;
+        default:
+          break;
+      }
+      localStorage.setItem('locale',this.lang)
+      location.reload()
+    }
   },
   created(){
+    const locale = localStorage.getItem('locale')
+    if(!locale || locale === 'zh-CN'){
+      this.language = '中文'
+    } else if(locale === 'en-US'){
+      this.language = 'English'
+    } else if(locale === 'fr-FR'){
+      this.language = 'Français'
+    }
   },
   mounted(){
   }
@@ -79,14 +106,12 @@ export default {
       height: 100%;
       width: 100%;
       transition: all 0.3s ease;
-      &:hover{
-      font-size: .4rem;
-      }
     }
     &.menu-item-drop{
       >div{
         width: 100%;
         height: 100%;
+        display: block;
         &:focus{
           outline-color: transparent !important;
         }
@@ -100,6 +125,10 @@ export default {
         width: 100%;
         height: 100%;
         display: block;
+      }
+      i{
+        margin: 0;
+        
       }
     }
   }

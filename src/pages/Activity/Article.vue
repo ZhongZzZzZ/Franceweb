@@ -91,5 +91,9 @@ export default {
     }
 </script>
 <style lang="scss">
-
+.activitiy-container{
+  .el-collapse-item__arrow{
+    font-size: .48rem;
+  }
+} 
 </style>

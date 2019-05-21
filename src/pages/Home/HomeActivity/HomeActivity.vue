@@ -45,7 +45,7 @@ export default {
 @import '../../../styles/color.scss';
 .homeactivity-container{
   .homeactivity{
-    font-size: 40px;
+    font-size: .8rem;
     color: $red;
     text-align: center;
     margin-bottom: 1.6rem;
