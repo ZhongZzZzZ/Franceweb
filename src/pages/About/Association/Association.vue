@@ -37,10 +37,14 @@ export default {
   }
   .association-content{
     display: flex;
+    img{
+      width: 15.1rem;
+      height: 9.3rem;
+    }
     .association-info{
       text-align: center;
       p{
-        padding-top: 200px;
+        padding-top: 4rem;
         width: 12rem;
       }
     }

@@ -25,7 +25,8 @@ export default {
   methods:{},
   created(){
   },
-  mounted(){}
+  mounted(){
+  }
 }
 </script>
 <style lang="scss">

@@ -51,7 +51,7 @@ export default {
     }
     .home-right{
       margin-left: 1rem;
-      width: 6rem;
+      width: 9rem;
     }
   }
   }

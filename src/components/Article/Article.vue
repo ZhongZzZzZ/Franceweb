@@ -49,7 +49,7 @@ export default {
       margin-bottom: 0.25rem;
     }
     span{
-      margin: 0 20px;
+      margin: 0 .4rem;
     }
   }
   .article-info{

@@ -9,7 +9,7 @@
           <el-form-item prop="phone"><el-input class="contact-input" v-model="contactForm.phone" placeholder="Phone"></el-input></el-form-item>
         </div>
         <div class="contactForm-right">
-          <el-form-item prop="message"><el-input class="contact-input" :rows="10" type="textarea" v-model="contactForm.message" placeholder="Message"></el-input></el-form-item>
+          <el-form-item prop="message"><el-input class="contact-input" :rows="6" type="textarea" v-model="contactForm.message" placeholder="Message"></el-input></el-form-item>
           <el-button class="contact-button" type="danger" @click="submitForm('contactForm')">Send</el-button>
         </div>
     </el-form>
@@ -127,20 +127,20 @@ export default {
     width: 100%;
     margin-top: 1rem;
     background-color: $lightYellow;
-    height: 8.28rem;
+    /* height: 8.28rem; */
     box-sizing: border-box;
     text-align: center;
     overflow: hidden;
     padding: 0 3.5rem;
     p{
-      margin: 1rem 0 .3rem;
+      margin: 1rem 0 0 ;
       color: #fff;
       font-size: 16px;
     }
     .contactForm{
       display: flex;
       justify-content: space-between;
-      padding: 0 3.5rem;
+      padding: 1rem 3.5rem;
       .contact-input{
         input,textarea{
           background-color: transparent;
@@ -163,7 +163,7 @@ export default {
           }
         }
         textarea{
-          height: 2.74rem;
+          
         }
       }
       .contact-button{

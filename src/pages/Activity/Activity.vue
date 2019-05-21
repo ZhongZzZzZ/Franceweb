@@ -86,8 +86,8 @@
     }
     .btn{
       position:relative;
-      left: 8px;
-      top: 8px;
+      left: .16rem;
+      top: .16rem;
     }
     .pageSelect{
       text-align: center;

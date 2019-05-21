@@ -130,7 +130,7 @@ export default {
         }
     }
     .serviceImg{
-        margin:30px 0px 50px 0px;
+        margin:.6rem 0px 1rem 0px;
         text-align: center;
     }
 }
@@ -144,7 +144,7 @@ export default {
 @media (max-width: 925px) {
     .article{
         p{
-            height: 240px;
+            height: 4.8rem;
             overflow: hidden;
         }
     }

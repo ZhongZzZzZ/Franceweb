@@ -31,15 +31,6 @@ export default {
   watch:{},
   computed:{},
   methods:{
-    // initFooter(){
-    //   const app = document.querySelector("body>div") //获取当前页面内容的最外层div元素
-    //   const bodyHeight = document.body.clientHeight || document.documentElement.clientHeight //获得body高度
-    //   const footer = this.$refs.footer //获得footer组件
-    //   if(app.clientHeight < bodyHeight) {  //页面内容高度小于body高度的时候
-    //     footer.style.position="absolute"
-    //     footer.style.bottom = "0"
-    //   }
-    // }
   },
   created(){},
   mounted(){
@@ -79,7 +70,7 @@ export default {
     font-size: 0.7rem;
     white-space: nowrap;
     color: #fff;
-    line-height: 100px;
+    line-height: 2rem;
   }
 }
 @media (max-width: 768px) {
