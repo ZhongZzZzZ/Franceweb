@@ -64,7 +64,15 @@ export default {
   }
   .socialList li{
     display: inline-block;
-    margin-left: 0.8rem;
+    &:nth-child(2){
+      margin-left: 0.8rem;
+    }
+    &:nth-child(3){
+      margin: 0 0.8rem;
+    }
+    &:nth-child(4){
+      margin-right: 0.8rem;
+    }
   }
   .iconSize{
     font-size: 0.7rem;

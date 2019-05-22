@@ -1,17 +1,16 @@
-const rem = ()=>{
+const rem = (designWidth,fontSize)=>{
   let clientWidth = document.body.clientWidth || document.documentElement.clientWidth
   if(!clientWidth) {
     return 
-  } else if(clientWidth == 1581) {//这是我全屏时谷歌浏览器的宽度
-    document.getElementsByTagName('html')[0].style.fontSize = 50 + 'px'
-  } else {
-    document.getElementsByTagName('html')[0].style.fontSize = 50*(clientWidth/1581) + 'px'
+  } /* else if(clientWidth == 1581) {//这是我全屏时谷歌浏览器的宽度
+    document.getElementsByTagName('html')[0].style.fontSize = 50 + 'px' */
+   else {
+    document.getElementsByTagName('html')[0].style.fontSize = fontSize*(clientWidth/designWidth) + 'px'
   }
 }
 
-rem()
+rem(1581,50)
 
 window.addEventListener('resize',()=>{
-  rem()
-  console.log('jsrem');
+  rem(1581,50)
 },false)

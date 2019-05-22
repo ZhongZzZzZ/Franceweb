@@ -9,7 +9,6 @@ if(!localStorage.getItem('locale')){
   locale = localStorage.getItem('locale')
 }
 
-
 export default {
   locale,
   //this.$i18n.locale 通过这个切换语言
