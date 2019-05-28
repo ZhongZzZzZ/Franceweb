@@ -45,3 +45,9 @@ export const reqContactForm = (url,data) => ajax(url,data,'post')
 
 //请求文章
 export const reqArticle = (url,data) => ajax(url,data)
+
+//发送当前语言给后台
+export const reqLanguage = (url,data) => ajax(url,data)
+
+//获取协会成员
+export const reqMembersList = (url) => ajax(url)
