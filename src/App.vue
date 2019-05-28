@@ -1,5 +1,6 @@
 <template>
  <div >
+  <img class="head-img" src="./assets/head.jpg" alt="">
   <Header></Header>
     <keep-alive exclude="Home">
      <router-view class="app-container"></router-view>
@@ -10,6 +11,8 @@
 <script>
 import {reqLanguage} from './api'
 import Header from './components/Header/Header.vue'
+import { setTimeout } from 'timers';
+import { Promise } from 'q';
 export default {
   components:{
     Header,
@@ -28,18 +31,23 @@ export default {
     let data = null
     switch (locale) {
       case 'zh-CN':
-        data = {language:3}
+        data = {language:'Chinese'}
         break;
       case 'en-US':
         data = {language:2}
         break;
       case 'fr-FR':
-        data = {language:1}
+        data = {language:'French'}
         break;
       default:
         break;
     }
     await reqLanguage('/user/language',data)
+    await setTimeout(() => {
+      return new Promise(res => {
+        res()
+      })
+    }, 1000);
     }
   },
   created(){
@@ -50,6 +58,11 @@ export default {
 }
 </script>
 <style lang="scss">
+.head-img{
+  width: 100%;
+
+  
+}
 /* .container{
   padding: 0 10%;
 }

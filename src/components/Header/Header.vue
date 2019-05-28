@@ -6,7 +6,7 @@
     background-color="#3f51b5"
     text-color="#FFF"
     >
-    <a href="javascript:;" class="menu-item logo"><img src="../../assets/logo.png" alt="" title="acef联谊会"></a>
+<!--     <a href="javascript:;" class="menu-item logo"><img src="../../assets/logo.png" alt="" title="acef联谊会"></a> -->
     <el-menu-item  class="menu-item"><router-link to="/home">{{$t('m.menu.home_page')}}</router-link></el-menu-item>
     <el-menu-item  class="menu-item"><router-link to="/about">{{$t('m.menu.about_us')}}</router-link></el-menu-item>
     <el-menu-item  class="menu-item"><router-link to="/service">{{$t('m.menu.social_service')}}</router-link></el-menu-item>
