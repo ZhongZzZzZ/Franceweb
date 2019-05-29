@@ -1,20 +1,17 @@
 <template>
   <div>
-    <ContentHeader title="精彩回顾" color="#3f51b5"></ContentHeader>
-    <TopicArticle></TopicArticle>
+    <ContentHeader title="文化交流" color="#e51c23"></ContentHeader>
     <Footer></Footer>
   </div>
 </template>
 
 <script>
 import ContentHeader from '../../components/ContentHeader/ContentHeader'
-import TopicArticle from './TopicArticle/TopicArticle'
-import Footer from "../../components/Footer/Footer"
+import Footer from '../../components/Footer/Footer'
 export default {
   components:{
-    ContentHeader,
     Footer,
-    TopicArticle
+    ContentHeader
   },
   props:{},
   data(){
@@ -28,6 +25,6 @@ export default {
   mounted(){}
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 
 </style>

@@ -9,7 +9,7 @@
         <p class="description">个人介绍：{{item.description}}</p> 
       </div>
     </div>
-     <pagination style="text-align:center" v-show="total>0" :total="total" :page.sync="listQuery.page"  @pagination="getList" />
+     <pagination style="text-align:center" v-show="total>0" :total="total" :page.sync="listQuery.page" :pageSize="12"  @pagination="getList" />
   </div>
 </template>
 
@@ -19,7 +19,8 @@ import ContentHeader  from '../../../components/ContentHeader/ContentHeader'
 import Pagination from '../../../components/Pagination/index'
 export default {
   components:{
-    ContentHeader
+    ContentHeader,
+    Pagination
   },
   props:{},
   data(){
@@ -27,24 +28,25 @@ export default {
       members:[],
       listQuery: { 
         page: 1,
-        limit: 9
+        limit: 12
       },
-      total:20,
-      currentPage: 1
+      total:0,
     }
   },
   watch:{},
   computed:{},
   methods:{
     async getMemberList ({page,limit}) {
-    const result = await reqMembersList(`/user/pgami/${page}/${limit}`)
-    this.members = result.list
-    this.total = result.total
-    console.log(this.members);
+      const result = await reqMembersList(`/user/pgami/${page}/${limit}`)
+      this.members = result.list
+      this.total = result.total
+      },
+    getList(){
+      this.getMemberList(this.listQuery)
     },
   },
   created(){
-    this.getMemberList(this.listQuery)
+    this.getList()
   },
   mounted(){
   }
@@ -57,14 +59,18 @@ export default {
   }
   .members-content{
     text-align: center;
-    padding: 0 7rem;
+    padding: 0 4.5rem;
     display: grid;
-    grid-template-columns: repeat(3, 5rem);
+    grid-template-columns: repeat(4, 5rem);
     grid-template-rows: repeat(3, 7rem);
     grid-gap: 1rem 1rem;
     .members{
-      border: 1px solid #000;
+      transition: all 0.7s ease;
       padding: .1rem;
+      -moz-box-shadow:0px 0px 5px #333333; -webkit-box-shadow:0px 0px 5px #333333; box-shadow:0px 0px 5px #333333;
+      &:hover{
+        transform:scale(1.1);
+      }
       img{
         width: 4rem;
         height: 4rem;

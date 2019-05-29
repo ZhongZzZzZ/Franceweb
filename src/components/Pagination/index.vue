@@ -3,7 +3,7 @@
     <el-pagination
       :background="background"
       :current-page.sync="currentPage"
-      :page-size="10"
+      :page-size="pageSize"
       :layout="layout"
       :total="total"
       v-bind="$attrs"
@@ -26,16 +26,9 @@ export default {
       type: Number,
       default: 1
     },
-   /*  limit: {
-      type: Number,
-      default: 20
-    }, */
-/*     pageSizes: {
-      type: Array,
-      default() {
-        return [10, 20, 30, 50]
-      }
-    }, */
+    pageSize:{
+      type : Number
+    },
     layout: {
       type: String,
       default: 'total, prev, pager, next, jumper'

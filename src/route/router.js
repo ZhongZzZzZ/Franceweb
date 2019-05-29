@@ -9,6 +9,8 @@ import Report from '../pages/Report/Report.vue'
 import Contact from '../pages/Contact/Contact.vue'
 import Link from '../pages/Link/Link.vue'
 import Article from '../components/Article/Article.vue'
+import Exchange from '../pages/Service/Exchange.vue'
+import School from '../pages/Service/School.vue'
 
 Vue.use(Router)
 
@@ -34,6 +36,16 @@ export default new Router({
       path: '/service',
       name: 'service',
       component: Service
+    },
+    {
+      path: '/exchange',
+      name: 'exchange',
+      component: Exchange
+    },
+    {
+      path: '/school',
+      name: 'school',
+      component: School
     },
     {
       path: '/activity',

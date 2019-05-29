@@ -9,12 +9,24 @@
 <!--     <a href="javascript:;" class="menu-item logo"><img src="../../assets/logo.png" alt="" title="acef联谊会"></a> -->
     <el-menu-item  class="menu-item"><router-link to="/home">{{$t('m.menu.home_page')}}</router-link></el-menu-item>
     <el-menu-item  class="menu-item"><router-link to="/about">{{$t('m.menu.about_us')}}</router-link></el-menu-item>
-    <el-menu-item  class="menu-item"><router-link to="/service">{{$t('m.menu.social_service')}}</router-link></el-menu-item>
     <el-menu-item  class="menu-item"><router-link to="/activity">{{$t('m.menu.activity_info')}}</router-link></el-menu-item>
-    <el-menu-item  class="menu-item"><router-link to="/topic">{{$t('m.menu.report_review')}}</router-link></el-menu-item>
-    <el-menu-item  class="menu-item"><router-link to="/contact">{{$t('m.menu.contact_us')}}</router-link></el-menu-item>
-    <el-menu-item  class="menu-item"><router-link to="/link">{{$t('m.menu.friendship_link')}}</router-link></el-menu-item>
     <el-menu-item  class="menu-item"><router-link to="/report">{{$t('m.menu.special_report')}}</router-link></el-menu-item>
+    <el-menu-item  class="menu-item menu-item-drop">
+      <el-dropdown @command="selectSocialCulture" trigger="click" placement="top">
+        <!-- <router-link to="/service">{{$t('m.menu.social_culture')}}</router-link> -->
+        <span class="el-dropdown-link">
+          {{$t('m.menu.social_culture')}}<i class="el-icon-arrow-down el-icon--right"></i>
+        </span>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item command="公益服务">公益服务</el-dropdown-item>
+          <el-dropdown-item command="语言学校">语言学校</el-dropdown-item>
+          <el-dropdown-item command="文化交流">文化交流</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+    </el-menu-item>
+    <el-menu-item  class="menu-item"><router-link to="/topic">{{$t('m.menu.report_review')}}</router-link></el-menu-item>
+    <el-menu-item  class="menu-item"><router-link to="/link">{{$t('m.menu.friendship_link')}}</router-link></el-menu-item>
+    <el-menu-item  class="menu-item"><router-link to="/contact">{{$t('m.menu.contact_us')}}</router-link></el-menu-item>
     <el-menu-item  class="menu-item menu-item-drop">
     <el-dropdown @command="selectLanguage" trigger="click" placement="top">
       <span class="el-dropdown-link">
@@ -22,7 +34,6 @@
       </span>
       <el-dropdown-menu slot="dropdown">
         <el-dropdown-item command="中文">中文</el-dropdown-item>
-        <el-dropdown-item command="English">English</el-dropdown-item>
         <el-dropdown-item command="Français">Français</el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
@@ -32,7 +43,7 @@
 </template>
 
 <script>
-
+import {getCookies, setCookies} from '../../api/cookie'
 export default {
   components:{},
   props:{},
@@ -45,33 +56,47 @@ export default {
   watch:{},
   computed:{},
   methods:{
-    selectLanguage(command){
-      this.language = command
+    selectSocialCulture(command) {
       switch (command) {
-        case '中文':
-          this.lang = 'zh-CN'
+        case '公益服务':
+          this.$router.push('/service')
           break;
-        case 'English':
-          this.lang = 'en-US'
+        case '语言学校':
+          this.$router.push('/school')
           break;
-        case 'Français':
-          this.lang = 'fr-FR'
+        case '文化交流':
+          this.$router.push('/exchange')
           break;
         default:
           break;
       }
-      localStorage.setItem('locale',this.lang)
-      location.reload()
+    },
+     selectLanguage(command){
+      switch (command) {
+        case '中文':
+          setCookies('language','Chinese')
+          location.reload()
+          break;
+        case 'Français':
+          setCookies('language','French')
+          location.reload()
+          break;
+        default:
+          break;
+      }
+  
     }
   },
   created(){
-    const locale = localStorage.getItem('locale')
-    if(!locale || locale === 'zh-CN'){
-      this.language = '中文'
-    } else if(locale === 'en-US'){
-      this.language = 'English'
-    } else if(locale === 'fr-FR'){
-      this.language = 'Français'
+    switch (getCookies('language')) {
+      case 'Chinese':
+        this.language = '中文'
+        break;
+      case 'French':
+        this.language = 'Français'
+        break;
+      default:
+        break;
     }
   },
   mounted(){
@@ -128,7 +153,6 @@ export default {
       }
       i{
         margin: 0;
-        
       }
     }
   }
