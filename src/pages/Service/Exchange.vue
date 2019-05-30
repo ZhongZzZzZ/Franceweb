@@ -1,30 +1,68 @@
 <template>
-  <div>
-    <ContentHeader title="文化交流" color="#e51c23"></ContentHeader>
+  <div class="container">
+    <div class="content">
+      <h1>????</h1>
+      <exchangeArticle/>
     <Footer></Footer>
+  </div>
   </div>
 </template>
 
 <script>
-import ContentHeader from '../../components/ContentHeader/ContentHeader'
-import Footer from '../../components/Footer/Footer'
-export default {
-  components:{
-    Footer,
-    ContentHeader
-  },
-  props:{},
-  data(){
-    return {
+    import Footer from '@/components/Footer/Footer'
+    import exchangeArticle from './exchangeArticle'
+    export default {
+        name:'Service',
+        components:{
+            Footer,
+            exchangeArticle
+        },
+        props:{
+        },
+        data(){
+            return {
+            }
+        },
+        watch:{},
+        computed:{
+
+        },
+        methods:{
+        },
+        created(){
+
+        },
+        mounted(){
+
+        },
+
     }
-  },
-  watch:{},
-  computed:{},
-  methods:{},
-  created(){},
-  mounted(){}
-}
 </script>
 <style lang="scss" scoped>
+  @import '../../styles/color.scss';
+  .container{
+    position: relative;
+    .content
+    {
+      ::after{
+        content: "";
+        clear: both;
+        display: block;
+        overflow: hidden;
+        font-size: 0;
+        height: 0;
+      }
 
-</style>
+      .pageSelect{
+        text-align: center;
+        margin: 0.5rem 0 0.5rem 0;
+      }
+    }
+    h1{
+      font-size: 0.8rem;
+      color: $orange;
+      text-align: center;
+      margin: 1rem 0 2rem 0;
+    }
+  }
+  </style>

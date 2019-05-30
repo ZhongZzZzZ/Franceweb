@@ -14,9 +14,9 @@
 </template>
 
 <script>
-import {reqMembersList} from '../../../api'
-import ContentHeader  from '../../../components/ContentHeader/ContentHeader'
-import Pagination from '../../../components/Pagination/index'
+import {reqMembersList} from '@/api'
+import ContentHeader  from '@/components/ContentHeader/ContentHeader'
+import Pagination from '@/components/Pagination/index'
 export default {
   components:{
     ContentHeader,
@@ -70,6 +70,7 @@ export default {
       -moz-box-shadow:0px 0px 5px #333333; -webkit-box-shadow:0px 0px 5px #333333; box-shadow:0px 0px 5px #333333;
       &:hover{
         transform:scale(1.1);
+        background-color: #FCF7B3
       }
       img{
         width: 4rem;

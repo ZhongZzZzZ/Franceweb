@@ -1,8 +1,8 @@
 <template>
  <div >
   <img class="head-img" src="./assets/head.jpg" alt="">
-  <Header></Header>
-    <keep-alive exclude="Home">
+    <Header></Header>
+    <keep-alive exclude='Home'>
      <router-view class="app-container"></router-view>
     </keep-alive>
  </div>

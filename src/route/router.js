@@ -32,18 +32,22 @@ export default new Router({
       name: 'about',
       component: About
     },
+  /*   {
+      path:'/culture',
+      redirect:'/culture/service'
+    }, */
     {
-      path: '/service',
+      path: '/culture/service',
       name: 'service',
       component: Service
     },
     {
-      path: '/exchange',
+      path: '/culture/exchange',
       name: 'exchange',
       component: Exchange
     },
     {
-      path: '/school',
+      path: '/culture/school',
       name: 'school',
       component: School
     },

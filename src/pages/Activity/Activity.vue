@@ -1,21 +1,9 @@
 <template>
   <div class="activitiy-container">
     <ContentHeader title="活动信息" color="#eb7a67"></ContentHeader>
-    <Article @totalPages="listen" :pageSize="pageSize" :currentPage="currentPage"></Article>
-    <el-pagination
-            background
-            :page-size="pageSize"
-            :pager-count="5"
-            :current-page="currentPage"
-            layout="prev, pager, next"
-            :total="total"
-            class="pageSelect"
-            @current-change="getPages">
-    </el-pagination>
+    <Article></Article>
     <Footer></Footer>
   </div>
-
-
 </template>
 
 <script>
@@ -30,21 +18,12 @@
         },
         props:{},
         data(){
-            return {
-                currentPage:1,
-                total:1,
-                pageSize:3
+            return {    
             }
         },
         watch:{},
         computed:{},
         methods:{
-            getPages:function(currentPage){
-                this.currentPage = currentPage;
-            },
-            listen:function(data){
-                this.total = data
-            }
         },
         created(){
 

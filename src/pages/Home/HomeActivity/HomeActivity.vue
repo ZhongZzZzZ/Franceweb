@@ -5,7 +5,7 @@
       <ul>
         <li class="card" v-for="(item, index) in activityList" :key="index">
            <div class="card-content"><p>{{item.p}}</p></div>
-           <img src="../../../assets/timg.jpg" alt="">
+           <img src="@/assets/timg.jpg" alt="">
         </li>
       </ul>
     </div>
@@ -42,7 +42,7 @@ export default {
 }
 </script>
 <style lang="scss">
-@import '../../../styles/color.scss';
+@import '@/styles/color.scss';
 .homeactivity-container{
   .homeactivity{
     font-size: .8rem;
@@ -60,6 +60,9 @@ export default {
         display: flex;
         justify-content: space-around;
         height: 4rem;
+        &:hover{
+        border: 1px solid lightslategray;
+        }
         .card-content{
           width: 2.74rem;
           margin: .8rem .4rem 0;

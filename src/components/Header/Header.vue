@@ -15,10 +15,10 @@
       <el-dropdown @command="selectSocialCulture" trigger="click" placement="top">
         <!-- <router-link to="/service">{{$t('m.menu.social_culture')}}</router-link> -->
         <span class="el-dropdown-link">
-          {{$t('m.menu.social_culture')}}<i class="el-icon-arrow-down el-icon--right"></i>
+         <router-link :to="path">{{$t('m.menu.social_culture')}}<i class="el-icon-arrow-down el-icon--right"></i></router-link>
         </span>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item command="公益服务">公益服务</el-dropdown-item>
+          <el-dropdown-item command="社会服务">社会服务</el-dropdown-item>
           <el-dropdown-item command="语言学校">语言学校</el-dropdown-item>
           <el-dropdown-item command="文化交流">文化交流</el-dropdown-item>
         </el-dropdown-menu>
@@ -50,22 +50,32 @@ export default {
   data(){
     return {
       lang:'',
-      language:'中文'
+      language:'中文',
+      path:''
     }
   },
-  watch:{},
-  computed:{},
+  watch:{
+    $route(val){ //监听当前路由变化，判断社会文化菜单栏块点击是否跳转
+    if(this.$route.path.includes('/culture')) { //当路由是在社会文化，点击社会文化块会跳转到自己页面，因为当前路由有keepalive，不需要担心重新发请求
+      this.path = this.$route.path
+    } else { //当目前路由不是在社会文化里，点击社会文化块可以去到社会文化中的服务页面
+      this.path = '/culture/service'
+    }
+    }
+  },
+  computed:{
+  },
   methods:{
     selectSocialCulture(command) {
       switch (command) {
-        case '公益服务':
-          this.$router.push('/service')
+        case '社会服务':
+          this.$router.push('/culture/service')
           break;
         case '语言学校':
-          this.$router.push('/school')
+          this.$router.push('/culture/school')
           break;
         case '文化交流':
-          this.$router.push('/exchange')
+          this.$router.push('/culture/exchange')
           break;
         default:
           break;
@@ -98,6 +108,14 @@ export default {
       default:
         break;
     }
+
+    
+    if(this.$route.path.includes('/culture')) { //当路由是在社会文化，点击社会文化块会跳转到自己页面，因为当前路由有keepalive，不需要担心重新发请求
+      this.path = this.$route.path
+    } else { //当目前路由不是在社会文化里，点击社会文化块可以去到社会文化中的服务页面
+      this.path = '/culture/service'
+    }
+    
   },
   mounted(){
   }
@@ -111,21 +129,24 @@ export default {
   border-bottom: .04rem solid $blue;
   border-top: .04rem solid $blue;
   box-sizing: border-box;
+  i{
+    color: $blue !important;
+  }
 }
 .menu{
-  height: 2.2rem;
+  height: 1.8rem;
   padding: 0 3rem !important;
   display: flex;
   justify-content: space-between;
   .menu-item{
-    height: 2.2rem !important;
+    height: 1.8rem !important;
     text-align: center;
     padding: 0;
     flex: 1;
     border-bottom: none !important;
     a{
       display: block;
-      line-height: 2rem;
+      line-height: 1.7rem;
       font-size:  .36rem;
       text-decoration: none;
       height: 100%;
@@ -144,7 +165,7 @@ export default {
       span,i{
         color: #fff;
         font-size: .36rem;
-        line-height: 2rem;
+        line-height: 1.7rem;
       }
       span{
         width: 100%;

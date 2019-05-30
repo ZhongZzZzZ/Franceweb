@@ -13,16 +13,6 @@
               <a href="">View Map ></a>
             </div>
           </div>
-          <div class="lineY"></div>
-          <div class="contact contact-time">
-            <div class="grid-content bg-purple">
-               <div><i class="iconfont icontime"></i></div>
-                <h2>OPENING HOURS</h2>
-                <p>Monday - Friday: 11.00 - 18.30</p>
-                <p>Saturday: 11.00 - 17.00</p>
-                <p>Sunday: 12.30 - 16.30</p>
-            </div>
-          </div>
       </div>
     </div>
     <contact-form></contact-form>
@@ -88,15 +78,6 @@ export default {
           display: block;
         }
         }
-      }
-      .lineY{
-        height: 100%;
-        width: .02rem;
-        background-color: $orange;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%,-50%)
       }
     }
   }

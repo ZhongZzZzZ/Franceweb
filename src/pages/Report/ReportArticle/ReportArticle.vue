@@ -6,24 +6,27 @@
         <span>{{item.time}}</span>
         <router-link class="more" to="/article" tag="a" target="_blank">more</router-link>
       </div>
+      <pagination style="text-align:center" v-show="total>0" :total="total" :page.sync="listQuery.page" :pageSize="5"  @pagination="getList" />
     </div>
-    <el-pagination
-      class="page"
-      background
-      layout="prev, pager, next"
-      :total="50">
-    </el-pagination>
   </div>
 </template>
 
 <script>
-import { reqArticle } from '../../../api';
+import { reqArticle } from '@/api';
+import Pagination from '@/components/Pagination/index'
 export default {
-  components:{},
+  components:{
+    Pagination
+  },
   props:{},
   data(){
     return {
-      articleList:[]
+      articleList:[],
+      listQuery: { 
+        page: 1,
+        limit: 5
+      },
+      total:50,
     }
   },
   watch:{},
@@ -31,11 +34,14 @@ export default {
   methods:{
     async getArticle () {
           const result = await reqArticle('/data/get')
-          this.articleList = result
-        }
+          this.articleList = result.slice(0,5)
+        },
+    getList(){
+      this.getArticle()
+    },
   },
   created(){
-    this.getArticle()
+    this.getList()
   },
   mounted(){}
 }
