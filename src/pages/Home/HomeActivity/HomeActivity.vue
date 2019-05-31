@@ -60,8 +60,9 @@ export default {
         display: flex;
         justify-content: space-around;
         height: 4rem;
+        transition: all 0.5s ease;
         &:hover{
-        border: 1px solid lightslategray;
+        border: 1px solid $orange;
         }
         .card-content{
           width: 2.74rem;

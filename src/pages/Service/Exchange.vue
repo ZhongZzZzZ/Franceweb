@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="content">
-      <h1>????</h1>
+      <h1>文化交流</h1>
       <exchangeArticle/>
     <Footer></Footer>
   </div>
@@ -39,7 +39,7 @@
     }
 </script>
 <style lang="scss" scoped>
-  @import '../../styles/color.scss';
+  @import '@/styles/color.scss';
   .container{
     position: relative;
     .content

@@ -134,19 +134,19 @@ export default {
   }
 }
 .menu{
-  height: 1.8rem;
+  height: 1.5rem;
   padding: 0 3rem !important;
   display: flex;
   justify-content: space-between;
   .menu-item{
-    height: 1.8rem !important;
+    height: 1.5rem !important;
     text-align: center;
     padding: 0;
     flex: 1;
     border-bottom: none !important;
     a{
       display: block;
-      line-height: 1.7rem;
+      line-height: 1.4rem;
       font-size:  .36rem;
       text-decoration: none;
       height: 100%;
@@ -165,7 +165,7 @@ export default {
       span,i{
         color: #fff;
         font-size: .36rem;
-        line-height: 1.7rem;
+        line-height: 1.4rem;
       }
       span{
         width: 100%;

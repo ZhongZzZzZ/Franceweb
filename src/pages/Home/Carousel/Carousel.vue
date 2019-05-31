@@ -10,7 +10,7 @@
 <script>
 import {reqCarousel} from '@/api'
 export default {
-
+  name:'Carousel',
   components:{},
   props:{},
   data(){

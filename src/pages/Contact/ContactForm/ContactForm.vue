@@ -1,23 +1,23 @@
 <template>
   <div class="contact-form">
-      <p>You can also email us at: flowers@mockingbot.com or fill in our contact form:</p>
+      <p>你也可以用邮箱联系我们: acef@orange.fr 或者 填写下面的联系表格:</p>
       <el-form :model="contactForm" :rules="rules"  ref="contactForm"  class="contactForm" size="small">
         <div class="contactForm-left">
-          <el-form-item prop="name"><el-input class="contact-input" v-model="contactForm.name" placeholder="Name"></el-input></el-form-item>
-          <el-form-item prop="email"><el-input class="contact-input" v-model="contactForm.email" placeholder="Email"></el-input></el-form-item>
-          <el-form-item prop="subject"><el-input class="contact-input" v-model="contactForm.subject" placeholder="Subject"></el-input></el-form-item>
-          <el-form-item prop="phone"><el-input class="contact-input" v-model="contactForm.phone" placeholder="Phone"></el-input></el-form-item>
+          <el-form-item prop="name"><el-input class="contact-input" v-model="contactForm.name" placeholder="姓名"></el-input></el-form-item>
+          <el-form-item prop="email"><el-input class="contact-input" v-model="contactForm.email" placeholder="邮箱"></el-input></el-form-item>
+          <el-form-item prop="subject"><el-input class="contact-input" v-model="contactForm.subject" placeholder="标题"></el-input></el-form-item>
+          <el-form-item prop="phone"><el-input class="contact-input" v-model="contactForm.phone" placeholder="手机号"></el-input></el-form-item>
         </div>
         <div class="contactForm-right">
-          <el-form-item prop="message"><el-input class="contact-input" :rows="6" type="textarea" v-model="contactForm.message" placeholder="Message"></el-input></el-form-item>
-          <el-button class="contact-button" type="danger" @click="submitForm('contactForm')">Send</el-button>
+          <el-form-item prop="message"><el-input class="contact-input" :rows="6" type="textarea" v-model="contactForm.message" placeholder="您的宝贵意见或联系内容"></el-input></el-form-item>
+          <el-button class="contact-button" type="danger" @click="submitForm('contactForm')">发送</el-button>
         </div>
     </el-form>
   </div>
 </template>
 
 <script>
-import { reqContactForm } from '../../../api';
+import { reqContactForm } from '@/api';
 export default {
   components:{},
   props:{},
@@ -122,7 +122,7 @@ export default {
 }
 </script>
 <style lang="scss">
-@import '../../../styles/color.scss';
+@import '@/styles/color.scss';
  .contact-form{
     width: 100%;
     margin-top: 1rem;
@@ -134,7 +134,7 @@ export default {
     padding: 0 3.5rem;
     p{
       margin: 1rem 0 0 ;
-      color: #fff;
+      color: #ffffff;
       font-size: 16px;
     }
     .contactForm{
@@ -161,9 +161,6 @@ export default {
           &:-moz-placeholder{ //火狐4-18
             color: #fff;
           }
-        }
-        textarea{
-          
         }
       }
       .contact-button{

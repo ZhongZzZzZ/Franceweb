@@ -77,7 +77,7 @@ export default {
       &:hover{
         background-color: $orange;
         color: #fff !important;
-        border-radius: 30%;
+        border-radius: 100%;
         
       }
     }
