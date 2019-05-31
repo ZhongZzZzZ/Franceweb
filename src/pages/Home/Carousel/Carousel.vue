@@ -1,37 +1,35 @@
 <template>
   <div class="carousel">
     <ul class="box1">
-      <li><img src="../../../assets/carousel/1.jpg" alt="" style="width: 6rem;height: 4rem;padding: 0 5px 0 0;box-sizing: border-box" class="carouselItem"></li>
-      <li><img src="../../../assets/carousel/2.jpg" alt="" style="width: 6rem;height: 4rem;padding: 0 5px 0 0;box-sizing: border-box" class="carouselItem"></li>
-      <li><img src="../../../assets/carousel/3.jpg" alt="" style="width: 6rem;height: 4rem;padding: 0 5px 0 0;box-sizing: border-box" class="carouselItem"></li>
-      <li><img src="../../../assets/carousel/4.jpg" alt="" style="width: 6rem;height: 4rem;padding: 0 5px 0 0;box-sizing: border-box" class="carouselItem"></li>
-      <li><img src="../../../assets/carousel/5.jpg" alt="" style="width: 6rem;height: 4rem;padding: 0 5px 0 0;box-sizing: border-box" class="carouselItem"></li>
-      <li><img src="../../../assets/carousel/6.jpg" alt="" style="width: 6rem;height: 4rem;padding: 0 5px 0 0;box-sizing: border-box" class="carouselItem"></li>
-      <li><img src="../../../assets/carousel/7.jpg" alt="" style="width: 6rem;height: 4rem;padding: 0 5px 0 0;box-sizing: border-box" class="carouselItem"></li>
-      <li><img src="../../../assets/carousel/8.jpg" alt="" style="width: 6rem;height: 4rem;padding: 0 5px 0 0;box-sizing: border-box" class="carouselItem"></li>
-      <li><img src="../../../assets/carousel/1.jpg" alt="" style="width: 6rem;height: 4rem;padding: 0 5px 0 0;box-sizing: border-box" class="carouselItem"></li>
-      <li><img src="../../../assets/carousel/2.jpg" alt="" style="width: 6rem;height: 4rem;padding: 0 5px 0 0;box-sizing: border-box" class="carouselItem"></li>
-      <li><img src="../../../assets/carousel/3.jpg" alt="" style="width: 6rem;height: 4rem;padding: 0 5px 0 0;box-sizing: border-box" class="carouselItem"></li>
+      <li v-for="(img, index) in imgList" :key="index">
+        <img :src="img.url" alt="" style="width: 6rem;height: 4rem;padding: 0 5px 0 0;box-sizing: border-box" class="carouselItem">
+      </li>
     </ul>
   </div>
 </template>
 <script>
+import {reqCarousel} from '@/api'
 export default {
-
+  name:'Carousel',
   components:{},
   props:{},
   data(){
     return {
       interVal:null,
+      imgList:[]
     }
   },
   watch:{},
   computed:{},
 
-  methods:{},
-  created(){
-  },
-  mounted(){
+  methods:{
+    async getCarousel () {
+      this.imgList = await reqCarousel('/data/gss')
+      this.$nextTick(_=>{
+        this.initCarousel()
+      })
+    },
+    initCarousel() {
       const box1 = document.getElementsByClassName('box1')[0];
       const carouseItem = document.getElementsByClassName("carouselItem");
       box1.style.marginLeft = 0;
@@ -57,6 +55,13 @@ export default {
       }
       
       auto();
+    }
+  },
+  created(){
+    
+  },
+  mounted(){
+    this.getCarousel()
   },
   beforeDestroy(){
     clearInterval(this.interVal)

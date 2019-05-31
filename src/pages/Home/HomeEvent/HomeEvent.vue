@@ -2,14 +2,12 @@
   <div class="homeevent-container">
     <h1 class="homeevent">重大事件</h1>
     <div class="homeevent-content">
-      <h1 class="homeevent-title"><router-link to="/article" tag="a" target="_blank">ABOUT US</router-link></h1>
-      <p class="homeevent-info">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
-      <!-- <el-button plain class="homeevent-button" @click="goArticle">What's New</el-button> -->
-      <div plain class="homeevent-button" @click="goArticle">What's New</div>
+      <div class="homeevent-topic" v-for="(item, index) in 6" :key="index">
+        <h1><router-link class="title" to="/article" tag="a" target="_blank">结构化查询语言</router-link></h1>
+        <span>2019-05-30 08:08:08</span>
+        <router-link class="more" to="/article" tag="a" target="_blank">more</router-link>
+      </div>
+      <div class="homeevent-button" @click="goArticle">更多</div>
     </div>
   </div>
 </template>
@@ -21,6 +19,7 @@ export default {
   props:{},
   data(){
     return {
+      articleList:[]
     }
   },
   watch:{},
@@ -38,7 +37,7 @@ export default {
 }
 </script>
 <style lang="scss">
-@import '../../../styles/color.scss';
+@import '@/styles/color.scss';
 
 .homeevent-container{
   padding: 0 2rem;
@@ -49,27 +48,38 @@ export default {
     margin-bottom: 1.6rem;
   }
   .homeevent-content{
-    .homeevent-title{
-      padding-bottom: 1.2rem;
-      a{
-        font-size: .64rem;
-      color: $orange;
+    .homeevent-topic{
+      height: 1.6rem;
+      border-bottom: 2px solid $orange;
+      line-height: 0.8rem;
+      padding: 0 .2rem;
+      .title{
+        color: #294057;
+        font-size: .4rem;
       }
-    }
-    .homeevent-info{
-      line-height: .6rem;
-      padding-bottom: 1rem;
+      .more{
+        float: right;
+        color: $orange;
+        font-size: .35rem;
+      }
     }
     .homeevent-button{
       box-sizing: border-box;
       text-align: center;
-      margin-bottom: 1rem;
+      margin: 1rem 0;
       color: $orange !important;
       border: 1px solid $orange;
       width: 3rem;
       height: 1.2rem;
       line-height: 1.2rem;
       cursor: pointer;
+      transition: all 0.5s ease;
+      &:hover{
+        background-color: $orange;
+        color: #fff !important;
+        border-radius: 100%;
+        
+      }
     }
   }
 }

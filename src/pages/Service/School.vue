@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <div class="content">
-      <h1>社会服务</h1>
-      <serviceArticle></serviceArticle>
+      <h1>语言学校</h1>
+      <schoolArticle/>
     </div>
     <Footer></Footer>
   </div>
@@ -10,12 +10,12 @@
 
 <script>
     import Footer from '@/components/Footer/Footer'
-    import serviceArticle from './serviceArticle'
+    import schoolArticle from './schoolArticle'
     export default {
         name:'Service',
         components:{
             Footer,
-            serviceArticle
+            schoolArticle
         },
         props:{
         },

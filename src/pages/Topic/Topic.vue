@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ContentHeader title="专题回顾" color="#3f51b5"></ContentHeader>
+    <ContentHeader title="精彩回顾" color="#3f51b5"></ContentHeader>
     <TopicArticle></TopicArticle>
     <Footer></Footer>
   </div>

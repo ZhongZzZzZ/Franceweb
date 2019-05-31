@@ -51,3 +51,6 @@ export const reqLanguage = (url,data) => ajax(url,data)
 
 //获取协会成员
 export const reqMembersList = (url) => ajax(url)
+
+//获取首页轮播图图片
+export const reqCarousel = (url) => ajax(url)

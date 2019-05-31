@@ -1,21 +1,21 @@
 <template>
   <div class="container">
     <div class="content">
-      <h1>社会服务</h1>
-      <serviceArticle></serviceArticle>
-    </div>
+      <h1>文化交流</h1>
+      <exchangeArticle/>
     <Footer></Footer>
+  </div>
   </div>
 </template>
 
 <script>
     import Footer from '@/components/Footer/Footer'
-    import serviceArticle from './serviceArticle'
+    import exchangeArticle from './exchangeArticle'
     export default {
         name:'Service',
         components:{
             Footer,
-            serviceArticle
+            exchangeArticle
         },
         props:{
         },
@@ -39,7 +39,7 @@
     }
 </script>
 <style lang="scss" scoped>
-  @import '../../styles/color.scss';
+  @import '@/styles/color.scss';
   .container{
     position: relative;
     .content

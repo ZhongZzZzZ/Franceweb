@@ -2,7 +2,7 @@ export const m = {
   menu:{
     home_page:"A",
     about_us:"B",
-    social_service:"C",
+    social_culture:"C",
     activity_info:"D",
     report_review:"E",
     contact_us:"F",
