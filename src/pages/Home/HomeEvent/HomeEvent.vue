@@ -26,10 +26,7 @@ export default {
   computed:{},
   methods:{
     goArticle(){
-      let routerData = this.$router.resolve({ //编程式路由导航打开新窗口
-        path:'/article',
-      })
-      window.open(routerData.href,'_blank')
+      this.$router.push('/home/eventlist')
     }
   },
   created(){},

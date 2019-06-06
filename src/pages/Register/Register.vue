@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import {reqEmailCaptcha, reqRegister} from '../../api'
+import {reqEmailCaptcha, reqRegister} from '@/api'
 export default {
   components:{},
   props:{},
@@ -236,7 +236,7 @@ export default {
 }
 </script>
 <style lang="scss">
-@import '../../styles/color.scss';
+@import '@/styles/color.scss';
 .register-container{
   .el-input{
     .el-input-group__append{
