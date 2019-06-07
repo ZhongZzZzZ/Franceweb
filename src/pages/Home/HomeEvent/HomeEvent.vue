@@ -2,10 +2,10 @@
   <div class="homeevent-container">
     <h1 class="homeevent">重大事件</h1>
     <div class="homeevent-content">
-      <div class="homeevent-topic" v-for="(item, index) in 6" :key="index">
-        <h1><router-link class="title" to="/article" tag="a" target="_blank">结构化查询语言</router-link></h1>
-        <span>2019-05-30 08:08:08</span>
-        <router-link class="more" to="/article" tag="a" target="_blank">more</router-link>
+      <div class="homeevent-topic" v-for="(item, index) in articleList" :key="index">
+        <h1><router-link class="title" to="/article" tag="a" target="_blank">{{item.title}}</router-link></h1>
+        <span>{{item.displayTime}}</span>
+        <router-link class="more" :to="{path:'/article',query:{ articleId : item.articleId,Id: 0 }}" tag="a" target="_blank">more</router-link>
       </div>
       <div class="homeevent-button" @click="goArticle">更多</div>
     </div>
@@ -13,23 +13,42 @@
 </template>
 
 <script>
+    import { reqArticle } from '../../../api';
 export default {
   components:{
   },
   props:{},
   data(){
     return {
-      articleList:[]
+      articleList:[],
+        activeNames:[],
+        listQuery: {
+            currentPage: 1,
+            pageSize: 6,
+            part:'homeevent'
+        },
     }
   },
   watch:{},
   computed:{},
   methods:{
     goArticle(){
-      this.$router.push('/home/eventlist')
-    }
+      let routerData = this.$router.resolve({ //编程式路由导航打开新窗口
+        path:'/article',
+      })
+      window.open(routerData.href,'_blank')
+    },
+      async getArticle () {
+          const result = await reqArticle(`/oa/g`,this.listQuery)
+          console.log(result)
+          this.articleList = result.list
+          this.activeNames= []
+      }
   },
-  created(){},
+  created(){
+      this.getArticle()
+
+  },
   mounted(){}
 }
 </script>
@@ -75,7 +94,7 @@ export default {
         background-color: $orange;
         color: #fff !important;
         border-radius: 100%;
-        
+
       }
     }
   }

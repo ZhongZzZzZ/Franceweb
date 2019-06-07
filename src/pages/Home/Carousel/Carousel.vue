@@ -58,12 +58,12 @@ export default {
               auto()
           })
       }
-      
+
       auto();
     }
   },
   created(){
-    
+
   },
   mounted(){
     this.getCarousel()

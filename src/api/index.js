@@ -24,7 +24,7 @@ const data = {
 
 
 在需要用方法的组件上引入
-import {reqEmailCaptcha,xxxxx,xxxx,xxxx} from 
+import {reqEmailCaptcha,xxxxx,xxxx,xxxx} from
 */
 
 
@@ -57,3 +57,11 @@ export const reqCarousel = (url,data) => ajax(url,data)
 
 //获取协会介绍图片
 export const reqAssociationPic = (url,data) => ajax(url,data)
+
+
+//获取单篇文章
+export const getSingleArticle = (url,data) => ajax(url,data)
+
+//获取友情链接
+export const getFriendLink = (url,data) => ajax(url,data)
+

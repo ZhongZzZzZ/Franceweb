@@ -55,7 +55,7 @@ export default {
     }
   },
   watch:{
-    $route(val){ //监听当前路由变化，判断社会文化菜单栏块点击是否跳转
+    $route(){ //监听当前路由变化，判断社会文化菜单栏块点击是否跳转
     if(this.$route.path.includes('/culture')) { //当路由是在社会文化，点击社会文化块会跳转到自己页面，因为当前路由有keepalive，不需要担心重新发请求
       this.path = this.$route.path
     } else { //当目前路由不是在社会文化里，点击社会文化块可以去到社会文化中的服务页面
