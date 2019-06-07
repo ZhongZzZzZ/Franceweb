@@ -1,33 +1,72 @@
 <template>
-  <div>
-    <association></association>
-    <members></members>
+  <div class="about-container">
+    <div class="routeChange">
+      <router-link to="/about/association" class="routeLink" :class="{isActivity:isAssociation}">协会介绍</router-link>
+      <router-link to="/about/members" class="routeLink" :class="{isActivity:!isAssociation}">协会人员介绍</router-link>
+    </div>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
     <Footer></Footer>
   </div>
 </template>
 
 <script>
-import Association from './Association/Association.vue'
-import Members from './Members/Members.vue'
-import Footer from '../../components/Footer/Footer'
+import Footer from '@/components/Footer/Footer'
 export default {
   components:{
-    Association,
-    Members,
     Footer,
   },
   props:{},
   data(){
     return {
+      isAssociation:true
     }
   },
-  watch:{},
+  watch:{
+    $route () {
+      if(this.$route.meta.isAssociation) {
+        this.isAssociation = true
+      } else {
+        this.isAssociation = false
+      }
+    }
+  },
   computed:{},
   methods:{},
   created(){},
-  mounted(){}
+  mounted(){
+  }
 }
 </script>
 <style lang="scss" scoped>
-
+@import '@/styles/color.scss';
+.about-container{
+  .routeChange{
+    box-sizing: border-box;
+    font-size: .6rem;
+    text-align: center;
+    margin: 2rem auto;
+    width: 12rem;
+    height: 2rem;
+    line-height: 2rem;
+    .routeLink{
+      display: inline-block;
+      width: 6rem;
+      color: $blue !important;
+      border: none;
+      transition: all 0.3s ease;
+      &:hover{
+        color: #fff !important;
+        background-color: $blue;
+        border-bottom: .1rem solid $blue;
+      }
+      &.isActivity{
+        border-bottom: .1rem solid $blue;
+      }
+    }
+    
+  }
+  
+}
 </style>

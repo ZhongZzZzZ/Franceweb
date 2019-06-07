@@ -24,8 +24,13 @@ export default {
 
   methods:{
     async getCarousel () {
-      this.imgList = await reqCarousel('/img/gssoai?part=carselImg')
-      this.$nextTick(_=>{
+      const data = {part:'carselImg'}
+      this.imgList = await reqCarousel('/img/gssoai',data)
+      if(this.imgList.length === 0) {
+        this.$message.error('网络错误')
+        return false
+      }
+      this.$nextTick(()=>{
         this.initCarousel()
       })
     },

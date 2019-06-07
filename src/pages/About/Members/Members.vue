@@ -1,6 +1,5 @@
 <template>
   <div class="members-container">
-    <ContentHeader title="社团成员介绍" color="#000"></ContentHeader>
     <div class="members-content">
       <div class="members" v-for="(item, index) in members" :key="index">
         <img :src="item.imgPath" alt="">
@@ -15,11 +14,9 @@
 
 <script>
 import {reqMembersList} from '@/api'
-import ContentHeader  from '@/components/ContentHeader/ContentHeader'
 import Pagination from '@/components/Pagination/index'
 export default {
   components:{
-    ContentHeader,
     Pagination
   },
   props:{},
@@ -30,19 +27,19 @@ export default {
         page: 1,
         limit: 12
       },
-      total:0,
+      total:1,
     }
   },
   watch:{},
   computed:{},
   methods:{
-    async getMemberList ({page,limit}) {
-      const result = await reqMembersList(`/user/pgami/${page}/${limit}`)
+    async getMemberList () {
+      const result = await reqMembersList(`/mi/gaf?currentPage=${this.listQuery.page}&pageSize=${this.listQuery.limit}`,)
       this.members = result.list
       this.total = result.total
       },
     getList(){
-      this.getMemberList(this.listQuery)
+      this.getMemberList()
     },
   },
   created(){
@@ -70,7 +67,6 @@ export default {
       -moz-box-shadow:0px 0px 5px #333333; -webkit-box-shadow:0px 0px 5px #333333; box-shadow:0px 0px 5px #333333;
       &:hover{
         transform:scale(1.1);
-        background-color: #FCF7B3
       }
       img{
         width: 4rem;

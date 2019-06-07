@@ -28,14 +28,30 @@ export default new Router({
       component: Home,
     },
     {
+      path:'/home/eventlist',
+      name:'homeEventList',
+      component: ()=> import('@/pages/Home/HomeEvent/HomeEventList')
+    },
+    {
       path: '/about',
       name: 'about',
-      component: About
+      component: About,
+      redirect:'/about/association',
+      children:[
+        {
+          path:'association',
+          name:'association',
+          component: ()=> import('@/pages/About/Association/Association'),
+          meta:{isAssociation:true}
+        },
+        {
+          path:'members',
+          name:'members',
+          component: ()=> import('@/pages/About/Members/Members'),
+          meata:{isAssociation:false}
+        },
+      ]
     },
-  /*   {
-      path:'/culture',
-      redirect:'/culture/service'
-    }, */
     {
       path: '/culture/service',
       name: 'service',

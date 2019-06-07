@@ -6,10 +6,10 @@
           <div class="contact contact-store">
             <div class="grid-content bg-purple">
               <div><i class="iconfont iconlocation"></i></div>
-              <h2>OUR STORE</h2>
-              <p>8 The Green #4638</p>
-              <p>Dover, DE, 19901</p>
-              <p>flowers@mockingbot.com | Tel. 123-456-7890</p>
+              <h2>OUR INFO</h2>
+              <p>18B,rue le noyeu</p>
+              <p>70400 vyans le val,France</p>
+              <p>acef@orange.fr | Tel. (33)06 18 03 19 38</p>
               <a href="">View Map ></a>
             </div>
           </div>

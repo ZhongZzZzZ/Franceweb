@@ -1,31 +1,46 @@
 <template>
   <div class="association-container">
-    <ContentHeader title="联谊会介绍" color="#000"></ContentHeader>
     <div class="association-content">
-      <img src="@/assets/法国东部华人联谊会(ACEF)简介1118.png" alt="">
-  <!--     <div class="association-info">
-        <h1>ACEF协会介绍</h1>
-        <p>1, 画面简单大方, 有中法文化气氛.<br>2, 颜色 着重 蓝红白 (三色是法国国旗的颜色, 红色也是中国国旗的颜色 )</p>
-      </div> -->
+      <img :src="associationPic" alt="">
     </div>
   </div>
 </template>
 
 <script>
-import ContentHeader  from '@/components/ContentHeader/ContentHeader'
+import {getCookies} from '@/api/cookie'
+import {reqAssociationPic} from '@/api'
 export default {
   components:{
-    ContentHeader
   },
   props:{},
   data(){
     return {
+      associationPic:''
     }
   },
   watch:{},
   computed:{},
-  methods:{},
-  created(){},
+  methods:{
+    async getAssiociationPic() {
+      let data = {}
+      const language = getCookies('language')
+      if(language === 'Chinese') {
+        data = {part:'xiehuipic1'}
+      } else {
+        data = {part:'xiehuipic2'}
+      }
+      
+      const result = await reqAssociationPic('img/gssoai',data)
+      if(!result || result.result == 0) {
+        this.$message.error('网络错误')
+      } else {
+        this.associationPic = result[0].url
+      }
+    }
+  },
+  created(){
+    this.getAssiociationPic()
+  },
   mounted(){}
 }
 </script>
@@ -42,14 +57,6 @@ export default {
     img{
       width: 100%;
     }
-   /*  .association-info{
-      text-align: center;
-      p{
-        padding-top: 4rem;
-        width: 12rem;
-      }
-    } */
-    
   }
 }
 </style>

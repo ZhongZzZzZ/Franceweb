@@ -103,7 +103,7 @@ export default {
             description:this.contactForm.message,
             phone:this.contactForm.phone
           }
-          const result = await reqContactForm('/data/fb',data)
+          const result = await reqContactForm('/fb/u',data)
           if(!result) {
             this.$message.error('网络错误')
           } else if(result.result == 1) {
