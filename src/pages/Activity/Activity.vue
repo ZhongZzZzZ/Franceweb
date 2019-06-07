@@ -1,7 +1,9 @@
 <template>
   <div class="activitiy-container">
     <ContentHeader title="活动信息" color="#eb7a67"></ContentHeader>
+    <div class="articleContent">
     <Article></Article>
+    </div>
     <Footer></Footer>
   </div>
 </template>
@@ -18,7 +20,7 @@
         },
         props:{},
         data(){
-            return {    
+            return {
             }
         },
         watch:{},
@@ -35,42 +37,26 @@
   @import '../../styles/color.scss';
   .activitiy-container{
     position: relative;
-    h1 {
+    .articleContent
+    {
+      ::after{
+        content: "";
+        clear: both;
+        display: block;
+        overflow: hidden;
+        font-size: 0;
+        height: 0;
+      }
+      .pageSelect{
+        text-align: center;
+        margin: 0.5rem 0 0.5rem 0;
+      }
+    }
+    h1{
       font-size: 0.8rem;
       color: $orange;
       text-align: center;
       margin: 1rem 0 2rem 0;
-    }
-    .el-collapse-item__header{
-      color:#294057;
-      font-size:0.35rem;
-      border-bottom:2px solid $orange;
-      height: 1.6rem;
-      line-height: 1.6rem;
-      transition:border-bottom-color .2s;
-
-    }
-    .el-collapse-item__wrap{
-      border-bottom:2px solid $orange;
-      position: relative;
-      overflow: hidden;
-    }
-    .el-collapse-item__arrow{
-      font-size: 24px;
-      font-weight: bold;
-    }
-    .el-collapse-item__content{
-      color: #8F9A9E;
-      font-size: 12px;
-    }
-    .btn{
-      position:relative;
-      left: .16rem;
-      top: .16rem;
-    }
-    .pageSelect{
-      text-align: center;
-      margin: 0.5rem 0 0.5rem 0;
     }
   }
 

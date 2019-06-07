@@ -12,12 +12,20 @@
   </div>
 </template>
 <script>
+
 export default {
   components:{},
   props:{},
   data(){
     return {
-      activityList:[]
+      activityList:[],
+        activeNames:[],
+        articleList:[],
+        listQuery: {
+            currentPage: 1,
+            pageSize: 3,
+            part:'review'
+        },
     }
   },
   watch:{},

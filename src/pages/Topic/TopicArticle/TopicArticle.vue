@@ -4,9 +4,9 @@
       <div class="topicarticle-topic" v-for="(item, index) in articleList" :key="index">
         <h1><router-link class="title" to="/article" tag="a" target="_blank">{{item.title}}</router-link></h1>
         <span>{{item.time}}</span>
-        <router-link class="more" to="/article" tag="a" target="_blank">more</router-link>
+        <router-link class="more" :to="{path:'/article',query:{ articleId : item.articleId,Id: 0 }}" tag="a" target="_blank">more</router-link>
       </div>
-      <pagination style="text-align:center" v-show="total>0" :total="total" :page.sync="listQuery.page" :pageSize="5"  @pagination="getList" />
+      <pagination style="text-align:center" v-show="total>0" :total="total" :page.sync="listQuery.currentPage" :pageSize="listQuery.pageSize"  @pagination="getList" />
   </div>
   </div>
 </template>
@@ -22,19 +22,24 @@ export default {
   data(){
     return {
       articleList:[],
-      listQuery: { 
-        page: 1,
-        limit: 5
-      },
-      total:50,
+        listQuery: {
+            currentPage: 1,
+            pageSize: 3,
+            part:'service'
+        },
+        total:50,
+        activeNames:[]
     }
   },
   watch:{},
   computed:{},
   methods:{
     async getArticle(){
-      const result = await reqArticle('/data/get')
-      this.articleList = result.slice(0,5)
+        const result = await reqArticle(`/oa/g`,this.listQuery)
+        console.log(result)
+        this.total = result.total
+        this.articleList = result.list
+        this.activeNames= []
     },
     getList(){
       this.getArticle()

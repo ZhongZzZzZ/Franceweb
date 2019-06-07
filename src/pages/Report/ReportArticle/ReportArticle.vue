@@ -22,7 +22,7 @@ export default {
   data(){
     return {
       articleList:[],
-      listQuery: { 
+      listQuery: {
         page: 1,
         limit: 5
       },
@@ -33,7 +33,7 @@ export default {
   computed:{},
   methods:{
     async getArticle () {
-          const result = await reqArticle('/data/get')
+          const result = await reqArticle(`/data/gaa/${this.listQuery.page}/${this.listQuery.limit}`)
           this.articleList = result.slice(0,5)
         },
     getList(){

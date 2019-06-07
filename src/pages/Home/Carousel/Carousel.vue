@@ -24,7 +24,7 @@ export default {
 
   methods:{
     async getCarousel () {
-      this.imgList = await reqCarousel('/data/gss')
+      this.imgList = await reqCarousel('/img/gssoai?part=carselImg')
       this.$nextTick(_=>{
         this.initCarousel()
       })
@@ -53,12 +53,12 @@ export default {
               auto()
           })
       }
-      
+
       auto();
     }
   },
   created(){
-    
+
   },
   mounted(){
     this.getCarousel()
