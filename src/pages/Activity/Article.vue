@@ -82,6 +82,7 @@ export default {
           const result = await reqArticle(`/aa/g`,this.listQuery)
            this.total = result.total
            this.articleList = result.list
+           console.log(result.list);
           this.activeNames= []
         },
         getList() {

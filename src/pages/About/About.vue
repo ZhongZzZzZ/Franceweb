@@ -34,7 +34,8 @@ export default {
   },
   computed:{},
   methods:{},
-  created(){},
+  created(){
+  },
   mounted(){
   }
 }

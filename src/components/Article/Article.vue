@@ -11,7 +11,7 @@
         <article><span v-html="result.content"></span></article>
       </div>
       <img v-show="ifShowPoster" :src="result.posterUrl" alt="">
-      <el-button v-show="ifShowPoster" type="primary" plain><a :href="result.entryFormUrl" download>报名表下载</a></el-button>
+      <el-button v-show="result.entryFormUrl" type="primary" plain><a :href="result.entryFormUrl" download>报名表下载</a></el-button>
     </div>
     <Footer></Footer>
   </div>
@@ -48,16 +48,16 @@ export default {
   methods:{
       async getOrdinaryArticle (){
           this.result = await getSingleArticle(`/oa/go`,this.articleId)
+          document.title = this.result.title
           console.log(this.result)
           },
       async getAcitiveArticle (){
           this.result = await getSingleArticle(`/aa/go`,this.articleId)
+          document.title = this.result.title
           console.log(this.result)
       }
   },
   created(){
-      console.log(this.Id)
-      console.log(this.$route.query)
       if(this.Id == 0){
           this.getOrdinaryArticle()
       }else {

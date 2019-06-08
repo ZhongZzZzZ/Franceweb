@@ -3,47 +3,47 @@
     <h1 class="homeactivity">近期活动</h1>
     <div class="homeactivity-list" ref="activityList">
       <ul>
-        <li class="card" v-for="(item, index) in activityList" :key="index">
-           <div class="card-content"><p>{{item.p}}</p></div>
-           <img src="@/assets/timg.jpg" alt="">
+        <li class="card" v-for="(item, index) in articleList" :key="index">
+           <div class="card-content">
+              <h1 class="card-title">{{item.title}}</h1>
+              <p class="card-time">{{item.activityStartTime}}<p>
+              <p class="card-time">{{item.activityEndTime}}</p>
+              <p class="card-author">{{item.author}}</p>
+              <router-link class="more" :to="{path:'/article',query:{ articleId : item.articleId,Id: 1 }}" tag="a" target="_blank">more</router-link>
+             </div>
+           <img :src="item.posterUrl" alt="">
         </li>
       </ul>
     </div>
   </div>
 </template>
 <script>
-
+import {reqArticle} from '@/api'
 export default {
   components:{},
   props:{},
   data(){
     return {
-      activityList:[],
         activeNames:[],
         articleList:[],
         listQuery: {
             currentPage: 1,
-            pageSize: 3,
-            part:'review'
+            pageSize: 20,
+            part:'homeactivity'
         },
     }
   },
   watch:{},
   computed:{},
-  methods:{},
+  methods:{
+    async getArticle () {
+          const result = await reqArticle(`/aa/g`,this.listQuery)
+           this.articleList = result.list
+          this.activeNames= []
+        },
+  },
   created(){
-    const arr = [
-      {p:'可以是单行',img:'../../../assets/timg.jpg'},
-      {p:'可以是单行',img:'../../../assets/timg.jpg'},
-      {p:'昭和无惨绘｜丸尾末广×花轮和一 新英…',img:'../../../assets/timg.jpg'},
-      {p:'可以是单行',img:'../../../assets/timg.jpg'},
-      {p:'昭和无惨绘｜丸尾末广×花轮和一 新英…',img:'../../../assets/timg.jpg'},
-      {p:'可以是单行',img:'../../../assets/timg.jpg'},
-      {p:'昭和无惨绘｜丸尾末广×花轮和一 新英…',img:'../../../assets/timg.jpg'},
-      {p:'可以是单行',img:'../../../assets/timg.jpg'},
-      {p:'昭和无惨绘｜丸尾末广×花轮和一 新英…',img:'../../../assets/timg.jpg'},
-    ]
-    this.activityList = arr
+    this.getArticle()
   },
   mounted(){
   }
@@ -73,13 +73,28 @@ export default {
         border: 1px solid $orange;
         }
         .card-content{
-          width: 2.74rem;
+          width: 3rem;
           margin: .8rem .4rem 0;
+          .card-title{
+            font-size: .4rem;
+            margin-bottom: .2rem;
+          }
+          .card-time{
+            font-size: .4rem;
+            margin-bottom: .2rem;
+          }
+          .card-author{
+            font-size: .4rem;
+          }
+          .more{
+            color: $orange;
+            font-size: .5rem;
+          }
         }
         img{
           width:  3rem;
           height: 3rem;
-          margin: .2rem .2rem 0 0;
+          margin: .3rem .3rem 0 0;
         }
       }
     }
