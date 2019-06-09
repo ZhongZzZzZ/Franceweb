@@ -40,7 +40,6 @@ export default {
   methods:{
      async getLinks(){
        this.result =  await getFriendLink(`/fl/g`)
-         console.log(this.result)
      }
   },
   created(){
@@ -50,7 +49,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-  @import '../../styles/color.scss';
+  @import '@/styles/color.scss';
 .Link-container{
   >h1{
     margin-bottom: 1.5rem;

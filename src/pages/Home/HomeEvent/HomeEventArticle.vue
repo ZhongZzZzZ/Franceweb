@@ -2,9 +2,10 @@
    <div class="homeeventarticle-container">
     <div class="homeeventarticle-content">
       <div class="homeeventarticle-topic" v-for="(item, index) in articleList" :key="index">
-        <h1><router-link class="title" to="/article" tag="a" target="_blank">{{item.title}}</router-link></h1>
-        <span>{{item.time}}</span>
-        <router-link class="more" to="/article" tag="a" target="_blank">more</router-link>
+        <h1 class="title">{{item.title}}</h1>
+        <p>作者:{{item.author}}</p>
+        <p style="position: absolute;right: 0.15rem;top: 1rem;">时间:{{item.displayTime}}</p>
+        <router-link class="more" :to="{path:'/article',query:{ articleId : item.articleId,Id: 0 }}" tag="a" target="_blank">more</router-link>
       </div>
       <pagination style="text-align:center" v-show="total>0" :total="total" :page.sync="listQuery.page" :pageSize="5"  @pagination="getList" />
     </div>
@@ -23,18 +24,21 @@ export default {
     return {
       articleList:[],
       listQuery: { 
-        page: 1,
-        limit: 5
+        currentPage: 1,
+        pageSize: 5,
+        part:'homeevent'
       },
-      total:50,
+      total:1,
     }
   },
   watch:{},
   computed:{},
   methods:{
     async getArticle () {
-          const result = await reqArticle('/data/get')
-          this.articleList = result.slice(0,5)
+        const result = await reqArticle(`/oa/g`,this.listQuery)
+        this.total = result.total
+        this.articleList = result.list
+        this.activeNames= []
         },
     getList(){
       this.getArticle()
@@ -52,9 +56,10 @@ export default {
   padding: 0 4rem;
   .homeeventarticle-content{
     .homeeventarticle-topic{
-      height: 1.6rem;
+      height: 2rem;
+      position: relative;
       border-bottom: 2px solid $orange;
-      line-height: 0.8rem;
+      line-height: 0.65rem;
       padding: 0 .2rem;
       .title{
         color: #294057;

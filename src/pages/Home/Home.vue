@@ -36,7 +36,8 @@ export default {
   watch:{},
   computed:{},
   methods:{},
-  created(){},
+  created(){
+  },
   mounted(){}
 }
 </script>

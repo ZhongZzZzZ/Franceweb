@@ -3,8 +3,9 @@
     <h1 class="homeevent">重大事件</h1>
     <div class="homeevent-content">
       <div class="homeevent-topic" v-for="(item, index) in articleList" :key="index">
-        <h1><router-link class="title" to="/article" tag="a" target="_blank">{{item.title}}</router-link></h1>
-        <span>{{item.displayTime}}</span>
+        <h1 class="title">{{item.title}}</h1>
+        <p>作者:{{item.author}}</p>
+        <p style="position: absolute;right: 0.15rem;top: 1rem;">时间:{{item.displayTime}}</p>
         <router-link class="more" :to="{path:'/article',query:{ articleId : item.articleId,Id: 0 }}" tag="a" target="_blank">more</router-link>
       </div>
       <div class="homeevent-button" @click="goArticle">更多</div>
@@ -13,7 +14,7 @@
 </template>
 
 <script>
-    import { reqArticle } from '../../../api';
+    import { reqArticle } from '@/api';
 export default {
   components:{
   },
@@ -33,14 +34,10 @@ export default {
   computed:{},
   methods:{
     goArticle(){
-      let routerData = this.$router.resolve({ //编程式路由导航打开新窗口
-        path:'/article',
-      })
-      window.open(routerData.href,'_blank')
+      this.$router.push('/home/eventlist')
     },
       async getArticle () {
           const result = await reqArticle(`/oa/g`,this.listQuery)
-          console.log(result)
           this.articleList = result.list
           this.activeNames= []
       }
@@ -65,9 +62,10 @@ export default {
   }
   .homeevent-content{
     .homeevent-topic{
-      height: 1.6rem;
+      height: 2rem;
+      position:relative;
       border-bottom: 2px solid $orange;
-      line-height: 0.8rem;
+      line-height: 0.65rem;
       padding: 0 .2rem;
       .title{
         color: #294057;

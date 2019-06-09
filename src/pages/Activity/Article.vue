@@ -70,7 +70,7 @@ export default {
               pageSize: 5,
               part:'activity'
             },
-            total:50,
+            total:1,
        }
    },
    watch:{
@@ -80,9 +80,9 @@ export default {
    methods:{
        async getArticle () {
           const result = await reqArticle(`/aa/g`,this.listQuery)
-          console.log(result)
            this.total = result.total
            this.articleList = result.list
+           console.log(result.list);
           this.activeNames= []
         },
         getList() {
