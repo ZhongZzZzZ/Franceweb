@@ -21,7 +21,7 @@ export default async function ajax (url,data={},type='get') {
   } catch (error) {
     //一般网络不行就会axios发送请求失败，然后捕捉错误来到这里
     v.$message({ 
-      message: '网络错误',
+      message: 'Network Error',
       type: 'error'
       })
   }

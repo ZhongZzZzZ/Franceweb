@@ -35,6 +35,11 @@ export default {
   computed:{},
   methods:{},
   created(){
+    if(this.$route.meta.isAssociation) {
+        this.isAssociation = true
+      } else {
+        this.isAssociation = false
+      }
   },
   mounted(){
   }

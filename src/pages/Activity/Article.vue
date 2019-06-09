@@ -1,23 +1,6 @@
 <template>          <!--活动信息子组件-->
     <div>
         <el-row>
-            <!--<el-col :span="18" :offset="3">-->
-                <!--<el-collapse v-model="activeNames" >-->
-                    <!--<div v-for="(item,index) in articleList" :key="index" >-->
-                        <!--<el-collapse-item  :title="item.title" :name="index + 1">-->
-                            <!--<div>{{item.description}}</div>-->
-                            <!--<el-col :span="8" style="margin: 8px">-->
-                                <!--<el-image src="" class="serviceImg">-->
-                                    <!--<div slot="placeholder" class="image-slot">-->
-                                        <!--加载中<span class="dot">...</span>-->
-                                    <!--</div>-->
-                                <!--</el-image>-->
-                            <!--</el-col>-->
-                            <!--<el-button type="primary" class="btn">活动报名</el-button>-->
-                        <!--</el-collapse-item>-->
-                    <!--</div>-->
-                <!--</el-collapse>-->
-            <!--</el-col>-->
             <div class="service" v-for="(item,index) in articleList" :key="index">
                 <el-col  :lg="2" :md="2"  v-show="index % 2 ==1 ? true: false" class="floatLeft">&nbsp;</el-col>
                 <el-col :span="3" v-show="index % 2 ==0?true:false" >&nbsp;</el-col>
@@ -67,7 +50,7 @@ export default {
            articleList:[],
             listQuery: {
               currentPage: 1,
-              pageSize: 5,
+              pageSize: 3,
               part:'activity'
             },
             total:1,

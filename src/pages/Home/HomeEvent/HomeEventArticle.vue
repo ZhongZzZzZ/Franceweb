@@ -3,8 +3,8 @@
     <div class="homeeventarticle-content">
       <div class="homeeventarticle-topic" v-for="(item, index) in articleList" :key="index">
         <h1 class="title">{{item.title}}</h1>
-        <p>作者:{{item.author}}</p>
-        <p style="position: absolute;right: 0.15rem;top: 1rem;">时间:{{item.displayTime}}</p>
+        <p>{{item.author}}</p>
+        <p style="position: absolute;right: 0.15rem;top: 0.75rem;">{{item.displayTime}}</p>
         <router-link class="more" :to="{path:'/article',query:{ articleId : item.articleId,Id: 0 }}" tag="a" target="_blank">more</router-link>
       </div>
       <pagination style="text-align:center" v-show="total>0" :total="total" :page.sync="listQuery.page" :pageSize="5"  @pagination="getList" />

@@ -27,7 +27,7 @@ export default {
       const data = {part:'carselImg'}
       this.imgList = await reqCarousel('/img/gssoai',data)
       if(this.imgList.length === 0) {
-        this.$message.error('网络错误')
+        this.$message.error('Network Error')
         return false
       }
       this.$nextTick(()=>{

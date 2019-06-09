@@ -6,8 +6,8 @@
         <li class="card" v-for="(item, index) in articleList" :key="index">
            <div class="card-content">
               <h1 class="card-title">{{item.title}}</h1>
-              <p class="card-time">{{item.activityStartTime}}<p>
-              <p class="card-time">{{item.activityEndTime}}</p>
+              <span class="card-time">{{item.activityStartTime}}</span>
+              <span class="card-time">{{item.activityEndTime}}</span>
               <p class="card-author">{{item.author}}</p>
               <router-link class="more" :to="{path:'/article',query:{ articleId : item.articleId,Id: 1 }}" tag="a" target="_blank">more</router-link>
              </div>
@@ -67,34 +67,41 @@ export default {
         border-bottom: none;
         display: flex;
         justify-content: space-around;
-        height: 4rem;
+        height: 3.5rem;
+        padding: 10px;
         transition: all 0.5s ease;
         &:hover{
         border: 1px solid $orange;
         }
         .card-content{
-          width: 3rem;
-          margin: .8rem .4rem 0;
+          width: 4rem;
+          position: relative;
           .card-title{
-            font-size: .4rem;
+            font-size: .35rem;
             margin-bottom: .2rem;
+            color: #294057;
           }
           .card-time{
-            font-size: .4rem;
-            margin-bottom: .2rem;
+            font-size: .3rem;
+            margin: .3rem 0;
+            margin-right: .1rem;
+            display: inline-block;
+            
           }
           .card-author{
-            font-size: .4rem;
+            font-size: .3rem;
           }
           .more{
+            position: absolute;
             color: $orange;
-            font-size: .5rem;
+            font-size: .4rem;
+            bottom: 5px;
           }
         }
         img{
-          width:  3rem;
+          width:  4.5rem;
           height: 3rem;
-          margin: .3rem .3rem 0 0;
+          
         }
       }
     }
