@@ -1,7 +1,7 @@
 <template>
   <div class="association-container">
     <div class="association-content">
-      <img :src="associationPic" alt="">
+      <el-image :src="associationPic" lazy></el-image>
     </div>
   </div>
 </template>
@@ -31,8 +31,10 @@ export default {
       }
       
       const result = await reqAssociationPic('img/gssoai',data)
-      if(!result || result.result == 0) {
-        this.$message.error('网络错误')
+      console.log(result);
+      if(!result || result.result == 0 || result.length === 0) {
+
+        this.$message.error('Network Error')
       } else {
         this.associationPic = result[0].url
       }

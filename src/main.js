@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './route/router'
-import store from './store'
 import './styles/reset.css'
 import './js/rem'
 import ElementUI from 'element-ui'
@@ -27,6 +26,5 @@ axios.defaults.withCredentials=true
 new Vue({
   i18n,
   router,
-  store,
   render: h => h(App)
 }).$mount('#app')

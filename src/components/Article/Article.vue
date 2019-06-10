@@ -3,15 +3,15 @@
     <div class="article-content">
       <div class="article-header">
         <h1>{{result.title}}</h1>
-          <span >作者:{{result.author}}</span>
-          <span v-show="ifShowPoster">时间:{{result.activityStartTime}}   --   {{result.activityEndTime}}</span>
-          <span v-show="!ifShowPoster">时间:{{result.displayTime}}</span>
+          <span >{{result.author}}</span>
+          <span>{{result.displayTime}}</span>
+          <span v-show="ifShowPoster">{{result.activityStartTime}}   --   {{result.activityEndTime}}</span>
       </div>
       <div class="article-info">
         <article><span v-html="result.content"></span></article>
       </div>
-      <img v-show="ifShowPoster" :src="result.posterUrl" alt="">
-      <el-button v-show="result.entryFormUrl" type="primary" plain><a :href="result.entryFormUrl" download>报名表下载</a></el-button>
+      <img v-show="ifShowPoster" :src="result.posterUrl" alt="" style="width:100%">
+      <el-button v-show="result.entryFormUrl" type="primary" class="downLoadBtn"><a :href="result.entryFormUrl" download>报名表下载</a></el-button>
     </div>
     <Footer></Footer>
   </div>
@@ -19,7 +19,7 @@
 
 <script>
 import Footer from '../Footer/Footer'
-import { getSingleArticle} from '../../api';
+import { getSingleArticle} from '@/api';
 
 export default {
   components:{
@@ -92,8 +92,11 @@ export default {
     text-indent: 2em;
     line-height: .6rem
   }
-  img{
-    width: 100%;
+  .downLoadBtn{
+    margin: .4rem 0;
+    a{
+      color:#fff;
+    }
   }
 }
 </style>

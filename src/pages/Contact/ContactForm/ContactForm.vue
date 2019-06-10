@@ -24,41 +24,41 @@ export default {
   data(){
     var validateName = (rule, value, callback) => {
       if(value === '') {
-       callback(new Error('姓名不能为空'))
+       callback(new Error('Name cannot be empty'))
       } else {
         callback()
       }
     }
     var validateEmail = (rule, value, callback) => {
       if(value == '') {
-         callback(new Error('邮箱不能为空'))
+         callback(new Error('E-mail cannot be empty'))
       } else if(!/^[a-zA-Z0-9][a-zA-Z0-9_-]+@[a-zA-Z0-9]+(\.[a-zA-Z]+)+$/.test(value)){
-         callback(new Error('邮箱格式不正确'))
+         callback(new Error('E-mail format is incorrect'))
       }else{
         callback()
       }
     }
     var validateSubject = (rule, value, callback) => {
         if(value === '') {
-          callback(new Error('标题不能为空'))
+          callback(new Error('Title cannot be empty'))
         } else {
           callback()
         }
     }
     var validateMessage = (rule, value, callback) => {
       if(value == '') {
-        callback(new Error('内容不能为空'))
+        callback(new Error('Message cannot be empty'))
       } else {
         callback()
       }
     }
     var validatePhone = (rule,value,callback) => {
       if (value === '') {
-        callback(new Error('手机号不能为空'))
+        callback(new Error('Mobile phone number cannot be empty'))
       } else if(/[^0-9]/g.test(value)) {
-        return callback(new Error('手机号应填写纯数字'))
+        return callback(new Error('Mobile phone number should be filled in with pure numbers'))
       } else if(!/^[0-9]{10,11}$/.test(value)){
-        return callback(new Error('手机号个数不正确'))
+        return callback(new Error('The number of mobile phone numbers is incorrect'))
       } else {
         callback()
       }
@@ -105,11 +105,11 @@ export default {
           }
           const result = await reqContactForm('/fb/u',data)
           if(!result) {
-            this.$message.error('网络错误')
+            this.$message.error('Network Error')
           } else if(result.result == 1) {
-            this.$message.success('提交成功')
+            this.$message.success('success')
           } else {
-            this.$message.error('提交失败，请稍后重试')
+            this.$message.error('Submit failed, please try again later')
           }
         } else {
           return 

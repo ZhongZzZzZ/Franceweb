@@ -31,7 +31,7 @@ export default {
     },
     layout: {
       type: String,
-      default: 'total, prev, pager, next, jumper'
+      default: ' prev, pager, next'
     },
     background: {
       type: Boolean,

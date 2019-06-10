@@ -2,7 +2,7 @@
   <div class="members-container">
     <div class="members-content">
       <div class="members" v-for="(item, index) in members" :key="index">
-        <img :src="item.imgPath" alt="">
+        <img :src="item.imgPath" alt="" />
         <p class="name">姓名：{{item.name}}</p>
         <p class="position">职位：{{item.position}}</p>
         <p class="description">个人介绍：{{item.description}}</p> 
