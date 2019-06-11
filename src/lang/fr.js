@@ -1,7 +1,7 @@
 export const m = { 
   menu:{
-    home_page:"Page d'accueil",
-    about_us:"qui sommes nous",
+    home_page1:"Page d'accueil",
+    about_us:"qui somme-nous",
     social_culture:"culture sociale",
     social_service:"service sociale",
     language_school:"école de langue",
@@ -21,7 +21,8 @@ export const m = {
     association:'mots du présentant',
     members:'membres',
     name:'Nom',
-    position:'fonction'
+    position:'fonction',
+    introduction:'commentaire'
   },
   contact:{
     contact_tip:'Vous pouvez nous joindre par mail ou en ligne : acef@orange.fr',

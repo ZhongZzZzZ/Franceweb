@@ -5,8 +5,9 @@
     mode="horizontal"
     background-color="#3f51b5"
     text-color="#FFF"
+    v-show="language === '中文'"
     >
-    <el-menu-item  class="menu-item"><router-link to="/home">{{$t('m.menu.home_page')}}</router-link></el-menu-item>
+    <el-menu-item  class="menu-item"><router-link  to="/home">首页</router-link></el-menu-item>
     <el-menu-item  class="menu-item"><router-link to="/about">{{$t('m.menu.about_us')}}</router-link></el-menu-item>
     <el-menu-item  class="menu-item"><router-link to="/activity">{{$t('m.menu.activity_info')}}</router-link></el-menu-item>
     <el-menu-item  class="menu-item"><router-link to="/report">{{$t('m.menu.special_report')}}</router-link></el-menu-item>
@@ -37,11 +38,49 @@
     </el-dropdown>
     </el-menu-item>
   </el-menu>
+  <el-menu
+    class="el-menu-demo menu"
+    mode="horizontal"
+    background-color="#3f51b5"
+    text-color="#FFF"
+    v-show="language === 'Français'"
+    >
+    <el-menu-item  class="menu-item"><router-link tag="div" to="/home">Page<br/>d'accueil</router-link></el-menu-item>
+    <el-menu-item  class="menu-item"><router-link tag="div" to="/about">qui<br>somme-nous</router-link></el-menu-item>
+    <el-menu-item  class="menu-item"><router-link  to="/activity">agenda</router-link></el-menu-item>
+    <el-menu-item  class="menu-item"><router-link tag="div" to="/report">envoyé<br/>spécial</router-link></el-menu-item>
+    <el-menu-item  class="menu-item menu-item-drop">
+      <el-dropdown @command="selectSocialCulture" trigger="click" placement="top">
+        <span class="el-dropdown-link">
+         <router-link tag="div" :to="path">{{$t('m.menu.social_culture')}}<i class="el-icon-arrow-down el-icon--right"></i></router-link>
+        </span>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item command="社会服务">{{$t('m.menu.social_service')}}</el-dropdown-item>
+          <el-dropdown-item command="语言学校">{{$t('m.menu.language_school')}}</el-dropdown-item>
+          <el-dropdown-item command="文化交流">{{$t('m.menu.culture_exchange')}}</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+    </el-menu-item>
+    <el-menu-item  class="menu-item"><router-link tag="div" to="/topic">vie de<br/>l'association</router-link></el-menu-item>
+    <el-menu-item  class="menu-item"><router-link tag="div" to="/link">adresses<br/>utiles</router-link></el-menu-item>
+    <el-menu-item  class="menu-item"><router-link  to="/contact">{{$t('m.menu.contact_us')}}</router-link></el-menu-item>
+    <el-menu-item  class="menu-item menu-item-drop">
+    <el-dropdown @command="selectLanguage" trigger="click" placement="top">
+      <span class="el-dropdown-link">
+      {{language}}<i class="el-icon-arrow-down el-icon--right"></i>
+      </span>
+      <el-dropdown-menu slot="dropdown">
+        <el-dropdown-item command="中文">中文</el-dropdown-item>
+        <el-dropdown-item command="Français">Français</el-dropdown-item>
+      </el-dropdown-menu>
+    </el-dropdown>
+    </el-menu-item>
+  </el-menu>
 </div>
 </template>
 
 <script>
-import {getCookies, setCookies} from '../../api/cookie'
+import {getCookies, setCookies} from '@/api/cookie'
 export default {
   components:{},
   props:{},
@@ -140,7 +179,7 @@ export default {
     box-sizing: border-box;
     height: 1.5rem !important;
     text-align: center;
-    padding: 0 5px;
+    padding: 0;
     flex: 1;
     border-bottom: none !important;
     a{
@@ -150,6 +189,11 @@ export default {
       text-decoration: none;
       height: 100%;
       width: 100%;
+      transition: all 0.3s ease;
+    }
+    div{
+      line-height: 0.72rem;
+      font-size: .36rem;
       transition: all 0.3s ease;
     }
     &.menu-item-drop{

@@ -1,6 +1,7 @@
 export const m = { 
   menu:{
-    home_page:"首页",
+    home_page1:"协会",
+    home_page2:"首页",
     about_us:"关于我们",
     social_culture:"社会文化",
     social_service:"社会服务",
@@ -21,7 +22,8 @@ export const m = {
     association:'协会介绍',
     members:'协会人员介绍',
     name:'姓名',
-    position:'职位'
+    position:'职位',
+    introduction:'个人介绍'
   },
   contact:{
     contact_tip:'你也可以用邮箱联系我们: acef@orange.fr 或者 填写下面的联系表格:',

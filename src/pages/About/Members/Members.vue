@@ -6,7 +6,7 @@
         <img :src="item.imgPath" alt="" />
         <p class="name">{{$t('m.about.name')}}：{{item.name}}</p>
         <p class="position">{{$t('m.about.position')}}：{{item.position}}</p>
-        <p class="desc">{{$t('m.about.position')}}：{{item.description}}</p>
+        <p class="desc">{{$t('m.about.introduction')}}：{{item.description}}</p>
       </div>
       </div>
     </div>
