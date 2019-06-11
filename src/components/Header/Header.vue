@@ -137,6 +137,7 @@ export default {
   display: flex;
   justify-content: space-between;
   .menu-item{
+    box-sizing: border-box;
     height: 1.5rem !important;
     text-align: center;
     padding: 0 5px;

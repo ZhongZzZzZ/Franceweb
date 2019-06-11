@@ -7,7 +7,7 @@ export const m = {
     language_school:"école de langue",
     culture_exchange:"échange culturel",
     activity_info:"agenda",
-    report_review:"les bons moments",
+    report_review:"vie de l'association",
     contact_us:"nous contacter",
     friendship_link:"adresses utiles",
     special_report:"envoyé spécial"
