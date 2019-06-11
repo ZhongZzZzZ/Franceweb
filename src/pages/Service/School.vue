@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="content">
-      <h1>语言学校</h1>
+      <h1>{{$t('m.menu.language_school')}}</h1>
       <schoolArticle/>
     </div>
     <Footer></Footer>

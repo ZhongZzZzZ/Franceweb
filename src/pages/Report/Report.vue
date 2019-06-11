@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ContentHeader title="专题报道" color="#eb7a67"></ContentHeader>
+    <ContentHeader :title="$t('m.menu.special_report')" color="#eb7a67"></ContentHeader>
     <ReportArticle></ReportArticle>
     <Footer></Footer>
   </div>

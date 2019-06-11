@@ -9,7 +9,7 @@
                 <el-col :xl="8" :lg="9" :md="8" :sm="7" :xs="18"  :class="index % 2 ==1?'floatRight':' '">
                     <div >
                         <h2 >{{item.title}}</h2>
-                        <p>{{item.displayTime}}</p>
+                        <p>{{item.activityStartTime}} --- {{item.activityEndTime}}</p>
                         <!--<el-image src="" class="serviceImg">-->
                             <el-image :src="item.posterUrl" class="serviceImg">
                             <div slot="placeholder" class="image-slot">
@@ -64,12 +64,16 @@ export default {
        async getArticle () {
           const result = await reqArticle(`/aa/g`,this.listQuery)
            this.total = result.total
+           
+           for(let i = 0 ; i<result.list.length ;i++) {
+             result.list[i].content = result.list[i].content.replace(/<img.*\/>/g, '')
+           }
            this.articleList = result.list
-           console.log(result.list);
           this.activeNames= []
         },
         getList() {
           this.getArticle()
+          
         }
    },
    created(){

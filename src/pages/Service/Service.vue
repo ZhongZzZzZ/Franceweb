@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="content">
-      <h1>社会服务</h1>
+      <h1>{{$t('m.menu.social_service')}}</h1>
       <serviceArticle></serviceArticle>
     </div>
     <Footer></Footer>

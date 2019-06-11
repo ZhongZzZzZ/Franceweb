@@ -5,7 +5,7 @@
         <h1 class="title">{{item.title}}</h1>
         <p>{{item.author}}</p>
         <p style="position: absolute;right: 0.15rem;top: 0.75rem;">{{item.displayTime}}</p>
-        <router-link class="more" to="/article" tag="a" target="_blank">more</router-link>
+        <router-link class="more" :to="{path:'/article',query:{ articleId : item.articleId,Id: 0 }}" tag="a" target="_blank">more</router-link>
       </div>
       <pagination style="text-align:center" v-show="total>0" :total="total" :page.sync="listQuery.page" :pageSize="5"  @pagination="getList" />
     </div>
@@ -22,7 +22,6 @@ export default {
   props:{},
   data(){
     return {
-      activeNames:[],
       articleList:[],
       listQuery: {
         currentPage: 1,
@@ -37,9 +36,13 @@ export default {
   methods:{
     async getArticle () {
           const result = await reqArticle(`/oa/g`,this.listQuery)
+          if(!result) {
+            this.$message.error('Network Error')
+            return
+          }
           this.total = result.total
           this.articleList = result.list
-          this.activeNames= []
+
         },
     getList(){
       this.getArticle()

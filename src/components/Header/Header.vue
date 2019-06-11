@@ -6,21 +6,19 @@
     background-color="#3f51b5"
     text-color="#FFF"
     >
-<!--     <a href="javascript:;" class="menu-item logo"><img src="../../assets/logo.png" alt="" title="acef联谊会"></a> -->
     <el-menu-item  class="menu-item"><router-link to="/home">{{$t('m.menu.home_page')}}</router-link></el-menu-item>
     <el-menu-item  class="menu-item"><router-link to="/about">{{$t('m.menu.about_us')}}</router-link></el-menu-item>
     <el-menu-item  class="menu-item"><router-link to="/activity">{{$t('m.menu.activity_info')}}</router-link></el-menu-item>
     <el-menu-item  class="menu-item"><router-link to="/report">{{$t('m.menu.special_report')}}</router-link></el-menu-item>
     <el-menu-item  class="menu-item menu-item-drop">
       <el-dropdown @command="selectSocialCulture" trigger="click" placement="top">
-        <!-- <router-link to="/service">{{$t('m.menu.social_culture')}}</router-link> -->
         <span class="el-dropdown-link">
          <router-link :to="path">{{$t('m.menu.social_culture')}}<i class="el-icon-arrow-down el-icon--right"></i></router-link>
         </span>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item command="社会服务">社会服务</el-dropdown-item>
-          <el-dropdown-item command="语言学校">语言学校</el-dropdown-item>
-          <el-dropdown-item command="文化交流">文化交流</el-dropdown-item>
+          <el-dropdown-item command="社会服务">{{$t('m.menu.social_service')}}</el-dropdown-item>
+          <el-dropdown-item command="语言学校">{{$t('m.menu.language_school')}}</el-dropdown-item>
+          <el-dropdown-item command="文化交流">{{$t('m.menu.culture_exchange')}}</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </el-menu-item>
@@ -141,7 +139,7 @@ export default {
   .menu-item{
     height: 1.5rem !important;
     text-align: center;
-    padding: 0;
+    padding: 0 5px;
     flex: 1;
     border-bottom: none !important;
     a{

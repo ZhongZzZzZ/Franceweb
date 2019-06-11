@@ -31,7 +31,6 @@ export default {
       }
       
       const result = await reqAssociationPic('img/gssoai',data)
-      console.log(result);
       if(!result || result.result == 0 || result.length === 0) {
 
         this.$message.error('Network Error')

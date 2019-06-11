@@ -1,6 +1,6 @@
 <template>
   <div class="homeevent-container">
-    <h1 class="homeevent">重大事件</h1>
+    <h1 class="homeevent">{{$t('m.home.home_event')}}</h1>
     <div class="homeevent-content">
       <div class="homeevent-topic" v-for="(item, index) in articleList" :key="index">
         <h1 class="title">{{item.title}}</h1>
@@ -8,7 +8,7 @@
         <p style="position: absolute;right: 0.15rem;top: 0.75rem;">{{item.displayTime}}</p>
         <router-link class="more" :to="{path:'/article',query:{ articleId : item.articleId,Id: 0 }}" tag="a" target="_blank">more</router-link>
       </div>
-      <div class="homeevent-button" @click="goArticle">更多</div>
+      <div class="homeevent-button" @click="goArticle">{{$t('m.home.more')}}</div>
     </div>
   </div>
 </template>
@@ -22,7 +22,6 @@ export default {
   data(){
     return {
       articleList:[],
-        activeNames:[],
         listQuery: {
             currentPage: 1,
             pageSize: 6,
@@ -38,8 +37,11 @@ export default {
     },
       async getArticle () {
           const result = await reqArticle(`/oa/g`,this.listQuery)
+          if(!result) {
+            this.$message.error('Network Error')
+            return
+          }
           this.articleList = result.list
-          this.activeNames= []
       }
   },
   created(){

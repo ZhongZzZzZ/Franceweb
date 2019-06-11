@@ -23,7 +23,6 @@ export default {
     },
     data() {
         return {
-          activeNames:[],
             articleList:[],
               listQuery: {
                   currentPage: 1,
@@ -39,9 +38,12 @@ export default {
     methods: {
       async getArticle () {
           const result = await reqArticle(`/oa/g`,this.listQuery)
+          if(!result) {
+            this.$message.error('Network Error')
+            return
+          }
           this.total = result.total
           this.articleList = result.list
-          this.activeNames= []
         },
         getList() {
           this.getArticle()

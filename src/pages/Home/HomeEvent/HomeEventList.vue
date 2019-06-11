@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ContentHeader title="重大事件" color="#eb7a67"></ContentHeader>
+    <ContentHeader :title="$t('m.home.home_event')" color="#eb7a67"></ContentHeader>
     <HomeEventArticle></HomeEventArticle>
     <Footer></Footer>
   </div>

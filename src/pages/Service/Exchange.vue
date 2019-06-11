@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="content">
-      <h1>文化交流</h1>
+      <h1>{{$t('m.menu.culture_exchange')}}</h1>
       <exchangeArticle/>
     <Footer></Footer>
   </div>

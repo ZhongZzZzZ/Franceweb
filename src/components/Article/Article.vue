@@ -94,7 +94,7 @@ export default {
   }
   .downLoadBtn{
     margin: .4rem 0;
-    a{
+      a{
       color:#fff;
     }
   }

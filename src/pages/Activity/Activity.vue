@@ -1,6 +1,6 @@
 <template>
   <div class="activitiy-container">
-    <ContentHeader title="活动信息" color="#eb7a67"></ContentHeader>
+    <ContentHeader :title="$t('m.menu.activity_info')" color="#eb7a67"></ContentHeader>
     <div class="articleContent">
     <Article></Article>
     </div>
