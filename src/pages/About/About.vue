@@ -1,8 +1,8 @@
 <template>
   <div class="about-container">
     <div class="routeChange">
-      <router-link to="/about/association" class="routeLink" :class="{isActivity:isAssociation}">协会介绍</router-link>
-      <router-link to="/about/members" class="routeLink" :class="{isActivity:!isAssociation}">协会人员介绍</router-link>
+      <router-link to="/about/association" class="routeLink" :class="{isActivity:isAssociation}">{{$t('m.about.association')}}</router-link>
+      <router-link to="/about/members" class="routeLink" :class="{isActivity:!isAssociation}">{{$t('m.about.members')}}</router-link>
     </div>
     <keep-alive>
       <router-view></router-view>

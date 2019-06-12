@@ -1,16 +1,16 @@
 <template>
   <div class="contact-form">
-      <p>你也可以用邮箱联系我们: acef@orange.fr 或者 填写下面的联系表格:</p>
+      <p>{{$t('m.contact.contact_tip')}}</p>
       <el-form :model="contactForm" :rules="rules"  ref="contactForm"  class="contactForm" size="small">
         <div class="contactForm-left">
-          <el-form-item prop="name"><el-input class="contact-input" v-model="contactForm.name" placeholder="姓名"></el-input></el-form-item>
-          <el-form-item prop="email"><el-input class="contact-input" v-model="contactForm.email" placeholder="邮箱"></el-input></el-form-item>
-          <el-form-item prop="subject"><el-input class="contact-input" v-model="contactForm.subject" placeholder="标题"></el-input></el-form-item>
-          <el-form-item prop="phone"><el-input class="contact-input" v-model="contactForm.phone" placeholder="手机号"></el-input></el-form-item>
+          <el-form-item prop="name"><el-input class="contact-input" v-model="contactForm.name" :placeholder="$t('m.about.name')"></el-input></el-form-item>
+          <el-form-item prop="email"><el-input class="contact-input" v-model="contactForm.email" :placeholder="$t('m.contact.email')"></el-input></el-form-item>
+          <el-form-item prop="subject"><el-input class="contact-input" v-model="contactForm.subject" :placeholder="$t('m.contact.title')"></el-input></el-form-item>
+          <el-form-item prop="phone"><el-input class="contact-input" v-model="contactForm.phone" :placeholder="$t('m.contact.phone_number')"></el-input></el-form-item>
         </div>
         <div class="contactForm-right">
-          <el-form-item prop="message"><el-input class="contact-input" :rows="6" type="textarea" v-model="contactForm.message" placeholder="您的宝贵意见或联系内容"></el-input></el-form-item>
-          <el-button class="contact-button" type="danger" @click="submitForm('contactForm')">发送</el-button>
+          <el-form-item prop="message"><el-input class="contact-input" :rows="6" type="textarea" v-model="contactForm.message" :placeholder="$t('m.contact.message')"></el-input></el-form-item>
+          <el-button class="contact-button" type="danger" @click="submitForm('contactForm')">{{$t('m.contact.send')}}</el-button>
         </div>
     </el-form>
   </div>

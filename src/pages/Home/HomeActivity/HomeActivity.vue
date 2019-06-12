@@ -1,6 +1,6 @@
 <template>
   <div class="homeactivity-container">
-    <h1 class="homeactivity">近期活动</h1>
+    <h1 class="homeactivity">{{$t('m.home.home_activity')}}</h1>
     <div class="homeactivity-list" ref="activityList">
       <ul>
         <li class="card" v-for="(item, index) in articleList" :key="index">
@@ -24,7 +24,6 @@ export default {
   props:{},
   data(){
     return {
-        activeNames:[],
         articleList:[],
         listQuery: {
             currentPage: 1,
@@ -38,8 +37,11 @@ export default {
   methods:{
     async getArticle () {
           const result = await reqArticle(`/aa/g`,this.listQuery)
-           this.articleList = result.list
-          this.activeNames= []
+          if(!result) {
+            this.$message.error('Network Error')
+            return
+          }
+          this.articleList = result.list
         },
   },
   created(){

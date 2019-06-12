@@ -1,7 +1,7 @@
 <template>
   <div class="contact-container">
     <div class="contact-content">
-      <ContentHeader title="联系我们" color="#eb7a67"></ContentHeader>
+      <ContentHeader :title="$t('m.menu.contact_us')" color="#eb7a67"></ContentHeader>
       <div class="contact-info">
           <div class="contact contact-store">
             <div class="grid-content bg-purple">

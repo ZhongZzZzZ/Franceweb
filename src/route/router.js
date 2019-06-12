@@ -23,6 +23,10 @@ export default new Router({
       redirect:'/home'
     },
     {
+      path: '/404',
+      component: () => import('@/pages/404'),
+    },
+    {
       path: '/home',
       name: 'home',
       component: Home,
@@ -97,5 +101,6 @@ export default new Router({
       name: 'article',
       component: Article
     },
+  { path: '*', redirect: '/404'}
   ]
 })

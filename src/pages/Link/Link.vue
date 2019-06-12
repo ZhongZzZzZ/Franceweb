@@ -1,6 +1,6 @@
 <template>
   <div class="Link-container">
-    <ContentHeader title="友情链接" color="#eb7a67"></ContentHeader>
+    <ContentHeader :title="$t('m.menu.friendship_link')" color="#eb7a67"></ContentHeader>
     <div class="links-content">
       <div class="links" v-for="(item, index) in result" :key="index">
           <div class="demo-image__error">

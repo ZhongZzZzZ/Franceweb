@@ -1,7 +1,7 @@
 <template>
  <div >
-  <img class="head-img" src="./assets/head.jpg" alt="">
-    <Header></Header>
+  <img v-show="show" class="head-img" src="./assets/head.jpg" alt="">
+    <Header v-show="show"></Header>
     <keep-alive exclude='Home'>
      <router-view class="app-container"></router-view>
     </keep-alive>
@@ -17,9 +17,18 @@ export default {
   props:{},
   data(){
     return {
+      show:true
     }
   },
-  watch:{},
+  watch:{
+    $route() {
+      if(this.$route.path === '/404') {
+      this.show = false
+    } else{
+       this.show = true
+    }
+    }
+  },
   computed:{},
   methods:{
     

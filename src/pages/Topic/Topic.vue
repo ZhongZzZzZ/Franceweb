@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ContentHeader title="精彩回顾" color="#3f51b5"></ContentHeader>
+    <ContentHeader :title="$t('m.menu.report_review')" color="#3f51b5"></ContentHeader>
     <TopicArticle></TopicArticle>
     <Footer></Footer>
   </div>

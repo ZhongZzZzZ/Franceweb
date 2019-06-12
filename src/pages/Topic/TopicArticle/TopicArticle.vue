@@ -28,8 +28,7 @@ export default {
             pageSize: 3,
             part:'service'
         },
-        total:50,
-        activeNames:[]
+        total:1,
     }
   },
   watch:{},
@@ -37,9 +36,12 @@ export default {
   methods:{
     async getArticle(){
         const result = await reqArticle(`/oa/g`,this.listQuery)
+        if(!result) {
+            this.$message.error('Network Error')
+            return
+          }
         this.total = result.total
         this.articleList = result.list
-        this.activeNames= []
     },
     getList(){
       this.getArticle()

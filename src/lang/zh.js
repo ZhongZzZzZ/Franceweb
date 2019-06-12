@@ -1,8 +1,12 @@
 export const m = { 
   menu:{
-    home_page:"首页",
+    home_page1:"协会",
+    home_page2:"首页",
     about_us:"关于我们",
     social_culture:"社会文化",
+    social_service:"社会服务",
+    language_school:"语言学校",
+    culture_exchange:"文化交流",
     activity_info:"活动信息",
     report_review:"精彩回顾",
     contact_us:"联系我们",
@@ -10,7 +14,23 @@ export const m = {
     special_report:"专题报道"
   },
   home:{
-    home_event:"重大活动",
-    home_activity:"近期活动"
+    home_event:"重大事件",
+    home_activity:"近期活动",
+    more:'更多'
+  },
+  about:{
+    association:'协会介绍',
+    members:'协会人员介绍',
+    name:'姓名',
+    position:'职位',
+    introduction:'个人介绍'
+  },
+  contact:{
+    contact_tip:'你也可以用邮箱联系我们: acef@orange.fr 或者 填写下面的联系表格:',
+    title:'标题',
+    email:'邮箱',
+    phone_number:'手机号',
+    message:'您的宝贵意见或者联系内容',
+    send:'发送'
   }
 }
