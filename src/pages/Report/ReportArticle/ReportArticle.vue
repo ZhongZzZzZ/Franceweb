@@ -36,13 +36,12 @@ export default {
   methods:{
     async getArticle () {
           const result = await reqArticle(`/oa/g`,this.listQuery)
-          if(!result) {
-            this.$message.error('Network Error')
-            return
-          }
+            if(!result) {
+                this.$message.error('网络错误')
+                return
+            }
           this.total = result.total
           this.articleList = result.list
-
         },
     getList(){
       this.getArticle()
@@ -55,7 +54,7 @@ export default {
 }
 </script>
 <style lang="scss">
-@import '@/styles/color.scss';
+@import '../../../styles/color.scss';
 .reportarticle-container{
   padding: 0 4rem;
   .reportarticle-content{

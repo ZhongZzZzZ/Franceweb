@@ -60,7 +60,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/color.scss';
+@import '../../styles/color.scss';
 .topicarticle-container{
     padding: 0 4rem;
     margin-bottom: 1rem;

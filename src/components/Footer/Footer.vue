@@ -1,20 +1,10 @@
 <template>
   <div class="footer" ref="footer">
-    <div class="linkfooter">
-      <ul class="socialList">
-        <li><a href="javascript:;" ><i class="iconfont iconFacebook iconSize" ></i></a></li>
-        <li><a href="javascript:;" ><i class="iconfont icontuite iconSize" ></i></a></li>
-        <li><a href="javascript:;" ><i class="iconfont iconyoutube iconSize" ></i></a></li>
-        <li><a href="javascript:;" ><i class="iconfont iconpinterest iconSize" ></i></a></li>
-        <li><a href="javascript:;" ><i class="iconfont iconinstagram iconSize" ></i></a></li>
-      </ul>
-    </div>
     <div class="infofooter">
       <div class="infoDetails">
-      <img src="../../assets/footerImg.png">
-      <p>Disigner,ZBQ 19901</p>
-      <p>13715965769</p>
-      <p style="padding:30px 0 30px 0"><span class="iconfont iconcopyright">2019&nbsp;&nbsp;AECF</span></p>
+        <img src="../../assets/footerImg.png">
+        <p>法国东部华人联谊会 &nbsp;&nbsp; &nbsp;版权所有</p>
+        <p style="padding:30px 0 30px 0"><span class="iconfont iconcopyright">2019&nbsp;&nbsp;AECF</span></p>
       </div>
     </div>
   </div>
@@ -41,14 +31,11 @@ export default {
 @import '../../styles/color.scss';
 .footer{
   width: 100%;
+  text-align: center;
   position:relative;
+
   left:0;
   overflow: hidden;
-  .linkfooter{
-    height: 2rem;
-    background-color: $blue;
-    text-align: center;
-  }
   .infofooter{
     background-color: #4d4d4d;
     .infoDetails{
@@ -61,29 +48,6 @@ export default {
         margin-top: 0.5rem;
       }
     }
-  }
-  .socialList li{
-    display: inline-block;
-    &:nth-child(2){
-      margin-left: 0.8rem;
-    }
-    &:nth-child(3){
-      margin: 0 0.8rem;
-    }
-    &:nth-child(4){
-      margin-right: 0.8rem;
-    }
-  }
-  .iconSize{
-    font-size: 0.7rem;
-    white-space: nowrap;
-    color: #fff;
-    line-height: 2rem;
-  }
-}
-@media (max-width: 768px) {
-  .iconSize {
-    font-size: 0.5rem!important;
   }
 }
 </style>

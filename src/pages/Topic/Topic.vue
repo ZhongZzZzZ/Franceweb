@@ -16,16 +16,6 @@ export default {
     Footer,
     TopicArticle
   },
-  props:{},
-  data(){
-    return {
-    }
-  },
-  watch:{},
-  computed:{},
-  methods:{},
-  created(){},
-  mounted(){}
 }
 </script>
 <style lang="scss">

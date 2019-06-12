@@ -29,12 +29,13 @@ export default {
       } else {
         data = {part:'xiehuipic2'}
       }
-      
+
       const result = await reqAssociationPic('img/gssoai',data)
       if(!result || result.result == 0 || result.length === 0) {
 
         this.$message.error('Network Error')
       } else {
+          console.log(result)
         this.associationPic = result[0].url
       }
     }

@@ -5,7 +5,7 @@ import './styles/reset.css'
 import './js/rem'
 import ElementUI from 'element-ui'
 import '../theme/index.css'
-import 'element-ui/lib/theme-chalk/display.css'; 
+import 'element-ui/lib/theme-chalk/display.css';
 import axios from 'axios'
 import i18n from './lang/index'
 
@@ -19,7 +19,7 @@ else if(process.env.NODE_ENV == "debug"){
     axios.defaults.baseURL = "";
 }
 else if(process.env.NODE_ENV == "production"){
-    axios.defaults.baseURL = "https://api.apiopen.top/getSongPoetry";
+    axios.defaults.baseURL = "";
 }
 
 axios.defaults.withCredentials=true

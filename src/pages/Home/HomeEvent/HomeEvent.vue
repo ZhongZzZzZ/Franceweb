@@ -52,7 +52,7 @@ export default {
 }
 </script>
 <style lang="scss">
-@import '@/styles/color.scss';
+@import '../../../styles/color.scss';
 
 .homeevent-container{
   padding: 0 2rem;
