@@ -79,7 +79,8 @@ export default {
           width: 4rem;
           position: relative;
           .card-title{
-            font-size: .35rem;
+            font-size: .32rem;
+            line-height: .5rem;
             margin-bottom: .2rem;
             color: #294057;
           }
