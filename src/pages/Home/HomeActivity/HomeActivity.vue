@@ -6,11 +6,11 @@
         <li class="card" v-for="(item, index) in articleList" :key="index">
            <div class="card-content">
               <h1 class="card-title">{{item.title}}</h1>
-              <span class="card-time">{{item.activityStartTime}}</span>
-              <span class="card-time">{{item.activityEndTime}}</span>
+              <p class="card-time">{{item.activityStartTime}}</p>
+              <p class="card-time">--  {{item.activityEndTime}}</p>
               <p class="card-author">{{item.author}}</p>
               <router-link class="more" :to="{path:'/article',query:{ articleId : item.articleId,Id: 1 }}" tag="a" target="_blank">more</router-link>
-             </div>
+            </div>
            <img :src="item.posterUrl" alt="">
         </li>
       </ul>
@@ -52,7 +52,7 @@ export default {
 }
 </script>
 <style lang="scss">
-@import '@/styles/color.scss';
+@import '../../../styles/color.scss';
 .homeactivity-container{
   .homeactivity{
     font-size: .8rem;
@@ -104,9 +104,8 @@ export default {
         img{
           width:  4.5rem;
           height: 3rem;
-          
+
         }
-      }
     }
 }
 </style>

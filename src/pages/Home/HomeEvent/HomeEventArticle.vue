@@ -23,7 +23,7 @@ export default {
   data(){
     return {
       articleList:[],
-      listQuery: { 
+      listQuery: {
         currentPage: 1,
         pageSize: 5,
         part:'homeevent'
@@ -36,6 +36,10 @@ export default {
   methods:{
     async getArticle () {
         const result = await reqArticle(`/oa/g`,this.listQuery)
+        if(!result) {
+            this.$message.error('网络错误')
+            return
+        }
         this.total = result.total
         this.articleList = result.list
         this.activeNames= []

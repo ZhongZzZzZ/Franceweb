@@ -46,7 +46,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import '@/styles/color.scss';
+@import '../../styles/color.scss';
 .about-container{
   .routeChange{
     box-sizing: border-box;
@@ -71,8 +71,8 @@ export default {
         border-bottom: .1rem solid $blue;
       }
     }
-    
+
   }
-  
+
 }
 </style>

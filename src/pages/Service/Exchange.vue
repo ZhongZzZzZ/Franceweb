@@ -17,23 +17,10 @@
             Footer,
             exchangeArticle
         },
-        props:{
-        },
+
         data(){
             return {
             }
-        },
-        watch:{},
-        computed:{
-
-        },
-        methods:{
-        },
-        created(){
-
-        },
-        mounted(){
-
         },
 
     }

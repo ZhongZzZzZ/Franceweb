@@ -21,27 +21,24 @@ export default {
   components:{
     Pagination
   },
-  props:{},
   data(){
     return {
       members:[],
-      listQuery: { 
+      listQuery: {
         page: 1,
         limit: 12
       },
       total:1,
     }
   },
-  watch:{},
-  computed:{},
   methods:{
     async getMemberList () {
       const result = await reqMembersList(`/mi/gaf?currentPage=${this.listQuery.page}&pageSize=${this.listQuery.limit}`,)
-      if(!result) {
-            this.$message.error('Network Error')
+        if(!result) {
+            this.$message.error('网络错误')
             return
-          }
-      this.members = result.list
+        }
+        this.members = result.list
       this.total = result.total
       },
     getList(){
@@ -51,8 +48,6 @@ export default {
   created(){
     this.getList()
   },
-  mounted(){
-  }
 }
 </script>
 <style lang="scss">

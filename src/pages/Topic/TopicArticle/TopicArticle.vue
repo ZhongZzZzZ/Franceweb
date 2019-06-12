@@ -39,7 +39,7 @@ export default {
         if(!result) {
             this.$message.error('Network Error')
             return
-          }
+        }
         this.total = result.total
         this.articleList = result.list
     },
@@ -54,7 +54,7 @@ export default {
 }
 </script>
 <style lang="scss">
-@import '@/styles/color.scss';
+@import '../../../styles/color.scss';
 .topicarticle-container{
   padding: 0 4rem;
   margin-bottom: 1rem;

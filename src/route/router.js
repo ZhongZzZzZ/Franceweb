@@ -52,7 +52,7 @@ export default new Router({
           path:'members',
           name:'members',
           component: ()=> import('@/pages/About/Members/Members'),
-          meata:{isAssociation:false}
+          meta:{isAssociation:false}
         },
       ]
     },
