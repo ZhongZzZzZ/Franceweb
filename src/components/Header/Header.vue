@@ -5,7 +5,7 @@
     mode="horizontal"
     background-color="#3f51b5"
     text-color="#FFF"
-    v-show="language === '中文'"
+    v-if="language === '中文'"
     >
     <el-menu-item  class="menu-item"><router-link  to="/home">首页</router-link></el-menu-item>
     <el-menu-item  class="menu-item"><router-link to="/about">{{$t('m.menu.about_us')}}</router-link></el-menu-item>
@@ -43,7 +43,7 @@
     mode="horizontal"
     background-color="#3f51b5"
     text-color="#FFF"
-    v-show="language === 'Français'"
+    v-else
     >
     <el-menu-item  class="menu-item"><router-link tag="div" to="/home">Page<br/>d'accueil</router-link></el-menu-item>
     <el-menu-item  class="menu-item"><router-link tag="div" to="/about">qui<br>somme-nous</router-link></el-menu-item>
@@ -76,6 +76,7 @@
     </el-dropdown>
     </el-menu-item>
   </el-menu>
+  
 </div>
 </template>
 
@@ -87,7 +88,7 @@ export default {
   data(){
     return {
       lang:'',
-      language:'中文',
+      language:'Français',
       path:''
     }
   },

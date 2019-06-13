@@ -7,7 +7,7 @@
         <p style="position: absolute;right: 0.15rem;top: 0.75rem;">{{item.displayTime}}</p>
         <router-link class="more" :to="{path:'/article',query:{ articleId : item.articleId,Id: 0 }}" tag="a" target="_blank">more</router-link>
       </div>
-      <pagination style="text-align:center" v-show="total>0" :total="total" :page.sync="listQuery.page" :pageSize="5"  @pagination="getList" />
+      <pagination style="text-align:center" v-show="total>0" :total="total" :page.sync="listQuery.currentPage" :pageSize="5"  @pagination="getList" />
     </div>
   </div>
 </template>
@@ -54,7 +54,7 @@ export default {
 }
 </script>
 <style lang="scss">
-@import '../../../styles/color.scss';
+@import '@/styles/color.scss';
 .reportarticle-container{
   padding: 0 4rem;
   .reportarticle-content{

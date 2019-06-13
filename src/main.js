@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import i18n from './lang/index'
 import App from './App.vue'
 import router from './route/router'
 import './styles/reset.css'
@@ -7,7 +8,9 @@ import ElementUI from 'element-ui'
 import '../theme/index.css'
 import 'element-ui/lib/theme-chalk/display.css';
 import axios from 'axios'
-import i18n from './lang/index'
+
+
+
 
 Vue.prototype.$axios = axios;
 Vue.use(ElementUI)
@@ -19,7 +22,7 @@ else if(process.env.NODE_ENV == "debug"){
     axios.defaults.baseURL = "";
 }
 else if(process.env.NODE_ENV == "production"){
-    axios.defaults.baseURL = "";
+    axios.defaults.baseURL = "/acef";
 }
 
 axios.defaults.withCredentials=true
