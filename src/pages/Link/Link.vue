@@ -39,7 +39,7 @@ export default {
      async getLinks(){
        this.result =  await getFriendLink(`/fl/g`)
          if(!this.result) {
-             this.$message.error('网络错误')
+             this.$message.error('Network Error')
              return
          }
      }

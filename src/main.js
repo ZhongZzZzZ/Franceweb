@@ -22,9 +22,15 @@ else if(process.env.NODE_ENV == "debug"){
     axios.defaults.baseURL = "";
 }
 else if(process.env.NODE_ENV == "production"){
-    axios.defaults.baseURL = "/acef";
+    axios.defaults.baseURL = "http://huangchaoweb.cn:8080/acef";
 }
 
+router.beforeEach((to,from,next) => {
+  if(to.path !== '/article') {
+    document.title = 'ACEF法国东部华人协会'
+  }
+  next()
+})
 axios.defaults.withCredentials=true
 new Vue({
   i18n,

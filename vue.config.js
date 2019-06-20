@@ -11,7 +11,7 @@ module.exports = {
     proxy: {
         //匹配所有以/acef开头的请求路径
         [process.env.VUE_APP_BASE_API]: {
-            target: "http://129.204.168.205/acef", //代理目标的基础路径
+            target: "http://huangchaoweb.cn:8080/acef", //代理目标的基础路径
             ws:true,
             changOrigin:true, //开启跨域
             pathRewrite:{ //重写路径，去掉路径中开头的/acef

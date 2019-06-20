@@ -67,7 +67,7 @@ export default {
        async getArticle() {
           const result = await reqArticle(`/aa/g`,this.listQuery)
            if(!result) {
-               this.$message.error('网络错误')
+               this.$message.error('Network Error')
                return
            }
            this.total = result.total

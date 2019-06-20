@@ -49,7 +49,7 @@ export default {
       async getOrdinaryArticle (){
           this.result = await getSingleArticle(`/oa/go`,this.articleId)
           if(!this.result) {
-              this.$message.error('网络错误')
+              this.$message.error('Network Error')
               return
           }
           document.title = this.result.title
@@ -57,10 +57,11 @@ export default {
       async getAcitiveArticle (){
           this.result = await getSingleArticle(`/aa/go`,this.articleId)
           if(!this.result) {
-              this.$message.error('网络错误')
+              this.$message.error('Network Error')
               return
+          } else {
+            document.title = this.result.title
           }
-          document.title = this.result.title
       }
   },
   created(){
