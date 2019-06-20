@@ -27,7 +27,7 @@
     <el-menu-item  class="menu-item"><router-link to="/link">{{$t('m.menu.friendship_link')}}</router-link></el-menu-item>
     <el-menu-item  class="menu-item"><router-link to="/contact">{{$t('m.menu.contact_us')}}</router-link></el-menu-item>
     <el-menu-item  class="menu-item menu-item-drop">
-    <el-dropdown @command="selectLanguage" trigger="click" placement="top">
+    <el-dropdown @command="selectLanguage" trigger="hover" placement="top">
       <span class="el-dropdown-link">
       {{language}}<i class="el-icon-arrow-down el-icon--right"></i>
       </span>

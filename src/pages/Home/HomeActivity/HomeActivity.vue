@@ -5,11 +5,11 @@
       <ul>
         <li class="card" v-for="(item, index) in articleList" :key="index">
            <div class="card-content">
-              <h1 class="card-title">{{item.title}}</h1>
+             <router-link class="card-title" :to="{path:'/article',query:{ articleId : item.articleId,Id: 1 }}" target="_blank">{{item.title}}</router-link>
               <p class="card-time">{{item.activityStartTime}}</p>
               <p class="card-time">--  {{item.activityEndTime}}</p>
               <p class="card-author">{{item.author}}</p>
-              <router-link class="more" :to="{path:'/article',query:{ articleId : item.articleId,Id: 1 }}" tag="a" target="_blank">more</router-link>
+              <router-link class="more" :to="{path:'/article',query:{ articleId : item.articleId,Id: 1 }}" target="_blank">more</router-link>
             </div>
            <img :src="item.posterUrl" alt="">
         </li>
@@ -83,6 +83,7 @@ export default {
             line-height: .5rem;
             margin-bottom: .2rem;
             color: #294057;
+            display: block;
           }
           .card-time{
             font-size: .3rem;

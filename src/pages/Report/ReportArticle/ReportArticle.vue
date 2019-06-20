@@ -2,10 +2,10 @@
    <div class="reportarticle-container">
     <div class="reportarticle-content">
       <div class="reportarticle-topic" v-for="(item, index) in articleList" :key="index">
-        <h1 class="title">{{item.title}}</h1>
+        <router-link class="title" :to="{path:'/article',query:{ articleId : item.articleId,Id: 0 }}" target="_blank">{{item.title}}</router-link>
         <p>{{item.author}}</p>
         <p style="position: absolute;right: 0.15rem;top: 0.75rem;">{{item.displayTime}}</p>
-        <router-link class="more" :to="{path:'/article',query:{ articleId : item.articleId,Id: 0 }}" tag="a" target="_blank">more</router-link>
+        <router-link class="more" :to="{path:'/article',query:{ articleId : item.articleId,Id: 0 }}" target="_blank">more</router-link>
       </div>
       <pagination style="text-align:center" v-show="total>0" :total="total" :page.sync="listQuery.currentPage" :pageSize="5"  @pagination="getList" />
     </div>
