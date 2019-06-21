@@ -35,7 +35,7 @@ export default {
     async getMemberList () {
       const result = await reqMembersList(`/mi/gaf?currentPage=${this.listQuery.page}&pageSize=${this.listQuery.limit}`,)
         if(!result) {
-            this.$message.error('网络错误')
+            this.$message.error('Network Error')
             return
         }
         this.members = result.list

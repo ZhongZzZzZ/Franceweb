@@ -5,7 +5,7 @@
     mode="horizontal"
     background-color="#3f51b5"
     text-color="#FFF"
-    v-show="language === '中文'"
+    v-if="language === '中文'"
     >
     <el-menu-item  class="menu-item"><router-link  to="/home">首页</router-link></el-menu-item>
     <el-menu-item  class="menu-item"><router-link to="/about">{{$t('m.menu.about_us')}}</router-link></el-menu-item>
@@ -27,7 +27,7 @@
     <el-menu-item  class="menu-item"><router-link to="/link">{{$t('m.menu.friendship_link')}}</router-link></el-menu-item>
     <el-menu-item  class="menu-item"><router-link to="/contact">{{$t('m.menu.contact_us')}}</router-link></el-menu-item>
     <el-menu-item  class="menu-item menu-item-drop">
-    <el-dropdown @command="selectLanguage" trigger="click" placement="top">
+    <el-dropdown @command="selectLanguage" trigger="hover" placement="top">
       <span class="el-dropdown-link">
       {{language}}<i class="el-icon-arrow-down el-icon--right"></i>
       </span>
@@ -43,7 +43,7 @@
     mode="horizontal"
     background-color="#3f51b5"
     text-color="#FFF"
-    v-show="language === 'Français'"
+    v-else
     >
     <el-menu-item  class="menu-item"><router-link tag="div" to="/home">Page<br/>d'accueil</router-link></el-menu-item>
     <el-menu-item  class="menu-item"><router-link tag="div" to="/about">qui<br>somme-nous</router-link></el-menu-item>
@@ -76,6 +76,7 @@
     </el-dropdown>
     </el-menu-item>
   </el-menu>
+  
 </div>
 </template>
 
@@ -87,7 +88,7 @@ export default {
   data(){
     return {
       lang:'',
-      language:'中文',
+      language:'Français',
       path:''
     }
   },

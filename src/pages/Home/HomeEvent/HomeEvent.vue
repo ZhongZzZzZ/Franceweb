@@ -3,10 +3,10 @@
     <h1 class="homeevent">{{$t('m.home.home_event')}}</h1>
     <div class="homeevent-content">
       <div class="homeevent-topic" v-for="(item, index) in articleList" :key="index">
-        <h1 class="title">{{item.title}}</h1>
+        <router-link class="title" :to="{path:'/article',query:{ articleId : item.articleId,Id: 0 }}" target="_blank">{{item.title}}</router-link>
         <p>{{item.author}}</p>
         <p style="position: absolute;right: 0.15rem;top: 0.75rem;">{{item.displayTime}}</p>
-        <router-link class="more" :to="{path:'/article',query:{ articleId : item.articleId,Id: 0 }}" tag="a" target="_blank">more</router-link>
+        <router-link class="more" :to="{path:'/article',query:{ articleId : item.articleId,Id: 0 }}" target="_blank">more</router-link>
       </div>
       <div class="homeevent-button" @click="goArticle">{{$t('m.home.more')}}</div>
     </div>

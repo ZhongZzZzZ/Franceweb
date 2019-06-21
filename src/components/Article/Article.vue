@@ -10,14 +10,8 @@
       <div class="article-info">
         <article><span v-html="result.content"></span></article>
       </div>
-<<<<<<< Updated upstream
       <img v-show="ifShowPoster" :src="result.posterUrl" alt="" style="width:100%">
       <el-button v-show="result.entryFormUrl" type="primary" class="downLoadBtn"><a :href="result.entryFormUrl" download>报名表下载</a></el-button>
-=======
-      <img v-show="ifShowPoster" :src="result.posterUrl" alt="">
-      <el-button v-show="result.entryFormUrl" type="primary" plain class="downloadButton">
-        <a :href="result.entryFormUrl" download>报名表下载</a></el-button>
->>>>>>> Stashed changes
     </div>
     <Footer></Footer>
   </div>
@@ -55,7 +49,7 @@ export default {
       async getOrdinaryArticle (){
           this.result = await getSingleArticle(`/oa/go`,this.articleId)
           if(!this.result) {
-              this.$message.error('网络错误')
+              this.$message.error('Network Error')
               return
           }
           document.title = this.result.title
@@ -63,10 +57,11 @@ export default {
       async getAcitiveArticle (){
           this.result = await getSingleArticle(`/aa/go`,this.articleId)
           if(!this.result) {
-              this.$message.error('网络错误')
+              this.$message.error('Network Error')
               return
+          } else {
+            document.title = this.result.title
           }
-          document.title = this.result.title
       }
   },
   created(){

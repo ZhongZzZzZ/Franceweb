@@ -15,7 +15,6 @@ import School from '../pages/Service/School.vue'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
   linkActiveClass:'heightlight',
   routes: [
     {

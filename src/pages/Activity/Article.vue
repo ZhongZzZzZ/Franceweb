@@ -10,7 +10,8 @@
                 <el-col :span="3"  v-show="index % 2 ==1?true:false" class="floatRight">&nbsp;</el-col>
                 <el-col :xl="8" :lg="9" :md="8" :sm="7" :xs="18"  :class="index % 2 ==1?'floatRight':' '">
                     <div >
-                        <h2 >{{item.title}}</h2>
+                        
+                        <router-link class="title" :to="{path:'/article',query:{ articleId : item.articleId,Id: 1 }}" target="_blank">{{item.title}}</router-link>
                         <p>{{item.activityStartTime}} --- {{item.activityEndTime}}</p>
                             <el-image :src="item.posterUrl" class="serviceImg">
                             <div slot="placeholder" class="image-slot">
@@ -67,7 +68,7 @@ export default {
        async getArticle() {
           const result = await reqArticle(`/aa/g`,this.listQuery)
            if(!result) {
-               this.$message.error('网络错误')
+               this.$message.error('Network Error')
                return
            }
            this.total = result.total
@@ -97,10 +98,11 @@ export default {
     .floatLeft{
         float: left;
     }
-    h2{
+    .title{
         font-size: 0.4rem;
         color: $blue;
         margin-bottom: 0.3rem;
+        display: block;
     }
     .article{
         line-height: 0.5rem;
