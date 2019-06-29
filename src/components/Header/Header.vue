@@ -12,7 +12,7 @@
     <el-menu-item  class="menu-item"><router-link to="/activity">{{$t('m.menu.activity_info')}}</router-link></el-menu-item>
     <el-menu-item  class="menu-item"><router-link to="/report">{{$t('m.menu.special_report')}}</router-link></el-menu-item>
     <el-menu-item  class="menu-item menu-item-drop">
-      <el-dropdown @command="selectSocialCulture" trigger="click" placement="top">
+      <el-dropdown @command="selectSocialCulture" trigger="hover" placement="top">
         <span class="el-dropdown-link">
          <router-link :to="path">{{$t('m.menu.social_culture')}}<i class="el-icon-arrow-down el-icon--right"></i></router-link>
         </span>
@@ -50,7 +50,7 @@
     <el-menu-item  class="menu-item"><router-link  to="/activity">agenda</router-link></el-menu-item>
     <el-menu-item  class="menu-item"><router-link tag="div" to="/report">envoyé<br/>spécial</router-link></el-menu-item>
     <el-menu-item  class="menu-item menu-item-drop">
-      <el-dropdown @command="selectSocialCulture" trigger="click" placement="top">
+      <el-dropdown @command="selectSocialCulture" trigger="hover" placement="top">
         <span class="el-dropdown-link">
          <router-link tag="div" :to="path">{{$t('m.menu.social_culture')}}<i class="el-icon-arrow-down el-icon--right"></i></router-link>
         </span>
@@ -65,7 +65,7 @@
     <el-menu-item  class="menu-item"><router-link tag="div" to="/link">adresses<br/>utiles</router-link></el-menu-item>
     <el-menu-item  class="menu-item"><router-link  to="/contact">{{$t('m.menu.contact_us')}}</router-link></el-menu-item>
     <el-menu-item  class="menu-item menu-item-drop">
-    <el-dropdown @command="selectLanguage" trigger="click" placement="top">
+    <el-dropdown @command="selectLanguage" trigger="hover" placement="top">
       <span class="el-dropdown-link">
       {{language}}<i class="el-icon-arrow-down el-icon--right"></i>
       </span>

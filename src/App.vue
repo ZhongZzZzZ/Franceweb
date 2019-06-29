@@ -42,22 +42,6 @@ export default {
 <style lang="scss">
 .head-img{
   width: 100%;
+}
 
-  
-}
-/* .container{
-  padding: 0 10%;
-}
-@media screen and (max-width: 768px) {
-  .container{
-    padding: 0 0.2rem;
-  }
-} */
-/*.container{*/
-/*}*/
-/*@media screen and (max-width: 768px) {*/
-  /*.container{*/
-    /*overflow: hidden;*/
-  /*}*/
-/*}*/
 </style>
