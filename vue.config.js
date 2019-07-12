@@ -22,6 +22,14 @@ module.exports = {
     disableHostCheck: true,
     
 },
+  configureWebpack:{
+      externals:{
+          'vue':'Vue',
+          'vue-router':'VueRouter',
+          'element-ui':'ELEMENT',
+          'axios':'axios'
+      }
+  }
 
 
 };
