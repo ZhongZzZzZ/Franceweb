@@ -27,7 +27,8 @@ module.exports = {
           'vue':'Vue',
           'vue-router':'VueRouter',
           'element-ui':'ELEMENT',
-          'axios':'axios'
+          'axios':'axios',
+          'vue-i18n':'VueI18n'
       }
   }
 

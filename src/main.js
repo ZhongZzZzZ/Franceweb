@@ -6,7 +6,6 @@ import './styles/reset.css'
 import './js/rem'
 import ElementUI from 'element-ui'
 import '../theme/index.css'
-/* import 'element-ui/lib/theme-chalk/display.css'; */
 import axios from 'axios'
 
 
