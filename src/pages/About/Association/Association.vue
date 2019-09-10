@@ -35,7 +35,6 @@ export default {
 
         this.$message.error('Network Error')
       } else {
-          console.log(result)
         this.associationPic = result[0].url
       }
     }

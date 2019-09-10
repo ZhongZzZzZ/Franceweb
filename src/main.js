@@ -21,7 +21,7 @@ else if(process.env.NODE_ENV == "debug"){
     axios.defaults.baseURL = "";
 }
 else if(process.env.NODE_ENV == "production"){
-    axios.defaults.baseURL = "http://huangchaoweb.cn:8080/acef";
+    axios.defaults.baseURL = "http://huangchaoweb.cn/acef";
 }
 
 router.beforeEach((to,from,next) => {
