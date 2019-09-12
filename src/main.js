@@ -6,7 +6,6 @@ import './styles/reset.css'
 import './js/rem'
 import ElementUI from 'element-ui'
 import '../theme/index.css'
-import 'element-ui/lib/theme-chalk/display.css';
 import axios from 'axios'
 
 
@@ -22,7 +21,7 @@ else if(process.env.NODE_ENV == "debug"){
     axios.defaults.baseURL = "";
 }
 else if(process.env.NODE_ENV == "production"){
-    axios.defaults.baseURL = "http://huangchaoweb.cn:8080/acef";
+    axios.defaults.baseURL = "http://huangchaoweb.cn/acef";
 }
 
 router.beforeEach((to,from,next) => {

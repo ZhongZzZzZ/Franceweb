@@ -6,7 +6,7 @@ Vue.use(i18n)
 let locale = null
 const language = getCookies('language')
 if(!language){
-  setCookies('language','France')
+  setCookies('language','French')
   locale = 'fr-FR'
 } else if(language == 'Chinese') {
   locale = 'zh-CN'
