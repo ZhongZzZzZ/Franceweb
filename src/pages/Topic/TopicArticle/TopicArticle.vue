@@ -26,7 +26,7 @@ export default {
         listQuery: {
             currentPage: 1,
             pageSize: 3,
-            part:'service'
+            part:'review'
         },
         total:1,
     }

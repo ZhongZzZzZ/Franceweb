@@ -1,47 +1,38 @@
 <template>
- <div >
-  <img v-show="show" class="head-img" src="./assets/head.jpg" alt="">
+  <div>
+    <img v-show="show" class="head-img" src="./assets/head.jpg" alt />
     <Header v-show="show"></Header>
-    <keep-alive exclude='Home'>
-     <router-view class="app-container"></router-view>
+    <keep-alive exclude="Home">
+      <router-view class="app-container"></router-view>
     </keep-alive>
- </div>
+  </div>
 </template>
 
 <script>
-import Header from './components/Header/Header.vue'
+import Header from "./components/Header/Header.vue";
 export default {
-  components:{
-    Header,
+  components: {
+    Header
   },
-  props:{},
-  data(){
+  props: {},
+  data() {
     return {
-      show:true
-    }
+      show: true
+    };
   },
-  watch:{
+  watch: {
     $route() {
-      if(this.$route.path === '/404') {
-      this.show = false
-    } else{
-       this.show = true
+      if (this.$route.path === "/404") {
+        this.show = false;
+      } else {
+        this.show = true;
+      }
     }
-    }
   },
-  computed:{},
-  methods:{
-    
-  },
-  created(){
-  },
-  mounted(){
-  }
-}
+};
 </script>
 <style lang="scss">
-.head-img{
+.head-img {
   width: 100%;
 }
-
 </style>
