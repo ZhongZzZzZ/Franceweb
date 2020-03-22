@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img v-show="show" class="head-img" src="./assets/head.jpg" alt />
+    <img v-show="show" class="head-img" src="./assets/logo_small.png" alt />
     <Header v-show="show"></Header>
     <keep-alive exclude="Home">
       <router-view class="app-container"></router-view>

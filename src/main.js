@@ -15,7 +15,8 @@ Vue.prototype.$axios = axios;
 Vue.use(ElementUI)
 Vue.config.productionTip = false
 if(process.env.NODE_ENV == "development"){
-    axios.defaults.baseURL = "/acef";
+    // axios.defaults.baseURL = "/acef";
+    axios.defaults.baseURL = "http://www.acef-fr.com/acef";
 }
 else if(process.env.NODE_ENV == "debug"){
     axios.defaults.baseURL = "";
