@@ -21,8 +21,7 @@ else if(process.env.NODE_ENV == "debug"){
     axios.defaults.baseURL = "";
 }
 else if(process.env.NODE_ENV == "production"){
-    // axios.defaults.baseURL = "http://www.acef.fr/acef";
-    axios.defaults.baseURL = "http://acef.fr/acef";
+    axios.defaults.baseURL = "http://www.acef-fr.com/acef";
 
 }
 
