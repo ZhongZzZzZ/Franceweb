@@ -4,7 +4,7 @@
       <div class="infoDetails">
         <img src="../../assets/footerImg.png">
         <p>法国东部华人联谊会 &nbsp;&nbsp; &nbsp;版权所有</p>
-        <p style="padding:30px 0 30px 0"><span class="iconfont iconcopyright">2019&nbsp;&nbsp;AECF</span></p>
+        <p style="padding:30px 0 30px 0"><span class="iconfont iconcopyright">2019&nbsp;&nbsp;ACEF</span></p>
       </div>
     </div>
   </div>

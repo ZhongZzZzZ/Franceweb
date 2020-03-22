@@ -178,7 +178,7 @@ export default {
   justify-content: space-between;
   .menu-item{
     box-sizing: border-box;
-    height: 1.5rem !important;
+    height: 1rem !important;
     text-align: center;
     padding: 0;
     flex: 1;

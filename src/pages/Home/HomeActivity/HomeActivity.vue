@@ -64,6 +64,9 @@ export default {
     height: 12rem;
     overflow: auto;
       .card{
+        &:last-of-type {
+          border-bottom:  1px solid lightgray;
+        }
         box-sizing: border-box;
         border: 1px solid lightgray;
         border-bottom: none;
@@ -94,12 +97,11 @@ export default {
           }
           .card-author{
             font-size: .3rem;
+            margin-bottom: .1rem;
           }
           .more{
-            position: absolute;
             color: $orange;
             font-size: .4rem;
-            bottom: 5px;
           }
         }
         img{
