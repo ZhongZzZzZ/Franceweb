@@ -161,6 +161,12 @@ export default {
 </script>
 <style lang="scss">
 @import '../../styles/color.scss';
+.menu .menu-item.menu-item-drop span, .menu .menu-item.menu-item-drop i{
+  line-height: 1rem!important;
+}
+.el-menu-item{
+  line-height: 0.5rem!important;
+}
 .heightlight{
   background-color: #ffffff;
   color: $blue !important;
@@ -172,7 +178,7 @@ export default {
   }
 }
 .menu{
-  height: 1.5rem;
+  height: 1rem;
   padding: 0 3rem !important;
   display: flex;
   justify-content: space-between;
@@ -185,7 +191,7 @@ export default {
     border-bottom: none !important;
     a{
       display: block;
-      line-height: 1.4rem;
+      line-height: 1rem;
       font-size:  .36rem;
       text-decoration: none;
       height: 100%;
@@ -193,7 +199,7 @@ export default {
       transition: all 0.3s ease;
     }
     div{
-      line-height: 0.72rem;
+      /*line-height: 0.72rem;*/
       font-size: .36rem;
       transition: all 0.3s ease;
     }
@@ -229,13 +235,6 @@ export default {
       height: 2rem;
     }
   }
-  
+
 }
-
-
-
-
-
-
-
 </style>
