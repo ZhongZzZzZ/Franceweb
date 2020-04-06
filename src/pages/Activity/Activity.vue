@@ -43,12 +43,6 @@
         margin: 0.5rem 0 0.5rem 0;
       }
     }
-    h1{
-      font-size: 0.8rem;
-      color: $orange;
-      text-align: center;
-      margin: 1rem 0 2rem 0;
-    }
   }
 
 </style>

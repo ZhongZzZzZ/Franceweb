@@ -57,10 +57,10 @@ export default {
 .homeevent-container{
   padding: 0 2rem;
   .homeevent{
-    font-size:.8rem;
+    font-size:.5rem;
     color: $red;
     text-align: center;
-    margin-bottom: 1.6rem;
+    margin-bottom: 0.6rem;
   }
   .homeevent-content{
     .homeevent-topic{

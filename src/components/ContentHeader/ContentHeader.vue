@@ -25,8 +25,8 @@ export default {
 <style lang="scss">
 .content-header{
   width: 100%;
-  font-size: 0.8rem;
+  font-size: 0.5rem;
   text-align: center;
-  margin: 1rem 0 2rem 0;
+  margin: 0.4rem 0 1rem 0;
 }
 </style>

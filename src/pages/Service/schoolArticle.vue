@@ -29,7 +29,7 @@ export default {
                   pageSize: 3,
                   part:'school'
               },
-              total:50,
+              total:1,
         }
     },
     watch: {

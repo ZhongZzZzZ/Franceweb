@@ -50,15 +50,15 @@ export default {
 .about-container{
   .routeChange{
     box-sizing: border-box;
-    font-size: .6rem;
+    font-size: 0.5rem;
     text-align: center;
-    margin: 2rem auto;
-    width: 12rem;
-    height: 2rem;
-    line-height: 2rem;
+    margin: 0.6rem auto;
+    width: 10rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
     .routeLink{
       display: inline-block;
-      width: 6rem;
+      width: 5rem;
       color: $blue !important;
       border: none;
       transition: all 0.3s ease;
